@@ -1,1 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Gear for Every Team, School &amp; Business | KJ Group</title>
+  <style>
+    :root {
+      --primary-accent: #ff5722;
+      --accent-hover: #e64a19;
+      --light-bg: #fffdeb;
+      --card-bg: #ffffff;
+      --border-color: #ffd0b3;
+      --text-main: #000000;
+      --text-muted: #222222;
+      --product-bg: #ffd54f;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: var(--light-bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4, p, span, label, a {
+      color: var(--text-main) !important;
+    }
 
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #000000;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .site-header nav {
+      display: flex;
+      align-items: center;
+    }
+    .site-header nav.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 62px;
+      right: 0;
+      left: 0;
+      background-color: #ffd54f;
+      padding: 15px 5%;
+      border-bottom: 2px solid var(--primary-accent);
+      z-index: 999;
+    }
+    .site-header nav.open a {
+      margin: 8px 0;
+      font-size: 1.1rem;
+    }
+
+    /* HEADER */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffd54f;
+      border-bottom: 2px solid var(--primary-accent);
+      padding: 15px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    .site-header nav a {
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .site-header nav a:hover {
+      color: var(--primary-accent) !important;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .site-header nav {
+        display: none;
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .gallery-title {
+        font-size: 1.6rem;
+      }
+      .product-gallery {
+        grid-template-columns: 1fr;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      dialog {
+        width: 95%;
+        padding: 20px;
+      }
+      .logo {
+        font-size: 1.2rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 1.6rem;
+      }
+      .btn {
+        padding: 10px 22px;
+        font-size: 0.95rem;
+      }
+      .gallery-container {
+        padding: 40px 15px;
+      }
+      .info-section {
+        padding: 40px 15px;
+      }
+    }
+
+    /* HERO */
+    .hero-section {
+      background: linear-gradient(rgba(255,235,204,0.85), rgba(255,213,128,0.85));
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 25px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 500;
+    }
+    .btn {
+      display: inline-block;
+      background-color: var(--primary-accent);
+      color: #ffffff !important;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(255,87,34,0.2);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,87,34,0.35);
+    }
+
+    /* PRODUCT GALLERY */
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .gallery-title {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+    .product-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .product-card {
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(255,167,38,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 12px 25px rgba(255,167,38,0.18);
+    }
+    .badge {
+      background-color: #ffd54f;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .product-image-wrapper {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      background-color: #fffdec;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .product-card img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .product-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .product-card p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    /* COLOR SWATCHES */
+    .color-preview-box {
+      width: 100%;
+      height: 100%;
+      background-color: var(--product-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+    .swatch-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0;
+    }
+    .swatch-label {
+      width: 28px;
+      height: 28px;
+      background-color: var(--swatch-color);
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      display: inline-block;
+      position: relative;
+      transition: transform 0.2s ease;
+    }
+    .swatch-label input {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    .swatch-label:has(input:checked) {
+      transform: scale(1.35);
+      border-color: var(--primary-accent);
+      box-shadow: 0 4px 10px rgba(255,87,34,0.3);
+    }
+
+    /* HOW IT WORKS */
+    .info-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .info-step {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 16px;
+      border: 2px solid var(--border-color);
+    }
+    .step-number {
+      background-color: var(--primary-accent);
+      color: white !important;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50%;
+      display: inline-block;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    /* MODAL */
+    dialog {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(255,112,67,0.15);
+      padding: 35px;
+      width: 90%;
+      max-width: 500px;
+      margin: auto;
+    }
+    dialog::backdrop {
+      background-color: rgba(255,224,178,0.5);
+      backdrop-filter: blur(4px);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+    .close-x {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #888;
+      line-height: 1;
+    }
+    .close-x:hover { color: #333; }
+    .form-group {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 1rem;
+      background-color: #ffffff;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-accent);
+    }
+    .submit-btn {
+      background-color: var(--primary-accent);
+      color: white !important;
+      border: none;
+      padding: 13px 20px;
+      width: 100%;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255,87,34,0.2);
+    }
+    .submit-btn:hover { background-color: var(--accent-hover); }
+
+    /* FOOTER */
+    footer {
+      background-color: #ffd54f;
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid var(--primary-accent);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">⚡ KJ Group</div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
+      <a href="store.html">Products</a>
+      <a href="schools.html">Schools</a>
+      <a href="business.html">Business</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Custom Gear for Every Team, School &amp; Business</h1>
+      <p>High-quality branded apparel, drinkware, and promotional products — made to order, delivered fast.</p>
+      <a href="#" class="btn trigger-quote-modal">Get a Free Quote</a>
+    </div>
+  </section>
+
+  <!-- PRODUCT GALLERY -->
+  <section class="gallery-container">
+    <h2 class="gallery-title">Featured Products</h2>
+    <div class="product-gallery">
+
+      <!-- Card 1 -->
+      <div class="product-card">
+        <span class="badge">Bestseller</span>
+        <div class="product-image-wrapper">
+          <div class="color-preview-box" id="preview-tshirt">Custom T-Shirt</div>
+        </div>
+        <h3>Custom T-Shirt</h3>
+        <p>Premium cotton tees with full-color printing. Perfect for teams and events.</p>
+        <div class="swatch-container">
+          <label class="swatch-label" style="--swatch-color:#ff5722;" title="Orange">
+            <input type="radio" name="color-tshirt" onchange="document.getElementById('preview-tshirt').style.backgroundColor='#ff5722'">
+          </label>
+          <label class="swatch-label" style="--swatch-color:#1565c0;" title="Blue">
+            <input type="radio" name="color-tshirt" onchange="document.getElementById('preview-tshirt').style.backgroundColor='#1565c0'">
+          </label>
+          <label class="swatch-label" style="--swatch-color:#2e7d32;" title="Green">
+            <input type="radio" name="color-tshirt" onchange="document.getElementById('preview-tshirt').style.backgroundColor='#2e7d32'">
+          </label>
+          <label class="swatch-label" style="--swatch-color:#000000;" title="Black">
+            <input type="radio" name="color-tshirt" onchange="document.getElementById('preview-tshirt').style.backgroundColor='#000000'">
+          </label>
+        </div>
+        <a href="#" class="btn trigger-quote-modal">Order Now</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="product-card">
+        <div class="product-image-wrapper">
+          <div class="color-preview-box" id="preview-polo">Embroidered Polo</div>
+        </div>
+        <h3>Embroidered Polo</h3>
+        <p>Professional embroidered polos designed for your business profile and consistency.</p>
+        <div class="swatch-container">
+          <label class="swatch-label" style="--swatch-color:#37474f;" title="Charcoal">
+            <input type="radio" name="color-polo" onchange="document.getElementById('preview-polo').style.backgroundColor='#37474f'">
+          </label>
+          <label class="swatch-label" style="--swatch-color:#1565c0;" title="Navy">
+            <input type="radio" name="color-polo" onchange="document.getElementById('preview-polo').style.backgroundColor='#1565c0'">
+          </label>
+          <label class="swatch-label" style="--swatch-color:#ffffff;border:2px solid #ccc;" title="White">
+            <input type="radio" name="color-polo" onchange="document.getElementById('preview-polo').style.backgroundColor='#f5f5f5'">
+          </label>
+        </div>
+        <a href="#" class="btn trigger-quote-modal">Order Now</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="product-card">
+        <div class="product-image-wrapper">
+          <div class="color-preview-box" id="preview-drinkware">Custom Drinkware</div>
+        </div>
+        <h3>Custom Drinkware</h3>
+        <p>Tumblers, mugs, and bottles customized with your artwork and logo.</p>
+        <div class="swatch-container">
+          <label class="swatch-label" style="--swatch-color:#ffd54f;" title="Yellow">
+            <input type="radio" name="color-drink" onchange="document.getElementById('preview-drinkware').style.backgroundColor='#ffd54f'">
+          </label>
+          <label class="swatch-label" style="--swatch-color:#e53935;" title="Red">
+            <input type="radio" name="color-drink" onchange="document.getElementById('preview-drinkware').style.backgroundColor='#e53935'">
+          </label>
+          <label class="swatch-label" style="--swatch-color:#8e24aa;" title="Purple">
+            <input type="radio" name="color-drink" onchange="document.getElementById('preview-drinkware').style.backgroundColor='#8e24aa'">
+          </label>
+        </div>
+        <a href="#" class="btn trigger-quote-modal">Order Now</a>
+      </div>
+
+    </div>
+
+    <div style="margin-top:40px;">
+      <p style="font-size:1.1rem;margin-bottom:20px;">…and more custom gear — hoodies, hats, bags &amp; corporate giveaway packages.</p>
+      <a href="#" class="btn trigger-quote-modal">Get a Quote</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="info-section">
+    <h2 style="font-size:2.2rem;font-weight:700;">How It Works</h2>
+    <div class="info-grid">
+      <div class="info-step">
+        <div class="step-number">1</div>
+        <h3>Choose Your Product</h3>
+        <p>Browse our catalog and select the items that fit your team, school, or business needs.</p>
+      </div>
+      <div class="info-step">
+        <div class="step-number">2</div>
+        <h3>Submit Your Design</h3>
+        <p>Upload your logo or let us create a custom design. We handle all the artwork setup.</p>
+      </div>
+      <div class="info-step">
+        <div class="step-number">3</div>
+        <h3>We Print &amp; Deliver</h3>
+        <p>Your order is produced with care and shipped directly to your door, fast.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE MODAL -->
+  <dialog id="quoteModal">
+    <div class="modal-header">
+      <h2>Bulk Quote Request</h2>
+      <button class="close-x" id="closeQuoteModal">&times;</button>
+    </div>
+    <form id="bulkQuoteForm">
+      <div class="form-group">
+        <label for="clientEmail">Email Address</label>
+        <input type="email" id="clientEmail" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="clientPhone">Phone Number</label>
+        <input type="tel" id="clientPhone" placeholder="(555) 000-0000">
+      </div>
+      <div class="form-group">
+        <label for="productCategory">Product Type</label>
+        <select id="productCategory" required>
+          <option value="">— Select Product Type —</option>
+          <option>Custom Apparel / Tees</option>
+          <option>Embroidered Corporate Polos</option>
+          <option>Cozy Hoodies</option>
+          <option>Branded Headwear</option>
+          <option>Custom Drinkware / Mugs</option>
+          <option>Promotional Pens &amp; Office</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="orderQty">Quantity (min. 12)</label>
+        <input type="number" id="orderQty" min="12" placeholder="e.g. 50" required>
+      </div>
+      <div class="form-group">
+        <label for="projectDetails">Project Details</label>
+        <textarea id="projectDetails" rows="3" placeholder="Describe your project, colors, deadline, etc."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Submit Order Details</button>
+    </form>
+  </dialog>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 KJ Group. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // HAMBURGER MENU
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mainNav = document.getElementById('mainNav');
+    hamburgerBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('open');
+    });
+    document.addEventListener('click', e => {
+      if (!hamburgerBtn.contains(e.target) && !mainNav.contains(e.target)) {
+        mainNav.classList.remove('open');
+      }
+    });
+
+    const modal = document.getElementById('quoteModal');
+    const openButtons = document.querySelectorAll('.trigger-quote-modal');
+    const closeBtn = document.getElementById('closeQuoteModal');
+    const quoteForm = document.getElementById('bulkQuoteForm');
+    const phoneInput = document.getElementById('clientPhone');
+
+    openButtons.forEach(button => {
+      button.addEventListener('click', e => {
+        e.preventDefault();
+        modal.showModal();
+      });
+    });
+
+    closeBtn.addEventListener('click', () => modal.close());
+
+    phoneInput.addEventListener('input', e => {
+      let input = e.target.value.replace(/\D/g, '');
+      let size = input.length;
+      if (size === 0) { e.target.value = ''; }
+      else if (size < 4) { e.target.value = `(${input}`; }
+      else if (size < 7) { e.target.value = `(${input.substring(0,3)}) ${input.substring(3)}`; }
+      else { e.target.value = `(${input.substring(0,3)}) ${input.substring(3,6)}-${input.substring(6,10)}`; }
+    });
+
+    quoteForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const quantityInput = document.getElementById('orderQty');
+      const quantityValue = parseInt(quantityInput.value, 10);
+      if (isNaN(quantityValue) || quantityValue < 12) {
+        alert('Please enter a quantity of at least 12 pieces.');
+        quantityInput.focus();
+        return;
+      }
+      const submitBtn = quoteForm.querySelector('.submit-btn');
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+      alert('Quote request received! We will be in touch shortly.');
+      quoteForm.reset();
+      modal.close();
+      submitBtn.textContent = 'Submit Order Details';
+      submitBtn.disabled = false;
+    });
+  </script>
+
+</body>
+</html>
