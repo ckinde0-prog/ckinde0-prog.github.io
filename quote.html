@@ -15,299 +15,76 @@
       --text-muted: #222222;
       --product-bg: #ffd54f;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      background-color: var(--light-bg);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
-    h1, h2, h3, h4, p, span, label, a {
-      color: var(--text-main);
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--light-bg); color: var(--text-main); line-height: 1.6; }
+    h1, h2, h3, h4, p, span, label, a { color: var(--text-main); }
 
     /* HAMBURGER MENU */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background-color: #000000;
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
-    .site-header nav {
-      display: flex;
-      align-items: center;
-    }
-    .site-header nav.open {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 62px;
-      right: 0;
-      left: 0;
-      background-color: #ffd54f;
-      padding: 15px 5%;
-      border-bottom: 2px solid var(--primary-accent);
-      z-index: 999;
-    }
-    .site-header nav.open a {
-      margin: 8px 0;
-      font-size: 1.1rem;
-    }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 25px; height: 3px; background-color: #000000; border-radius: 3px; transition: all 0.3s ease; }
+    .site-header nav { display: flex; align-items: center; }
+    .site-header nav.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; top: 62px; right: 0; left: 0; background-color: #ffd54f; padding: 15px 5%; border-bottom: 2px solid var(--primary-accent); z-index: 999; }
+    .site-header nav.open a { margin: 8px 0; font-size: 1.1rem; }
+    .site-header nav.open .nav-dropdown { margin: 8px 0; }
+    .site-header nav.open .nav-dropdown-btn { font-size: 1.1rem; }
+    .site-header nav.open .dropdown-menu { position: static; border: none; box-shadow: none; background: rgba(255,87,34,.06); border-radius: 0; min-width: unset; }
+    .site-header nav.open .dropdown-menu a { margin: 0; padding: 6px 20px; font-size: 1rem; }
 
     /* HEADER */
-    .site-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #ffd54f;
-      border-bottom: 2px solid var(--primary-accent);
-      padding: 15px 5%;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .logo {
-      font-size: 1.4rem;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-    }
-    .site-header nav a {
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-    .site-header nav a:hover {
-      color: var(--primary-accent);
-    }
+    .site-header { display: flex; justify-content: space-between; align-items: center; background-color: #ffd54f; border-bottom: 2px solid var(--primary-accent); padding: 15px 5%; position: sticky; top: 0; z-index: 1000; }
+    .logo { font-size: 1.4rem; font-weight: bold; letter-spacing: 0.5px; }
+    .site-header nav a { text-decoration: none; margin-left: 20px; font-weight: 600; transition: color 0.2s ease; }
+    .site-header nav a:hover { color: var(--primary-accent); }
+
+    /* PRODUCTS DROPDOWN */
+    .nav-dropdown { position: relative; display: inline-flex; align-items: center; margin-left: 20px; }
+    .nav-dropdown-btn { font-weight: 600; cursor: pointer; background: none; border: none; font-size: 1rem; font-family: inherit; color: var(--text-main); display: flex; align-items: center; gap: 4px; padding: 0; }
+    .nav-dropdown-btn::after { content: '\25be'; font-size: 0.75rem; }
+    .nav-dropdown-btn:hover { color: var(--primary-accent); }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 10px); left: 0; background: #fff; border: 2px solid var(--border-color); border-radius: 10px; min-width: 150px; box-shadow: 0 6px 20px rgba(0,0,0,.14); z-index: 2000; overflow: hidden; }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 11px 18px; margin: 0 !important; font-size: 0.95rem; font-weight: 600; color: var(--text-main); border-bottom: 1px solid #f5f5f5; text-decoration: none; }
+    .dropdown-menu a:last-child { border-bottom: none; }
+    .dropdown-menu a:hover { background: #fff8f0; color: var(--primary-accent); }
 
     /* PAGE HEADER */
-    .page-header {
-      background-color: var(--product-bg);
-      padding: 50px 5%;
-      text-align: center;
-      border-bottom: 2px solid var(--border-color);
-    }
-    .page-header h1 {
-      font-size: 2.4rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .page-header p {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto;
-    }
+    .page-header { background-color: var(--product-bg); padding: 50px 5%; text-align: center; border-bottom: 2px solid var(--border-color); }
+    .page-header h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; }
+    .page-header p { font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
     /* FORM SECTION */
-    .form-section {
-      max-width: 750px;
-      margin: 50px auto;
-      padding: 0 20px 60px;
-    }
-
-    .form-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 40px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    }
-
-    .form-group {
-      margin-bottom: 22px;
-    }
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
-      font-size: 0.95rem;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 11px 14px;
-      border: 1.5px solid #ddd;
-      border-radius: 8px;
-      font-size: 0.97rem;
-      background: #fafafa;
-      transition: border-color 0.2s ease;
-      color: var(--text-main);
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--primary-accent);
-      background: #fff;
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .section-divider {
-      border: none;
-      border-top: 2px solid var(--border-color);
-      margin: 30px 0;
-    }
-
-    .section-label {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 18px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--product-bg);
-      color: var(--text-main);
-    }
+    .form-section { max-width: 750px; margin: 50px auto; padding: 0 20px 60px; }
+    .form-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .form-group { margin-bottom: 22px; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.95rem; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 14px; border: 1.5px solid #ddd; border-radius: 8px; font-size: 0.97rem; background: #fafafa; transition: border-color 0.2s ease; color: var(--text-main); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-accent); background: #fff; }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .section-divider { border: none; border-top: 2px solid var(--border-color); margin: 30px 0; }
+    .section-label { font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; padding-bottom: 6px; border-bottom: 2px solid var(--product-bg); color: var(--text-main); }
 
     /* SUBMIT BUTTONS */
-    .submit-area {
-      margin-top: 35px;
-      text-align: center;
-    }
-    .submit-area p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-    .btn-group {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-gmail {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 14px 28px;
-      background-color: #ea4335;
-      color: #fff !important;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s ease, transform 0.1s ease;
-    }
-    .btn-gmail:hover {
-      background-color: #c5221f;
-      transform: translateY(-1px);
-    }
-    .btn-outlook {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 14px 28px;
-      background-color: #0078d4;
-      color: #fff !important;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s ease, transform 0.1s ease;
-    }
-    .btn-outlook:hover {
-      background-color: #005fa3;
-      transform: translateY(-1px);
-    }
-    .btn-save {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 14px 28px;
-      background-color: #2e7d32;
-      color: #fff !important;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s ease, transform 0.1s ease;
-    }
-    .btn-save:hover {
-      background-color: #1b5e20;
-      transform: translateY(-1px);
-    }
-    .btn-print {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 14px 28px;
-      background-color: #f5f5f5;
-      color: #333 !important;
-      border: 1.5px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s ease;
-    }
-    .btn-print:hover {
-      background-color: #e8e8e8;
-    }
+    .submit-area { margin-top: 35px; text-align: center; }
+    .submit-area p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px; }
+    .btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-gmail { display: inline-flex; align-items: center; gap: 9px; padding: 14px 28px; background-color: #ea4335; color: #fff !important; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s ease, transform 0.1s ease; }
+    .btn-gmail:hover { background-color: #c5221f; transform: translateY(-1px); }
+    .btn-outlook { display: inline-flex; align-items: center; gap: 9px; padding: 14px 28px; background-color: #0078d4; color: #fff !important; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s ease, transform 0.1s ease; }
+    .btn-outlook:hover { background-color: #005fa3; transform: translateY(-1px); }
+    .btn-save { display: inline-flex; align-items: center; gap: 9px; padding: 14px 28px; background-color: #2e7d32; color: #fff !important; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s ease, transform 0.1s ease; }
+    .btn-save:hover { background-color: #1b5e20; transform: translateY(-1px); }
+    .btn-print { display: inline-flex; align-items: center; gap: 9px; padding: 14px 28px; background-color: #f5f5f5; color: #333 !important; border: 1.5px solid #ccc; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s ease; }
+    .btn-print:hover { background-color: #e8e8e8; }
 
     /* SUCCESS MESSAGE */
-    .success-msg {
-      display: none;
-      background: #e8f5e9;
-      border: 1.5px solid #a5d6a7;
-      border-radius: 8px;
-      padding: 18px 22px;
-      margin-top: 20px;
-      font-weight: 600;
-      color: #2e7d32 !important;
-      text-align: center;
-    }
+    .success-msg { display: none; background: #e8f5e9; border: 1.5px solid #a5d6a7; border-radius: 8px; padding: 18px 22px; margin-top: 20px; font-weight: 600; color: #2e7d32 !important; text-align: center; }
 
     /* REQUIRED STAR */
-    .required {
-      color: #000000;
-      margin-left: 4px; font-size: 1.5rem; font-weight: 900; line-height: 1; vertical-align: middle;
-      font-size: 1.4rem;
-      font-weight: 900;
-      line-height: 1;
-      vertical-align: middle;
-    }
+    .required { color: #000000; margin-left: 4px; font-size: 1.4rem; font-weight: 900; line-height: 1; vertical-align: middle; }
 
     /* FOOTER */
-    .site-footer {
-      background-color: var(--product-bg);
-      border-top: 2px solid var(--primary-accent);
-      text-align: center;
-      padding: 25px 5%;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
+    .site-footer { background-color: var(--product-bg); border-top: 2px solid var(--primary-accent); text-align: center; padding: 25px 5%; font-size: 0.9rem; color: var(--text-muted); }
 
     /* MOBILE RESPONSIVE */
     @media (max-width: 768px) {
@@ -339,13 +116,18 @@
 
   <!-- HEADER -->
   <header class="site-header">
-    <div class="logo">⚡ Gear Up Studio</div>
+    <div class="logo">&#9889; Gear Up Studio</div>
     <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
     <nav id="mainNav">
       <a href="index.html">Home</a>
-      <a href="store.html">Products</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn">Products</button>
+        <div class="dropdown-menu">
+          <a href="themes.html">&#127873; Themes</a>
+        </div>
+      </div>
       <a href="schools.html">Schools</a>
       <a href="business.html">Business</a>
       <a href="contact.html">Contact</a>
@@ -363,7 +145,7 @@
     <div class="form-card">
 
       <!-- CONTACT INFO -->
-      <div class="section-label">📋 Your Contact Information</div>
+      <div class="section-label">&#128203; Your Contact Information</div>
 
       <div class="form-row">
         <div class="form-group">
@@ -395,7 +177,7 @@
       <hr class="section-divider">
 
       <!-- ORDER DETAILS -->
-      <div class="section-label">🎽 Order Details</div>
+      <div class="section-label">&#127933; Order Details</div>
 
       <div class="form-row">
         <div class="form-group">
@@ -477,20 +259,20 @@
         <p>Choose how you'd like to send your quote request — your email will open with everything filled in!</p>
         <div class="btn-group">
           <button class="btn-gmail" onclick="submitForm('gmail')">
-            📧 Send via Gmail
+            &#128231; Send via Gmail
           </button>
           <button class="btn-outlook" onclick="submitForm('outlook')">
-            📧 Send via Outlook
+            &#128231; Send via Outlook
           </button>
-          <button class="btn-save no-print" onclick="saveMycopy()">
-            💾 Save My Copy
+          <button class="btn-save no-print" onclick="saveMyCopy()">
+            &#128190; Save My Copy
           </button>
           <button class="btn-print no-print" onclick="window.print()">
-            🖨️ Print / Save PDF
+            &#128424;&#65039; Print / Save PDF
           </button>
         </div>
         <div class="success-msg" id="successMsg">
-          ✅ Your email is opening now — just hit Send and we'll be in touch within 1–2 business days!
+          &#9989; Your email is opening now — just hit Send and we'll be in touch within 1–2 business days!
         </div>
       </div>
 
@@ -499,7 +281,7 @@
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <p>© 2026 Gear Up Studio. All rights reserved.</p>
+    <p>&copy; 2026 Gear Up Studio. All rights reserved.</p>
   </footer>
 
   <script>
@@ -516,7 +298,7 @@
     });
 
     // SAVE MY COPY — branded HTML
-    function saveMycopy() {
+    function saveMyCopy() {
       const firstName       = document.getElementById('firstName').value.trim();
       const lastName        = document.getElementById('lastName').value.trim();
       const email           = document.getElementById('email').value.trim();
@@ -538,21 +320,21 @@
       const html = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Your Quote Request — Gear Up Studio</title></head><body style="margin:0;padding:0;background:#fffdeb;font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;color:#000;">' +
         '<div style="max-width:680px;margin:40px auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.10);border:1px solid #ffd0b3;">' +
         '<div style="background:#ffd54f;padding:28px 32px;border-bottom:3px solid #ff5722;">' +
-        '<div style="font-size:1.5rem;font-weight:800;">⚡ Gear Up Studio</div>' +
+        '<div style="font-size:1.5rem;font-weight:800;">&#9889; Gear Up Studio</div>' +
         '<div style="font-size:1.1rem;font-weight:700;margin-top:6px;">Request for Quote — Your Copy</div>' +
         '<div style="font-size:0.88rem;margin-top:4px;color:#444;">Submitted: ' + dateStr + '</div>' +
         '</div>' +
-        '<div style="background:#fff3e0;padding:16px 32px;border-bottom:1px solid #ffd0b3;font-size:0.97rem;">📧 <strong>Thank you for reaching out!</strong> Gear Up Studio will be in touch within 1–2 business days.</div>' +
-        '<div style="padding:28px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">📋 Contact Information</div>' +
+        '<div style="background:#fff3e0;padding:16px 32px;border-bottom:1px solid #ffd0b3;font-size:0.97rem;">&#128231; <strong>Thank you for reaching out!</strong> Gear Up Studio will be in touch within 1–2 business days.</div>' +
+        '<div style="padding:28px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">&#128203; Contact Information</div>' +
         '<table style="width:100%;border-collapse:collapse;">' + row('Full Name', firstName + ' ' + lastName) + row('Email Address', email) + row('Phone Number', phone) + row('Company / Organization', company) + '</table></div>' +
-        '<div style="padding:18px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">🎽 Order Details</div>' +
+        '<div style="padding:18px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">&#127933; Order Details</div>' +
         '<table style="width:100%;border-collapse:collapse;">' + row('Product Type', productType) + row('Estimated Quantity', quantity) + row('Budget Range', budget) + row('Needed By Date', neededBy) + '</table></div>' +
-        '<div style="padding:18px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">✨ Customization Details</div>' +
+        '<div style="padding:18px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">&#10024; Customization Details</div>' +
         '<div style="background:#fffde7;border:1px solid #ffd0b3;border-radius:8px;padding:14px 16px;font-size:0.97rem;line-height:1.7;">' + (customization || 'Not provided') + '</div></div>' +
-        '<div style="padding:18px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">📝 Additional Notes</div>' +
+        '<div style="padding:18px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">&#128221; Additional Notes</div>' +
         '<div style="background:#fffde7;border:1px solid #ffd0b3;border-radius:8px;padding:14px 16px;font-size:0.97rem;line-height:1.7;">' + (additionalNotes || 'None') + '</div></div>' +
         '<div style="padding:18px 32px 24px;"><table style="width:100%;border-collapse:collapse;">' + row('How did you hear about us?', hearAboutUs) + '</table></div>' +
-        '<div style="background:#ffd54f;padding:18px 32px;border-top:3px solid #ff5722;text-align:center;font-size:0.88rem;color:#333;">⚡ Gear Up Studio | Custom Gear for Every Team, School &amp; Business</div>' +
+        '<div style="background:#ffd54f;padding:18px 32px;border-top:3px solid #ff5722;text-align:center;font-size:0.88rem;color:#333;">&#9889; Gear Up Studio | Custom Gear for Every Team, School &amp; Business</div>' +
         '</div></body></html>';
 
       const blob = new Blob([html], { type: 'text/html' });
@@ -568,27 +350,25 @@
 
     // FORM SUBMISSION
     function submitForm(service) {
-      const firstName   = document.getElementById('firstName').value.trim();
-      const lastName    = document.getElementById('lastName').value.trim();
-      const email       = document.getElementById('email').value.trim();
-      const phone       = document.getElementById('phone').value.trim();
-      const company     = document.getElementById('company').value.trim();
-      const productType = document.getElementById('productType').value;
-      const quantity    = document.getElementById('quantity').value;
-      const budget      = document.getElementById('budget').value;
-      const neededBy    = document.getElementById('neededBy').value;
-      const customization = document.getElementById('customization').value.trim();
-      const hearAboutUs = document.getElementById('hearAboutUs').value;
+      const firstName       = document.getElementById('firstName').value.trim();
+      const lastName        = document.getElementById('lastName').value.trim();
+      const email           = document.getElementById('email').value.trim();
+      const phone           = document.getElementById('phone').value.trim();
+      const company         = document.getElementById('company').value.trim();
+      const productType     = document.getElementById('productType').value;
+      const quantity        = document.getElementById('quantity').value;
+      const budget          = document.getElementById('budget').value;
+      const neededBy        = document.getElementById('neededBy').value;
+      const customization   = document.getElementById('customization').value.trim();
+      const hearAboutUs     = document.getElementById('hearAboutUs').value;
       const additionalNotes = document.getElementById('additionalNotes').value.trim();
 
-      // Basic validation
       if (!firstName || !lastName || !email || !productType || !quantity || !customization) {
         alert('Please fill in all required fields (marked with an asterisk *).');
         return;
       }
 
       const subject = 'Request for Quote – Gear Up Studio';
-
       const body =
         'REQUEST FOR QUOTE — GEAR UP STUDIO\n' +
         '==========================================\n\n' +
@@ -629,7 +409,6 @@
 
       window.open(url, '_blank');
 
-      // Show success message
       const successMsg = document.getElementById('successMsg');
       successMsg.style.display = 'block';
       setTimeout(() => { successMsg.style.display = 'none'; }, 6000);
