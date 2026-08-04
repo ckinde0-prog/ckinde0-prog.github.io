@@ -291,8 +291,12 @@
 
     /* REQUIRED STAR */
     .required {
-      color: var(--primary-accent);
-      margin-left: 2px;
+      color: #000000;
+      margin-left: 4px; font-size: 1.5rem; font-weight: 900; line-height: 1; vertical-align: middle;
+      font-size: 1.4rem;
+      font-weight: 900;
+      line-height: 1;
+      vertical-align: middle;
     }
 
     /* FOOTER */
@@ -533,62 +537,22 @@
 
       const html = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Your Quote Request — Gear Up Studio</title></head><body style="margin:0;padding:0;background:#fffdeb;font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;color:#000;">' +
         '<div style="max-width:680px;margin:40px auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.10);border:1px solid #ffd0b3;">' +
-
-        // Header
         '<div style="background:#ffd54f;padding:28px 32px;border-bottom:3px solid #ff5722;">' +
-        '<div style="font-size:1.5rem;font-weight:800;letter-spacing:0.5px;">⚡ Gear Up Studio</div>' +
+        '<div style="font-size:1.5rem;font-weight:800;">⚡ Gear Up Studio</div>' +
         '<div style="font-size:1.1rem;font-weight:700;margin-top:6px;">Request for Quote — Your Copy</div>' +
         '<div style="font-size:0.88rem;margin-top:4px;color:#444;">Submitted: ' + dateStr + '</div>' +
         '</div>' +
-
-        // Thank you banner
-        '<div style="background:#fff3e0;padding:16px 32px;border-bottom:1px solid #ffd0b3;font-size:0.97rem;">' +
-        '📧 <strong>Thank you for reaching out!</strong> Gear Up Studio will be in touch within 1–2 business days. Keep this file for your records.' +
-        '</div>' +
-
-        // Contact Info
-        '<div style="padding:28px 32px 10px;">' +
-        '<div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">📋 Contact Information</div>' +
-        '<table style="width:100%;border-collapse:collapse;">' +
-        row('Full Name', firstName + ' ' + lastName) +
-        row('Email Address', email) +
-        row('Phone Number', phone) +
-        row('Company / Organization', company) +
-        '</table></div>' +
-
-        // Order Details
-        '<div style="padding:18px 32px 10px;">' +
-        '<div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">🎽 Order Details</div>' +
-        '<table style="width:100%;border-collapse:collapse;">' +
-        row('Product Type', productType) +
-        row('Estimated Quantity', quantity) +
-        row('Budget Range', budget) +
-        row('Needed By Date', neededBy) +
-        '</table></div>' +
-
-        // Customization
-        '<div style="padding:18px 32px 10px;">' +
-        '<div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">✨ Customization Details</div>' +
-        '<div style="background:#fffde7;border:1px solid #ffd0b3;border-radius:8px;padding:14px 16px;font-size:0.97rem;line-height:1.7;">' + (customization || 'Not provided') + '</div>' +
-        '</div>' +
-
-        // Additional Notes
-        '<div style="padding:18px 32px 10px;">' +
-        '<div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">📝 Additional Notes</div>' +
-        '<div style="background:#fffde7;border:1px solid #ffd0b3;border-radius:8px;padding:14px 16px;font-size:0.97rem;line-height:1.7;">' + (additionalNotes || 'None') + '</div>' +
-        '</div>' +
-
-        // How they heard
-        '<div style="padding:18px 32px 24px;">' +
-        '<table style="width:100%;border-collapse:collapse;">' +
-        row('How did you hear about us?', hearAboutUs) +
-        '</table></div>' +
-
-        // Footer
-        '<div style="background:#ffd54f;padding:18px 32px;border-top:3px solid #ff5722;text-align:center;font-size:0.88rem;color:#333;">' +
-        '⚡ Gear Up Studio &nbsp;|&nbsp; Custom Gear for Every Team, School &amp; Business' +
-        '</div>' +
-
+        '<div style="background:#fff3e0;padding:16px 32px;border-bottom:1px solid #ffd0b3;font-size:0.97rem;">📧 <strong>Thank you for reaching out!</strong> Gear Up Studio will be in touch within 1–2 business days.</div>' +
+        '<div style="padding:28px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">📋 Contact Information</div>' +
+        '<table style="width:100%;border-collapse:collapse;">' + row('Full Name', firstName + ' ' + lastName) + row('Email Address', email) + row('Phone Number', phone) + row('Company / Organization', company) + '</table></div>' +
+        '<div style="padding:18px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">🎽 Order Details</div>' +
+        '<table style="width:100%;border-collapse:collapse;">' + row('Product Type', productType) + row('Estimated Quantity', quantity) + row('Budget Range', budget) + row('Needed By Date', neededBy) + '</table></div>' +
+        '<div style="padding:18px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">✨ Customization Details</div>' +
+        '<div style="background:#fffde7;border:1px solid #ffd0b3;border-radius:8px;padding:14px 16px;font-size:0.97rem;line-height:1.7;">' + (customization || 'Not provided') + '</div></div>' +
+        '<div style="padding:18px 32px 10px;"><div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">📝 Additional Notes</div>' +
+        '<div style="background:#fffde7;border:1px solid #ffd0b3;border-radius:8px;padding:14px 16px;font-size:0.97rem;line-height:1.7;">' + (additionalNotes || 'None') + '</div></div>' +
+        '<div style="padding:18px 32px 24px;"><table style="width:100%;border-collapse:collapse;">' + row('How did you hear about us?', hearAboutUs) + '</table></div>' +
+        '<div style="background:#ffd54f;padding:18px 32px;border-top:3px solid #ff5722;text-align:center;font-size:0.88rem;color:#333;">⚡ Gear Up Studio | Custom Gear for Every Team, School &amp; Business</div>' +
         '</div></body></html>';
 
       const blob = new Blob([html], { type: 'text/html' });
@@ -619,7 +583,7 @@
 
       // Basic validation
       if (!firstName || !lastName || !email || !productType || !quantity || !customization) {
-        alert('Please fill in all required fields (marked with a red *).');
+        alert('Please fill in all required fields (marked with an asterisk *).');
         return;
       }
 
