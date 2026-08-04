@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request for Quote | Gear Up Studio</title>
+  <style>
+    :root {
+      --primary-accent: #ff5722;
+      --accent-hover: #e64a19;
+      --light-bg: #fffdeb;
+      --card-bg: #ffffff;
+      --border-color: #ffd0b3;
+      --text-main: #000000;
+      --text-muted: #222222;
+      --product-bg: #ffd54f;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: var(--light-bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4, p, span, label, a {
+      color: var(--text-main);
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #000000;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .site-header nav {
+      display: flex;
+      align-items: center;
+    }
+    .site-header nav.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 62px;
+      right: 0;
+      left: 0;
+      background-color: #ffd54f;
+      padding: 15px 5%;
+      border-bottom: 2px solid var(--primary-accent);
+      z-index: 999;
+    }
+    .site-header nav.open a {
+      margin: 8px 0;
+      font-size: 1.1rem;
+    }
+
+    /* HEADER */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffd54f;
+      border-bottom: 2px solid var(--primary-accent);
+      padding: 15px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    .site-header nav a {
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .site-header nav a:hover {
+      color: var(--primary-accent);
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      background-color: var(--product-bg);
+      padding: 50px 5%;
+      text-align: center;
+      border-bottom: 2px solid var(--border-color);
+    }
+    .page-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* FORM SECTION */
+    .form-section {
+      max-width: 750px;
+      margin: 50px auto;
+      padding: 0 20px 60px;
+    }
+
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.97rem;
+      background: #fafafa;
+      transition: border-color 0.2s ease;
+      color: var(--text-main);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-accent);
+      background: #fff;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 2px solid var(--border-color);
+      margin: 30px 0;
+    }
+
+    .section-label {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--product-bg);
+      color: var(--text-main);
+    }
+
+    /* SUBMIT BUTTONS */
+    .submit-area {
+      margin-top: 35px;
+      text-align: center;
+    }
+    .submit-area p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-gmail {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 28px;
+      background-color: #ea4335;
+      color: #fff !important;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+    .btn-gmail:hover {
+      background-color: #c5221f;
+      transform: translateY(-1px);
+    }
+    .btn-outlook {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 28px;
+      background-color: #0078d4;
+      color: #fff !important;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+    .btn-outlook:hover {
+      background-color: #005fa3;
+      transform: translateY(-1px);
+    }
+    .btn-save {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 28px;
+      background-color: #2e7d32;
+      color: #fff !important;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+    .btn-save:hover {
+      background-color: #1b5e20;
+      transform: translateY(-1px);
+    }
+    .btn-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 28px;
+      background-color: #f5f5f5;
+      color: #333 !important;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .btn-print:hover {
+      background-color: #e8e8e8;
+    }
+
+    /* SUCCESS MESSAGE */
+    .success-msg {
+      display: none;
+      background: #e8f5e9;
+      border: 1.5px solid #a5d6a7;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #2e7d32 !important;
+      text-align: center;
+    }
+
+    /* REQUIRED STAR */
+    .required {
+      color: var(--primary-accent);
+      margin-left: 2px;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background-color: var(--product-bg);
+      border-top: 2px solid var(--primary-accent);
+      text-align: center;
+      padding: 25px 5%;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .site-header nav { display: none; }
+      .page-header h1 { font-size: 1.8rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-card { padding: 25px 20px; }
+      .logo { font-size: 1.2rem; }
+      .btn-group { flex-direction: column; align-items: center; }
+      .btn-gmail, .btn-outlook, .btn-save, .btn-print { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .page-header { padding: 35px 15px; }
+      .page-header h1 { font-size: 1.5rem; }
+      .form-section { padding: 0 12px 40px; }
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      .site-header, .site-footer, .btn-group, .submit-area p, .no-print { display: none !important; }
+      .page-header { background: white; padding: 20px 0; }
+      .form-card { box-shadow: none; border: none; padding: 0; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">⚡ Gear Up Studio</div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="store.html">Products</a>
+      <a href="schools.html">Schools</a>
+      <a href="business.html">Business</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <h1>Request for Quote</h1>
+    <p>Fill out the form below and send it directly to us — we'll get back to you within 1–2 business days with a custom quote!</p>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section">
+    <div class="form-card">
+
+      <!-- CONTACT INFO -->
+      <div class="section-label">📋 Your Contact Information</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name <span class="required">*</span></label>
+          <input type="text" id="firstName" placeholder="Jane" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name <span class="required">*</span></label>
+          <input type="text" id="lastName" placeholder="Smith" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address <span class="required">*</span></label>
+          <input type="email" id="email" placeholder="jane@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="(555) 000-0000">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company / Organization / School Name</label>
+        <input type="text" id="company" placeholder="e.g. Westside High School, ABC Corp">
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- ORDER DETAILS -->
+      <div class="section-label">🎽 Order Details</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="productType">Product Type <span class="required">*</span></label>
+          <select id="productType">
+            <option value="">-- Select a product --</option>
+            <option>T-Shirts</option>
+            <option>Jerseys</option>
+            <option>Hoodies / Sweatshirts</option>
+            <option>Hats / Caps</option>
+            <option>Bags / Backpacks</option>
+            <option>Jackets</option>
+            <option>Uniforms</option>
+            <option>Promotional Items</option>
+            <option>Mixed / Multiple Products</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Estimated Quantity <span class="required">*</span></label>
+          <select id="quantity">
+            <option value="">-- Select quantity --</option>
+            <option>1–10</option>
+            <option>11–25</option>
+            <option>26–50</option>
+            <option>51–100</option>
+            <option>101–250</option>
+            <option>251–500</option>
+            <option>500+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="budget">Budget Range</label>
+          <select id="budget">
+            <option value="">-- Select a range --</option>
+            <option>Under $100</option>
+            <option>$100 – $250</option>
+            <option>$250 – $500</option>
+            <option>$500 – $1,000</option>
+            <option>$1,000 – $2,500</option>
+            <option>$2,500+</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="neededBy">Needed By Date</label>
+          <input type="date" id="neededBy">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="customization">Customization Details <span class="required">*</span></label>
+        <textarea id="customization" placeholder="Describe your design idea, colors, logos, text, or any special requests..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="hearAboutUs">How did you hear about us?</label>
+        <select id="hearAboutUs">
+          <option value="">-- Select one --</option>
+          <option>Word of mouth / Friend</option>
+          <option>Google Search</option>
+          <option>Social Media</option>
+          <option>School / Team recommendation</option>
+          <option>Returning customer</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="additionalNotes">Additional Notes</label>
+        <textarea id="additionalNotes" placeholder="Anything else you'd like us to know?" style="min-height: 80px;"></textarea>
+      </div>
+
+      <!-- SUBMIT AREA -->
+      <div class="submit-area">
+        <p>Choose how you'd like to send your quote request — your email will open with everything filled in!</p>
+        <div class="btn-group">
+          <button class="btn-gmail" onclick="submitForm('gmail')">
+            📧 Send via Gmail
+          </button>
+          <button class="btn-outlook" onclick="submitForm('outlook')">
+            📧 Send via Outlook
+          </button>
+          <button class="btn-save no-print" onclick="saveMycopy()">
+            💾 Save My Copy
+          </button>
+          <button class="btn-print no-print" onclick="window.print()">
+            🖨️ Print / Save PDF
+          </button>
+        </div>
+        <div class="success-msg" id="successMsg">
+          ✅ Your email is opening now — just hit Send and we'll be in touch within 1–2 business days!
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2026 Gear Up Studio. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // HAMBURGER MENU
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mainNav = document.getElementById('mainNav');
+    hamburgerBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('open');
+    });
+    document.addEventListener('click', e => {
+      if (!hamburgerBtn.contains(e.target) && !mainNav.contains(e.target)) {
+        mainNav.classList.remove('open');
+      }
+    });
+
+    // SAVE MY COPY — branded HTML
+    function saveMycopy() {
+      const firstName       = document.getElementById('firstName').value.trim();
+      const lastName        = document.getElementById('lastName').value.trim();
+      const email           = document.getElementById('email').value.trim();
+      const phone           = document.getElementById('phone').value.trim();
+      const company         = document.getElementById('company').value.trim();
+      const productType     = document.getElementById('productType').value;
+      const quantity        = document.getElementById('quantity').value;
+      const budget          = document.getElementById('budget').value;
+      const neededBy        = document.getElementById('neededBy').value;
+      const customization   = document.getElementById('customization').value.trim();
+      const hearAboutUs     = document.getElementById('hearAboutUs').value;
+      const additionalNotes = document.getElementById('additionalNotes').value.trim();
+      const dateStr         = new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+
+      function row(label, value) {
+        return '<tr><td style="font-weight:600;padding:9px 14px;background:#fffde7;border:1px solid #ffd0b3;width:38%;">' + label + '</td><td style="padding:9px 14px;border:1px solid #ffd0b3;">' + (value || '<span style=\'color:#aaa;\'>Not provided</span>') + '</td></tr>';
+      }
+
+      const html = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Your Quote Request — Gear Up Studio</title></head><body style="margin:0;padding:0;background:#fffdeb;font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;color:#000;">' +
+        '<div style="max-width:680px;margin:40px auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.10);border:1px solid #ffd0b3;">' +
+
+        // Header
+        '<div style="background:#ffd54f;padding:28px 32px;border-bottom:3px solid #ff5722;">' +
+        '<div style="font-size:1.5rem;font-weight:800;letter-spacing:0.5px;">⚡ Gear Up Studio</div>' +
+        '<div style="font-size:1.1rem;font-weight:700;margin-top:6px;">Request for Quote — Your Copy</div>' +
+        '<div style="font-size:0.88rem;margin-top:4px;color:#444;">Submitted: ' + dateStr + '</div>' +
+        '</div>' +
+
+        // Thank you banner
+        '<div style="background:#fff3e0;padding:16px 32px;border-bottom:1px solid #ffd0b3;font-size:0.97rem;">' +
+        '📧 <strong>Thank you for reaching out!</strong> Gear Up Studio will be in touch within 1–2 business days. Keep this file for your records.' +
+        '</div>' +
+
+        // Contact Info
+        '<div style="padding:28px 32px 10px;">' +
+        '<div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">📋 Contact Information</div>' +
+        '<table style="width:100%;border-collapse:collapse;">' +
+        row('Full Name', firstName + ' ' + lastName) +
+        row('Email Address', email) +
+        row('Phone Number', phone) +
+        row('Company / Organization', company) +
+        '</table></div>' +
+
+        // Order Details
+        '<div style="padding:18px 32px 10px;">' +
+        '<div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">🎽 Order Details</div>' +
+        '<table style="width:100%;border-collapse:collapse;">' +
+        row('Product Type', productType) +
+        row('Estimated Quantity', quantity) +
+        row('Budget Range', budget) +
+        row('Needed By Date', neededBy) +
+        '</table></div>' +
+
+        // Customization
+        '<div style="padding:18px 32px 10px;">' +
+        '<div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">✨ Customization Details</div>' +
+        '<div style="background:#fffde7;border:1px solid #ffd0b3;border-radius:8px;padding:14px 16px;font-size:0.97rem;line-height:1.7;">' + (customization || 'Not provided') + '</div>' +
+        '</div>' +
+
+        // Additional Notes
+        '<div style="padding:18px 32px 10px;">' +
+        '<div style="font-size:1rem;font-weight:700;color:#ff5722;border-bottom:2px solid #ffd54f;padding-bottom:6px;margin-bottom:14px;">📝 Additional Notes</div>' +
+        '<div style="background:#fffde7;border:1px solid #ffd0b3;border-radius:8px;padding:14px 16px;font-size:0.97rem;line-height:1.7;">' + (additionalNotes || 'None') + '</div>' +
+        '</div>' +
+
+        // How they heard
+        '<div style="padding:18px 32px 24px;">' +
+        '<table style="width:100%;border-collapse:collapse;">' +
+        row('How did you hear about us?', hearAboutUs) +
+        '</table></div>' +
+
+        // Footer
+        '<div style="background:#ffd54f;padding:18px 32px;border-top:3px solid #ff5722;text-align:center;font-size:0.88rem;color:#333;">' +
+        '⚡ Gear Up Studio &nbsp;|&nbsp; Custom Gear for Every Team, School &amp; Business' +
+        '</div>' +
+
+        '</div></body></html>';
+
+      const blob = new Blob([html], { type: 'text/html' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = 'GearUpStudio_QuoteRequest_' + new Date().toISOString().slice(0,10) + '.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // FORM SUBMISSION
+    function submitForm(service) {
+      const firstName   = document.getElementById('firstName').value.trim();
+      const lastName    = document.getElementById('lastName').value.trim();
+      const email       = document.getElementById('email').value.trim();
+      const phone       = document.getElementById('phone').value.trim();
+      const company     = document.getElementById('company').value.trim();
+      const productType = document.getElementById('productType').value;
+      const quantity    = document.getElementById('quantity').value;
+      const budget      = document.getElementById('budget').value;
+      const neededBy    = document.getElementById('neededBy').value;
+      const customization = document.getElementById('customization').value.trim();
+      const hearAboutUs = document.getElementById('hearAboutUs').value;
+      const additionalNotes = document.getElementById('additionalNotes').value.trim();
+
+      // Basic validation
+      if (!firstName || !lastName || !email || !productType || !quantity || !customization) {
+        alert('Please fill in all required fields (marked with a red *).');
+        return;
+      }
+
+      const subject = 'Request for Quote – Gear Up Studio';
+
+      const body =
+        'REQUEST FOR QUOTE — GEAR UP STUDIO\n' +
+        '==========================================\n\n' +
+        'CONTACT INFORMATION\n' +
+        '--------------------\n' +
+        'Name:           ' + firstName + ' ' + lastName + '\n' +
+        'Email:          ' + email + '\n' +
+        'Phone:          ' + (phone || 'Not provided') + '\n' +
+        'Organization:   ' + (company || 'Not provided') + '\n\n' +
+        'ORDER DETAILS\n' +
+        '--------------------\n' +
+        'Product Type:   ' + productType + '\n' +
+        'Quantity:       ' + quantity + '\n' +
+        'Budget Range:   ' + (budget || 'Not specified') + '\n' +
+        'Needed By:      ' + (neededBy || 'Not specified') + '\n\n' +
+        'CUSTOMIZATION DETAILS\n' +
+        '--------------------\n' +
+        customization + '\n\n' +
+        'HOW THEY HEARD ABOUT US\n' +
+        '--------------------\n' +
+        (hearAboutUs || 'Not specified') + '\n\n' +
+        'ADDITIONAL NOTES\n' +
+        '--------------------\n' +
+        (additionalNotes || 'None') + '\n\n' +
+        '==========================================\n' +
+        'Sent from the Gear Up Studio Request for Quote form.';
+
+      const encodedSubject = encodeURIComponent(subject);
+      const encodedBody    = encodeURIComponent(body);
+      const toEmail        = 'ckinde0@gmail.com';
+
+      let url = '';
+      if (service === 'gmail') {
+        url = 'https://mail.google.com/mail/?view=cm&to=' + toEmail + '&su=' + encodedSubject + '&body=' + encodedBody;
+      } else {
+        url = 'https://outlook.live.com/mail/0/deeplink/compose?to=' + toEmail + '&subject=' + encodedSubject + '&body=' + encodedBody;
+      }
+
+      window.open(url, '_blank');
+
+      // Show success message
+      const successMsg = document.getElementById('successMsg');
+      successMsg.style.display = 'block';
+      setTimeout(() => { successMsg.style.display = 'none'; }, 6000);
+    }
+  </script>
+
+</body>
+</html>
