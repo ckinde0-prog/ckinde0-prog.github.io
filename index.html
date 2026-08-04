@@ -98,49 +98,20 @@
 
     /* MOBILE RESPONSIVE */
     @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-      .site-header nav {
-        display: none;
-      }
-      .hero-content h1 {
-        font-size: 2rem;
-      }
-      .hero-content p {
-        font-size: 1rem;
-      }
-      .gallery-title {
-        font-size: 1.6rem;
-      }
-      .product-gallery {
-        grid-template-columns: 1fr;
-      }
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-      dialog {
-        width: 95%;
-        padding: 20px;
-      }
-      .logo {
-        font-size: 1.2rem;
-      }
+      .hamburger { display: flex; }
+      .site-header nav { display: none; }
+      .hero-content h1 { font-size: 2rem; }
+      .hero-content p { font-size: 1rem; }
+      .gallery-title { font-size: 1.6rem; }
+      .product-gallery { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr; }
+      .logo { font-size: 1.2rem; }
     }
     @media (max-width: 480px) {
-      .hero-content h1 {
-        font-size: 1.6rem;
-      }
-      .btn {
-        padding: 10px 22px;
-        font-size: 0.95rem;
-      }
-      .gallery-container {
-        padding: 40px 15px;
-      }
-      .info-section {
-        padding: 40px 15px;
-      }
+      .hero-content h1 { font-size: 1.6rem; }
+      .btn { padding: 10px 22px; font-size: 0.95rem; }
+      .gallery-container { padding: 40px 15px; }
+      .info-section { padding: 40px 15px; }
     }
 
     /* HERO */
@@ -225,6 +196,8 @@
       display: inline-block;
       margin-bottom: 10px;
     }
+
+    /* IMAGE PLACEHOLDER — replaced by <img> when photos are ready */
     .product-image-wrapper {
       width: 100%;
       height: 180px;
@@ -235,20 +208,21 @@
       background-color: #fffdec;
       border-radius: 12px;
       overflow: hidden;
+      border: 2px dashed var(--border-color);
     }
     .product-card img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
     }
-    .product-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
+    .placeholder-label {
+      font-size: 0.85rem;
+      color: #aaa !important;
+      font-style: italic;
     }
-    .product-card p {
-      font-size: 0.95rem;
-      margin-bottom: 15px;
-    }
+
+    .product-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .product-card p  { font-size: 0.95rem; margin-bottom: 15px; }
 
     /* COLOR SWATCHES */
     .color-preview-box {
@@ -324,73 +298,6 @@
       margin-bottom: 15px;
     }
 
-    /* MODAL */
-    dialog {
-      border: none;
-      border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(255,112,67,0.15);
-      padding: 35px;
-      width: 90%;
-      max-width: 500px;
-      margin: auto;
-    }
-    dialog::backdrop {
-      background-color: rgba(255,224,178,0.5);
-      backdrop-filter: blur(4px);
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 10px;
-    }
-    .close-x {
-      background: none;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #888;
-      line-height: 1;
-    }
-    .close-x:hover { color: #333; }
-    .form-group {
-      margin-bottom: 15px;
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-    }
-    .form-group label {
-      font-weight: 600;
-      margin-bottom: 5px;
-      font-size: 0.9rem;
-    }
-    .form-group input, .form-group select, .form-group textarea {
-      padding: 12px;
-      border: 2px solid var(--border-color);
-      border-radius: 10px;
-      font-size: 1rem;
-      background-color: #ffffff;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      outline: none;
-      border-color: var(--primary-accent);
-    }
-    .submit-btn {
-      background-color: var(--primary-accent);
-      color: white !important;
-      border: none;
-      padding: 13px 20px;
-      width: 100%;
-      border-radius: 25px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(255,87,34,0.2);
-    }
-    .submit-btn:hover { background-color: var(--accent-hover); }
-
     /* FOOTER */
     footer {
       background-color: #ffd54f;
@@ -414,7 +321,7 @@
       <a href="schools.html">Schools</a>
       <a href="business.html">Business</a>
       <a href="contact.html">Contact</a>
-      <a href="quote.html" style="background-color:#ff5722;color:#fff !important;padding:7px 16px;border-radius:20px;margin-left:10px;">Get a Quote</a>
+      <a href="quote.html" style="background-color:#ff5722;color:#fff !important;padding:7px 16px;border-radius:20px;margin-left:10px;">Request for Quote</a>
     </nav>
   </header>
 
@@ -423,7 +330,7 @@
     <div class="hero-content">
       <h1>Custom Gear for Every Team, School &amp; Business</h1>
       <p>High-quality branded apparel, drinkware, and promotional products — made to order, delivered fast.</p>
-      <a href="#" class="btn trigger-quote-modal">Get a Free Quote</a>
+      <a href="quote.html" class="btn">Get a Free Quote</a>
     </div>
   </section>
 
@@ -432,11 +339,14 @@
     <h2 class="gallery-title">Featured Products</h2>
     <div class="product-gallery">
 
-      <!-- Card 1 -->
+      <!-- Card 1: Custom T-Shirt -->
       <div class="product-card">
         <span class="badge">Bestseller</span>
         <div class="product-image-wrapper">
-          <div class="color-preview-box" id="preview-tshirt">Custom T-Shirt</div>
+          <!-- IMAGE PLACEHOLDER: replace div below with <img src="images/tshirt.jpg" alt="Custom T-Shirt"> when ready -->
+          <div class="color-preview-box" id="preview-tshirt">
+            <span class="placeholder-label">📷 Photo coming soon</span>
+          </div>
         </div>
         <h3>Custom T-Shirt</h3>
         <p>Premium cotton tees with full-color printing. Perfect for teams and events.</p>
@@ -454,13 +364,16 @@
             <input type="radio" name="color-tshirt" onchange="document.getElementById('preview-tshirt').style.backgroundColor='#000000'">
           </label>
         </div>
-        <a href="#" class="btn trigger-quote-modal">Order Now</a>
+        <a href="quote.html" class="btn">Order Now</a>
       </div>
 
-      <!-- Card 2 -->
+      <!-- Card 2: Embroidered Polo -->
       <div class="product-card">
         <div class="product-image-wrapper">
-          <div class="color-preview-box" id="preview-polo">Embroidered Polo</div>
+          <!-- IMAGE PLACEHOLDER: replace div below with <img src="images/polo.jpg" alt="Embroidered Polo"> when ready -->
+          <div class="color-preview-box" id="preview-polo">
+            <span class="placeholder-label">📷 Photo coming soon</span>
+          </div>
         </div>
         <h3>Embroidered Polo</h3>
         <p>Professional embroidered polos designed for your business profile and consistency.</p>
@@ -475,13 +388,16 @@
             <input type="radio" name="color-polo" onchange="document.getElementById('preview-polo').style.backgroundColor='#f5f5f5'">
           </label>
         </div>
-        <a href="#" class="btn trigger-quote-modal">Order Now</a>
+        <a href="quote.html" class="btn">Order Now</a>
       </div>
 
-      <!-- Card 3 -->
+      <!-- Card 3: Custom Drinkware -->
       <div class="product-card">
         <div class="product-image-wrapper">
-          <div class="color-preview-box" id="preview-drinkware">Custom Drinkware</div>
+          <!-- IMAGE PLACEHOLDER: replace div below with <img src="images/drinkware.jpg" alt="Custom Drinkware"> when ready -->
+          <div class="color-preview-box" id="preview-drinkware">
+            <span class="placeholder-label">📷 Photo coming soon</span>
+          </div>
         </div>
         <h3>Custom Drinkware</h3>
         <p>Tumblers, mugs, and bottles customized with your artwork and logo.</p>
@@ -496,14 +412,14 @@
             <input type="radio" name="color-drink" onchange="document.getElementById('preview-drinkware').style.backgroundColor='#8e24aa'">
           </label>
         </div>
-        <a href="#" class="btn trigger-quote-modal">Order Now</a>
+        <a href="quote.html" class="btn">Order Now</a>
       </div>
 
     </div>
 
     <div style="margin-top:40px;">
       <p style="font-size:1.1rem;margin-bottom:20px;">…and more custom gear — hoodies, hats, bags &amp; corporate giveaway packages.</p>
-      <a href="#" class="btn trigger-quote-modal">Get a Quote</a>
+      <a href="quote.html" class="btn">Request for Quote</a>
     </div>
   </section>
 
@@ -529,45 +445,6 @@
     </div>
   </section>
 
-  <!-- QUOTE MODAL -->
-  <dialog id="quoteModal">
-    <div class="modal-header">
-      <h2>Bulk Quote Request</h2>
-      <button class="close-x" id="closeQuoteModal">&times;</button>
-    </div>
-    <form id="bulkQuoteForm">
-      <div class="form-group">
-        <label for="clientEmail">Email Address</label>
-        <input type="email" id="clientEmail" placeholder="you@example.com" required>
-      </div>
-      <div class="form-group">
-        <label for="clientPhone">Phone Number</label>
-        <input type="tel" id="clientPhone" placeholder="(555) 000-0000">
-      </div>
-      <div class="form-group">
-        <label for="productCategory">Product Type</label>
-        <select id="productCategory" required>
-          <option value="">— Select Product Type —</option>
-          <option>Custom Apparel / Tees</option>
-          <option>Embroidered Corporate Polos</option>
-          <option>Cozy Hoodies</option>
-          <option>Branded Headwear</option>
-          <option>Custom Drinkware / Mugs</option>
-          <option>Promotional Pens &amp; Office</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="orderQty">Quantity (min. 12)</label>
-        <input type="number" id="orderQty" min="12" placeholder="e.g. 50" required>
-      </div>
-      <div class="form-group">
-        <label for="projectDetails">Project Details</label>
-        <textarea id="projectDetails" rows="3" placeholder="Describe your project, colors, deadline, etc."></textarea>
-      </div>
-      <button type="submit" class="submit-btn">Submit Order Details</button>
-    </form>
-  </dialog>
-
   <!-- FOOTER -->
   <footer>
     <p>&copy; 2026 Gear Up Studio. All rights reserved.</p>
@@ -584,49 +461,6 @@
       if (!hamburgerBtn.contains(e.target) && !mainNav.contains(e.target)) {
         mainNav.classList.remove('open');
       }
-    });
-
-    const modal = document.getElementById('quoteModal');
-    const openButtons = document.querySelectorAll('.trigger-quote-modal');
-    const closeBtn = document.getElementById('closeQuoteModal');
-    const quoteForm = document.getElementById('bulkQuoteForm');
-    const phoneInput = document.getElementById('clientPhone');
-
-    openButtons.forEach(button => {
-      button.addEventListener('click', e => {
-        e.preventDefault();
-        modal.showModal();
-      });
-    });
-
-    closeBtn.addEventListener('click', () => modal.close());
-
-    phoneInput.addEventListener('input', e => {
-      let input = e.target.value.replace(/\D/g, '');
-      let size = input.length;
-      if (size === 0) { e.target.value = ''; }
-      else if (size < 4) { e.target.value = `(${input}`; }
-      else if (size < 7) { e.target.value = `(${input.substring(0,3)}) ${input.substring(3)}`; }
-      else { e.target.value = `(${input.substring(0,3)}) ${input.substring(3,6)}-${input.substring(6,10)}`; }
-    });
-
-    quoteForm.addEventListener('submit', async e => {
-      e.preventDefault();
-      const quantityInput = document.getElementById('orderQty');
-      const quantityValue = parseInt(quantityInput.value, 10);
-      if (isNaN(quantityValue) || quantityValue < 12) {
-        alert('Please enter a quantity of at least 12 pieces.');
-        quantityInput.focus();
-        return;
-      }
-      const submitBtn = quoteForm.querySelector('.submit-btn');
-      submitBtn.textContent = 'Sending…';
-      submitBtn.disabled = true;
-      alert('Quote request received! We will be in touch shortly.');
-      quoteForm.reset();
-      modal.close();
-      submitBtn.textContent = 'Submit Order Details';
-      submitBtn.disabled = false;
     });
   </script>
 
