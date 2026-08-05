@@ -3,975 +3,224 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cheryl's Site | Contact</title>
+  <title>Gear Up Studio | Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-/* =========================================================
-   Cheryl's Site — Main Stylesheet
-   Folder: css/style.css
-   ========================================================= */
-
-/* ── RESET & BASE ────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --color-primary:    #1a6b3c;   /* deep green — main brand */
-  --color-primary-dk: #134f2d;   /* darker green — hover */
-  --color-accent:     #f5a623;   /* warm gold — CTA accent */
-  --color-accent-dk:  #d9901b;   /* darker gold — hover */
+  --color-primary:    #1a6b3c;
+  --color-primary-dk: #134f2d;
+  --color-accent:     #f5a623;
+  --color-accent-dk:  #d9901b;
   --color-dark:       #1c1c1c;
   --color-mid:        #555;
   --color-muted:      #888;
   --color-light:      #f6f7f5;
   --color-white:      #ffffff;
   --color-border:     #dde2da;
-
   --font-display: 'Montserrat', sans-serif;
   --font-body:    'Open Sans', sans-serif;
-
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-
+  --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px;
   --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
   --shadow-md: 0 6px 24px rgba(0,0,0,.12);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,.16);
-
   --transition: 0.22s ease;
   --max-width: 1200px;
 }
-
 html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-body);
-  color: var(--color-dark);
-  background: var(--color-white);
-  line-height: 1.65;
-  font-size: 16px;
-}
-
-img { max-width: 100%; height: auto; display: block; }
+body { font-family: var(--font-body); color: var(--color-dark); background: var(--color-white); line-height: 1.65; font-size: 16px; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
-
-/* ── TYPOGRAPHY ──────────────────────────────────────────── */
-h1, h2, h3, h4, h5 {
-  font-family: var(--font-display);
-  line-height: 1.2;
-  color: var(--color-dark);
-}
-
-h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; }
-h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; }
+h1,h2,h3,h4,h5 { font-family: var(--font-display); line-height: 1.2; color: var(--color-dark); }
+h1 { font-size: clamp(2rem,5vw,3.4rem); font-weight: 700; }
+h2 { font-size: clamp(1.6rem,3.5vw,2.4rem); font-weight: 700; }
 h3 { font-size: 1.2rem; font-weight: 600; }
-h4 { font-size: 1rem;   font-weight: 600; }
-
-p { color: var(--color-mid); }
-
-/* ── LAYOUT UTILITIES ────────────────────────────────────── */
-.container {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
+p  { color: var(--color-mid); }
+.container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 .section { padding: 72px 0; }
 .bg-light { background: var(--color-light); }
-
-.section-title {
-  text-align: center;
-  margin-bottom: 12px;
-}
-
-.section-subtitle {
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto 48px;
-  color: var(--color-muted);
-}
-
-.center-btn { text-align: center; margin-top: 40px; }
-
-/* ── BUTTONS ─────────────────────────────────────────────── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: .95rem;
-  padding: 13px 28px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
-  white-space: nowrap;
-}
-
+.section-title { text-align: center; margin-bottom: 12px; }
+.section-subtitle { text-align: center; max-width: 640px; margin: 0 auto 48px; color: var(--color-muted); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: .95rem; padding: 13px 28px; border-radius: 50px; cursor: pointer; border: 2px solid transparent; transition: background var(--transition), color var(--transition), transform var(--transition); white-space: nowrap; text-decoration: none; }
 .btn:hover { transform: translateY(-2px); }
-
-.btn-primary {
-  background: var(--color-primary);
-  color: var(--color-white);
-  border-color: var(--color-primary);
-}
-.btn-primary:hover {
-  background: var(--color-primary-dk);
-  border-color: var(--color-primary-dk);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-.btn-outline:hover {
-  background: var(--color-primary);
-  color: var(--color-white);
-}
-
-.btn-white {
-  background: var(--color-white);
-  color: var(--color-primary);
-  border-color: var(--color-white);
-}
-.btn-white:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-white);
-}
-
-.btn-outline-white {
-  background: transparent;
-  color: var(--color-white);
-  border-color: var(--color-white);
-}
-.btn-outline-white:hover {
-  background: rgba(255,255,255,.15);
-}
-
-.btn-sm {
-  font-size: .82rem;
-  padding: 8px 18px;
-}
-
-.btn-full { width: 100%; }
-
-/* ── HEADER ──────────────────────────────────────────────── */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--color-white);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-}
-
-.nav-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 68px;
-  gap: 24px;
-}
-
-.site-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.logo-img { width: 40px; height: 40px; }
-
-.logo-text {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.15rem;
-  color: var(--color-primary);
-  letter-spacing: -.5px;
-}
-
-.main-nav ul {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-}
-
-.main-nav a {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: .88rem;
-  padding: 8px 14px;
-  border-radius: var(--radius-sm);
-  color: var(--color-mid);
-  transition: background var(--transition), color var(--transition);
-}
-
-.main-nav a:hover,
-.main-nav a.active {
-  color: var(--color-primary);
-  background: rgba(26,107,60,.08);
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  cursor: pointer;
-  color: var(--color-primary);
-  padding: 4px 8px;
-}
-
-/* ── HERO (HOME) ─────────────────────────────────────────── */
-.hero {
-  position: relative;
-  min-height: 540px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: linear-gradient(135deg, #0f3d22 0%, #1a6b3c 60%, #2e9455 100%);
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(10,30,15,.85) 0%, rgba(10,30,15,.4) 100%);
-  z-index: 1;
-}
-
-.hero-bg-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: .18;
-  z-index: 0;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 80px 24px;
-  max-width: 700px;
-}
-
-.hero-eyebrow {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: .78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--color-accent);
-  margin-bottom: 16px;
-}
-
-.hero-title {
-  color: var(--color-white);
-  margin-bottom: 20px;
-}
-
-.hero-subtitle {
-  color: rgba(255,255,255,.82);
-  font-size: 1.1rem;
-  max-width: 560px;
-  margin-bottom: 36px;
-}
-
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-
-/* ── CATEGORIES STRIP ────────────────────────────────────── */
-.categories-strip {
-  background: var(--color-white);
-  padding: 32px 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.categories-grid {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.category-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 20px 32px;
-  border-radius: var(--radius-md);
-  border: 2px solid var(--color-border);
-  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-  min-width: 130px;
-  text-align: center;
-}
-
-.category-card img { width: 52px; height: 52px; }
-
-.category-card span {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: .9rem;
-  color: var(--color-dark);
-}
-
-.category-card:hover {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
-  color: var(--color-primary);
-}
-
-.category-card:hover span { color: var(--color-primary); }
-
-/* ── PRODUCT GRID ────────────────────────────────────────── */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 28px;
-}
-
-.product-card {
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  overflow: hidden;
-  background: var(--color-white);
-  transition: box-shadow var(--transition), transform var(--transition);
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
-}
-
-.product-img-wrap {
-  position: relative;
-  background: var(--color-light);
-  aspect-ratio: 4/3;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-img-wrap img {
-  width: 70%;
-  height: 70%;
-  object-fit: contain;
-  transition: transform .3s ease;
-}
-
-.product-card:hover .product-img-wrap img { transform: scale(1.06); }
-
-.product-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: var(--color-accent);
-  color: var(--color-white);
-  font-family: var(--font-display);
-  font-size: .72rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 20px;
-  text-transform: uppercase;
-}
-
-.product-badge.new { background: var(--color-primary); }
-
-.product-info {
-  padding: 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-info h3 { margin-bottom: 6px; font-size: 1.05rem; }
-.product-info p  { font-size: .9rem; flex: 1; }
-
-.product-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 16px;
-  gap: 10px;
-}
-
-.product-price {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--color-primary);
-}
-
-/* ── HOW IT WORKS ────────────────────────────────────────── */
-.how-it-works { background: var(--color-light); }
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 28px;
-  margin-top: 48px;
-}
-
-.step-card {
-  background: var(--color-white);
-  border-radius: var(--radius-md);
-  padding: 36px 28px;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border);
-}
-
-.step-icon {
-  width: 52px;
-  height: 52px;
-  background: var(--color-primary);
-  color: var(--color-white);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.3rem;
-  margin: 0 auto 20px;
-}
-
-.step-card h3 { margin-bottom: 10px; }
-
-/* ── CTA STRIP ───────────────────────────────────────────── */
-.cta-strip {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dk) 100%);
-  padding: 64px 0;
-}
-
-.cta-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
-.cta-text h2 { color: var(--color-white); margin-bottom: 10px; }
-.cta-text p  { color: rgba(255,255,255,.8); font-size: 1.05rem; }
-.cta-actions { display: flex; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
-
-/* ── TESTIMONIALS ────────────────────────────────────────── */
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.testimonial-card {
-  background: var(--color-light);
-  border-radius: var(--radius-md);
-  padding: 32px;
-  border-left: 4px solid var(--color-primary);
-}
-
-.testimonial-text {
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--color-mid);
-  margin-bottom: 16px;
-}
-
-.testimonial-author {
-  font-family: var(--font-display);
-  font-size: .85rem;
-  font-weight: 600;
-  color: var(--color-primary);
-}
-
-/* ── PAGE HERO ───────────────────────────────────────────── */
-.page-hero {
-  background: linear-gradient(135deg, #0f3d22 0%, #1a6b3c 100%);
-  padding: 80px 0 72px;
-  text-align: center;
-}
-
-.page-hero h1 {
-  color: var(--color-white);
-  margin-bottom: 14px;
-}
-
-.page-hero p {
-  color: rgba(255,255,255,.82);
-  font-size: 1.1rem;
-  max-width: 580px;
-  margin: 0 auto 28px;
-}
-
-.page-hero--business { background: linear-gradient(135deg, #1a2840 0%, #2d4a7a 100%); }
-.page-hero--schools  { background: linear-gradient(135deg, #3a1a00 0%, #7a4010 100%); }
-.page-hero--teams    { background: linear-gradient(135deg, #1a0030 0%, #4a1080 100%); }
-.page-hero--store    { background: linear-gradient(135deg, #0f3d22 0%, #1a6b3c 100%); }
-.page-hero--contact  { background: linear-gradient(135deg, #002040 0%, #005080 100%); }
-
-/* ── FEATURE GRID ────────────────────────────────────────── */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 28px;
-  margin-top: 48px;
-}
-
-.feature-card {
-  background: var(--color-white);
-  border-radius: var(--radius-md);
-  padding: 32px 24px;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border);
-  transition: box-shadow var(--transition), transform var(--transition);
-}
-
-.feature-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
-}
-
-.feature-icon {
-  width: 52px;
-  height: 52px;
-  margin: 0 auto 18px;
-}
-
-.feature-card h3 { margin-bottom: 10px; }
-
-/* ── SPORT TAGS ──────────────────────────────────────────── */
-.sport-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 36px;
-  justify-content: center;
-}
-
-.sport-tag {
-  background: var(--color-white);
-  border: 2px solid var(--color-border);
-  border-radius: 30px;
-  padding: 8px 18px;
-  font-family: var(--font-display);
-  font-size: .85rem;
-  font-weight: 600;
-  color: var(--color-mid);
-  transition: border-color var(--transition), color var(--transition);
-  cursor: default;
-}
-
-.sport-tag:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-/* ── FILTER BAR (STORE) ──────────────────────────────────── */
-.filter-bar {
-  background: var(--color-light);
-  border-bottom: 1px solid var(--color-border);
-  padding: 16px 0;
-}
-
-.filter-bar .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.filter-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.filter-label {
-  font-family: var(--font-display);
-  font-size: .85rem;
-  font-weight: 600;
-  color: var(--color-mid);
-  margin-right: 4px;
-}
-
-.filter-btn {
-  background: var(--color-white);
-  border: 1.5px solid var(--color-border);
-  border-radius: 30px;
-  padding: 7px 18px;
-  font-family: var(--font-display);
-  font-size: .82rem;
-  font-weight: 600;
-  color: var(--color-mid);
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-white);
-}
-
-.sort-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.sort-group label {
-  font-family: var(--font-display);
-  font-size: .85rem;
-  font-weight: 600;
-  color: var(--color-mid);
-}
-
-.sort-select {
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 7px 12px;
-  font-family: var(--font-body);
-  font-size: .85rem;
-  color: var(--color-dark);
-  background: var(--color-white);
-  cursor: pointer;
-}
-
-/* ── CONTACT PAGE ────────────────────────────────────────── */
-.contact-layout {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 64px;
-  align-items: start;
-}
-
-.contact-form-wrap h2,
-.contact-info-wrap h2 { margin-bottom: 10px; }
-
-.contact-form-wrap p {
-  margin-bottom: 28px;
-  color: var(--color-muted);
-}
-
-.contact-form { display: flex; flex-direction: column; gap: 18px; }
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.form-group label {
-  font-family: var(--font-display);
-  font-size: .85rem;
-  font-weight: 600;
-  color: var(--color-dark);
-}
-
+.btn-primary { background: var(--color-primary); color: var(--color-white); border-color: var(--color-primary); }
+.btn-primary:hover { background: var(--color-primary-dk); }
+.btn-accent  { background: var(--color-accent); color: var(--color-dark); border-color: var(--color-accent); }
+.btn-accent:hover { background: var(--color-accent-dk); }
+
+/* ── HEADER ── */
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--color-white); border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-sm); }
+.nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+.site-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-links li a { font-family: var(--font-display); font-weight: 600; font-size: .9rem; padding: 7px 14px; border-radius: var(--radius-sm); color: var(--color-dark); transition: background var(--transition), color var(--transition); }
+.nav-links li a:hover { background: var(--color-light); color: var(--color-primary); }
+.nav-links li a.nav-cta { background: var(--color-primary); color: var(--color-white) !important; padding: 8px 18px; border-radius: 50px; }
+.nav-links li a.nav-cta:hover { background: var(--color-primary-dk); }
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 25px; height: 3px; background: var(--color-dark); border-radius: 3px; transition: all 0.2s; }
+
+/* ── PAGE HERO ── */
+.page-hero { background: var(--color-light); padding: 64px 24px 52px; text-align: center; border-bottom: 3px solid var(--color-accent); }
+.page-hero h1 { color: var(--color-dark); margin-bottom: 14px; }
+.page-hero p  { color: var(--color-mid); font-size: 1.1rem; max-width: 560px; margin: 0 auto; }
+
+/* ── CONTACT GRID ── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.contact-info h2 { margin-bottom: 20px; }
+.info-block { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 28px; }
+.info-icon { font-size: 2rem; flex-shrink: 0; margin-top: 4px; }
+.info-block h3 { font-size: 1.05rem; margin-bottom: 4px; }
+.info-block p  { font-size: .95rem; color: var(--color-mid); }
+.divider { border: none; border-top: 1px solid var(--color-border); margin: 32px 0; }
+.social-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.social-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: .88rem; padding: 10px 20px; border-radius: 50px; border: 2px solid var(--color-border); color: var(--color-dark); transition: background var(--transition), border-color var(--transition), color var(--transition); }
+.social-btn:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+
+/* ── FORM ── */
+.contact-form-card { background: var(--color-white); border: 2px solid var(--color-border); border-radius: var(--radius-md); padding: 36px; box-shadow: var(--shadow-md); }
+.form-title { font-size: 1.4rem; margin-bottom: 24px; color: var(--color-dark); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-family: var(--font-display); font-weight: 600; font-size: .88rem; color: var(--color-dark); margin-bottom: 6px; }
 .form-group input,
 .form-group select,
-.form-group textarea {
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 11px 14px;
-  font-family: var(--font-body);
-  font-size: .95rem;
-  color: var(--color-dark);
-  background: var(--color-white);
-  transition: border-color var(--transition), box-shadow var(--transition);
-  width: 100%;
-}
-
+.form-group textarea { width: 100%; padding: 11px 14px; border: 2px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: .95rem; color: var(--color-dark); background: #fafafa; transition: border-color var(--transition); }
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(26,107,60,.12);
-}
+.form-group textarea:focus { outline: none; border-color: var(--color-primary); background: var(--color-white); }
+.form-group textarea { resize: vertical; min-height: 130px; }
+.form-note { font-size: .82rem; color: var(--color-muted); margin-bottom: 18px; }
+.submit-btn { width: 100%; padding: 14px; font-size: 1rem; border-radius: var(--radius-sm); background: var(--color-primary); color: var(--color-white); border: none; font-family: var(--font-display); font-weight: 700; cursor: pointer; transition: background var(--transition), transform var(--transition); }
+.submit-btn:hover { background: var(--color-primary-dk); transform: translateY(-2px); }
 
-.form-group textarea { resize: vertical; min-height: 120px; }
+/* ── CTA BAND ── */
+.cta-band { background: linear-gradient(135deg, #c63000 0%, #e85d00 45%, #f5a623 100%); padding: 64px 24px; text-align: center; }
+.cta-band h2 { color: #fff; margin-bottom: 10px; }
+.cta-band p  { color: rgba(255,255,255,.85); max-width: 520px; margin: 0 auto 28px; }
 
-.form-check {
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 10px;
-}
+/* ── FOOTER ── */
+footer { background: var(--color-light); border-top: 1px solid var(--color-border); text-align: center; padding: 28px 24px; font-size: .9rem; color: var(--color-muted); }
 
-.form-check input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  accent-color: var(--color-primary);
-  flex-shrink: 0;
-}
-
-.form-check label {
-  font-family: var(--font-body);
-  font-size: .9rem;
-  font-weight: 400;
-  color: var(--color-mid);
-}
-
-.form-note {
-  font-size: .8rem;
-  color: var(--color-muted);
-  text-align: center;
-}
-
-.form-success {
-  background: rgba(26,107,60,.1);
-  border: 1.5px solid var(--color-primary);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  color: var(--color-primary);
-  font-size: .95rem;
-}
-
-.contact-info-wrap { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
-
-.contact-info-block h4 { color: var(--color-primary); margin-bottom: 6px; font-size: .95rem; }
-.contact-info-block p, .contact-info-block li { color: var(--color-mid); font-size: .95rem; }
-.contact-info-block ul { margin-top: 6px; padding-left: 18px; list-style: disc; }
-.contact-info-block ul li { margin-bottom: 4px; }
-
-.social-links { display: flex; gap: 12px; margin-top: 8px; }
-
-.social-link {
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: 8px 18px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-display);
-  font-size: .82rem;
-  font-weight: 600;
-  transition: background var(--transition);
-}
-
-.social-link:hover { background: var(--color-primary-dk); }
-
-/* ── FAQ ─────────────────────────────────────────────────── */
-.faq-list { max-width: 780px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 10px; }
-
-.faq-item {
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  background: var(--color-white);
-}
-
-.faq-question {
-  width: 100%;
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 18px 24px;
-  font-family: var(--font-display);
-  font-size: .95rem;
-  font-weight: 600;
-  color: var(--color-dark);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background var(--transition);
-}
-
-.faq-question::after { content: '+'; font-size: 1.4rem; color: var(--color-primary); }
-.faq-question[aria-expanded="true"]::after { content: '−'; }
-.faq-question:hover { background: var(--color-light); }
-
-.faq-answer {
-  padding: 0 24px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .35s ease, padding .35s ease;
-}
-
-.faq-answer.open {
-  max-height: 400px;
-  padding: 0 24px 18px;
-}
-
-.faq-answer p { font-size: .95rem; }
-
-/* ── FOOTER ──────────────────────────────────────────────── */
-.site-footer {
-  background: #111;
-  color: rgba(255,255,255,.75);
-  padding: 56px 0 0;
-}
-
-.footer-inner {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 48px;
-}
-
-.footer-brand .logo-text { color: var(--color-white); display: block; margin-bottom: 12px; font-size: 1.1rem; }
-.footer-brand p { font-size: .9rem; max-width: 260px; }
-
-.footer-nav h4,
-.footer-contact h4 {
-  color: var(--color-white);
-  font-size: .9rem;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.footer-nav ul { display: flex; flex-direction: column; gap: 8px; }
-.footer-nav a, .footer-contact a {
-  font-size: .9rem;
-  color: rgba(255,255,255,.65);
-  transition: color var(--transition);
-}
-.footer-nav a:hover, .footer-contact a:hover { color: var(--color-accent); }
-
-.footer-contact p { font-size: .9rem; margin-bottom: 6px; }
-
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,.1);
-  text-align: center;
-  padding: 18px 0;
-}
-
-.footer-bottom p { font-size: .82rem; color: rgba(255,255,255,.4); }
-
-/* ── PRODUCT CARD HIDE (filter) ──────────────────────────── */
-.product-card.hidden {
-  display: none;
-}
-
-/* ── RESPONSIVE ──────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .contact-layout { grid-template-columns: 1fr; }
-  .footer-inner    { grid-template-columns: 1fr 1fr; }
-}
-
+/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .nav-toggle { display: block; }
-
-  .main-nav {
-    display: none;
-    position: absolute;
-    top: 68px;
-    left: 0;
-    right: 0;
-    background: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
-    padding: 16px 24px 20px;
-    box-shadow: var(--shadow-md);
-  }
-
-  .main-nav.open { display: block; }
-
-  .main-nav ul {
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .main-nav a {
-    display: block;
-    padding: 10px 14px;
-  }
-
-  .hero { min-height: 400px; }
-  .hero-content { padding: 60px 24px; }
-
-  .cta-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .cta-actions {
-    justify-content: center;
-  }
-
+  .nav-links { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 68px; left: 0; right: 0; background: var(--color-white); border-bottom: 1px solid var(--color-border); padding: 16px 24px; box-shadow: var(--shadow-md); z-index: 99; }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
+  .contact-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-
-  .product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 }
-
-@media (max-width: 480px) {
-  .section { padding: 48px 0; }
-  .categories-grid { gap: 12px; }
-  .category-card { padding: 16px 20px; min-width: 100px; }
-  .hero-actions { flex-direction: column; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
-}
-
-</style>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container nav-wrapper">
-      <a href="index.html" class="site-logo">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231a6b3c'/%3E%3Ctext x='50' y='62' font-family='Arial' font-size='48' font-weight='bold' text-anchor='middle' fill='white'%3EC%3C/text%3E%3C/svg%3E" alt="Site Logo" class="logo-img" />
-        <span class="logo-text">Cheryl's Site</span>
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav-wrapper">
+      <a class="site-logo" href="index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" style="height:64px;width:auto;display:block">
+          <defs>
+            <linearGradient id="gusGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#f5c623"/>
+              <stop offset="50%"  stop-color="#e85d00"/>
+              <stop offset="100%" stop-color="#1a1a1a"/>
+            </linearGradient>
+          </defs>
+          <line x1="2"  y1="22" x2="28" y2="22" stroke="#f5a623" stroke-width="6"   stroke-linecap="round"/>
+          <line x1="7"  y1="38" x2="28" y2="38" stroke="#f5a623" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="13" y1="54" x2="28" y2="54" stroke="#f5a623" stroke-width="3"   stroke-linecap="round"/>
+          <text x="32" y="72" font-family="Arial Black,Arial" font-size="68" font-weight="900" font-style="italic" fill="url(#gusGrad)">GUS</text>
+          <text x="33" y="87" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="3.5" fill="#1c1c1c">GEAR UP STUDIO</text>
+          <text x="33" y="98" font-family="Arial,sans-serif" font-size="7" letter-spacing="1.2" fill="#888">BRAND &#x25CF; PROMOTE &#x25CF; GROW</text>
+        </svg>
       </a>
-      <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
-      <nav class="main-nav" id="mainNav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="business.html">Business</a></li>
-          <li><a href="schools.html">Schools</a></li>
-          <li><a href="teams.html">Teams</a></li>
-          <li><a href="store.html">Store</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+      <ul class="nav-links" id="mainNav">
+        <li><a href="themes.html">Products</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="schools.html">Schools</a></li>
+        <li><a href="business.html">Business</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="quote.html" class="nav-cta">Request a Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mainNav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
 
-  <section class="page-hero page-hero--contact">
-    <div class="container">
-      <h1>Get in Touch</h1>
-      <p>Have a question, need a quote, or ready to start your order? We'd love to hear from you!</p>
-    </div>
-  </section>
+<!-- ══════════════ PAGE HERO ══════════════ -->
+<section class="page-hero">
+  <div class="container">
+    <h1>Get in Touch</h1>
+    <p>Have a question, project in mind, or ready to place an order? We'd love to hear from you. Fill out the form and we'll get back to you within 1 business day.</p>
+  </div>
+</section>
 
-  <section class="section">
-    <div class="container contact-layout">
+<!-- ══════════════ CONTACT SECTION ══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
 
-      <!-- CONTACT FORM -->
-      <div class="contact-form-wrap">
-        <h2>Send Us a Message</h2>
-        <p>Fill out the form below and we'll get back to you within 1 business day.</p>
-        <form class="contact-form" id="contactForm" novalidate>
+      <!-- LEFT: Info -->
+      <div class="contact-info">
+        <h2>Let's Start Something Great</h2>
+        <p style="margin-bottom:32px;">Whether you're outfitting a sports team, branding your school, or ordering corporate gifts — Gear Up Studio is here to make it easy.</p>
+
+        <div class="info-block">
+          <span class="info-icon">📧</span>
+          <div>
+            <h3>Email Us</h3>
+            <p>hello@gearupstudio.com<br>We respond within 1 business day.</p>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <span class="info-icon">📞</span>
+          <div>
+            <h3>Call or Text</h3>
+            <p>(920) 000-0000<br>Mon – Fri, 9 AM – 5 PM CT</p>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <span class="info-icon">📍</span>
+          <div>
+            <h3>Based In</h3>
+            <p>Redgranite, WI<br>Serving teams &amp; businesses nationwide.</p>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <h3 style="margin-bottom:14px;">Follow Along</h3>
+        <div class="social-row">
+          <a href="#" class="social-btn">📘 Facebook</a>
+          <a href="#" class="social-btn">📸 Instagram</a>
+          <a href="#" class="social-btn">▶ TikTok</a>
+        </div>
+
+        <hr class="divider" />
+
+        <div style="background:var(--color-light);border-radius:var(--radius-md);padding:24px;">
+          <h3 style="margin-bottom:8px;">⚡ Need a Quote Fast?</h3>
+          <p style="font-size:.95rem;margin-bottom:16px;">Skip the form and jump straight to our quote request — tell us exactly what you need and we'll get pricing back to you quickly.</p>
+          <a href="quote.html" class="btn btn-primary">Request a Quote →</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="contact-form-card">
+        <h3 class="form-title">Send Us a Message</h3>
+        <form>
           <div class="form-row">
             <div class="form-group">
-              <label for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="firstName" placeholder="Jane" required />
+              <label for="first">First Name *</label>
+              <input type="text" id="first" name="first" placeholder="Jane" required />
             </div>
             <div class="form-group">
-              <label for="lastName">Last Name *</label>
-              <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+              <label for="last">Last Name *</label>
+              <input type="text" id="last" name="last" placeholder="Smith" required />
             </div>
           </div>
           <div class="form-group">
@@ -980,370 +229,53 @@ p { color: var(--color-mid); }
           </div>
           <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="(920) 555-0100" />
+            <input type="tel" id="phone" name="phone" placeholder="(920) 000-0000" />
           </div>
           <div class="form-group">
-            <label for="orderType">Order Type *</label>
-            <select id="orderType" name="orderType" required>
-              <option value="">-- Select one --</option>
-              <option value="business">Business / Corporate</option>
-              <option value="school">School / Spirit Wear</option>
-              <option value="team">Sports Team</option>
-              <option value="personal">Personal / Gift</option>
-              <option value="other">Other</option>
+            <label for="org">Organization / Team Name</label>
+            <input type="text" id="org" name="org" placeholder="Redgranite Bulldogs" />
+          </div>
+          <div class="form-group">
+            <label for="interest">I'm Interested In *</label>
+            <select id="interest" name="interest" required>
+              <option value="" disabled selected>Select a category…</option>
+              <option>Apparel (T-shirts, Hoodies, Polos)</option>
+              <option>Headwear (Hats, Beanies, Visors)</option>
+              <option>Drinkware (Tumblers, Mugs, Bottles)</option>
+              <option>Bags &amp; Totes</option>
+              <option>Corporate Packages</option>
+              <option>Themed Collections</option>
+              <option>Something Else</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="quantity">Estimated Quantity</label>
-            <select id="quantity" name="quantity">
-              <option value="">-- Select a range --</option>
-              <option value="1-11">1–11 items</option>
-              <option value="12-23">12–23 items</option>
-              <option value="24-47">24–47 items</option>
-              <option value="48-99">48–99 items</option>
-              <option value="100+">100+ items</option>
-            </select>
+            <label for="message">Message / Details *</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project — quantity, colors, timeline, artwork…" required></textarea>
           </div>
-          <div class="form-group">
-            <label for="message">Tell Us About Your Order *</label>
-            <textarea id="message" name="message" rows="5" placeholder="Describe what you're looking for — product type, colors, design ideas, deadline, etc." required></textarea>
-          </div>
-          <div class="form-group form-check">
-            <input type="checkbox" id="newsletter" name="newsletter" />
-            <label for="newsletter">Subscribe to our newsletter for deals and new product alerts</label>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-          <p class="form-note">* Required fields. We respect your privacy and will never share your information.</p>
-          <div class="form-success" id="formSuccess" style="display:none;">
-            <strong>✅ Message sent!</strong> Thank you for reaching out. We'll be in touch within 1 business day.
-          </div>
+          <p class="form-note">* Required fields. We never share your information.</p>
+          <button type="submit" class="submit-btn">Send Message ✉</button>
         </form>
       </div>
 
-      <!-- CONTACT INFO -->
-      <div class="contact-info-wrap">
-        <h2>Contact Information</h2>
-        <div class="contact-info-block">
-          <h4>📍 Location</h4>
-          <p>Redgranite, WI</p>
-          <p>Serving all of Wisconsin and beyond!</p>
-        </div>
-        <div class="contact-info-block">
-          <h4>⏰ Business Hours</h4>
-          <p>Monday – Friday: 9:00 AM – 5:00 PM CT</p>
-          <p>Saturday: By appointment</p>
-          <p>Sunday: Closed</p>
-        </div>
-        <div class="contact-info-block">
-          <h4>📦 Order Turnaround</h4>
-          <p>Standard orders: 7–10 business days</p>
-          <p>Rush orders: Contact us for availability</p>
-        </div>
-        <div class="contact-info-block">
-          <h4>💡 Before You Order</h4>
-          <ul>
-            <li>Have your artwork or logo ready (vector files preferred)</li>
-            <li>Know your quantity and size breakdown</li>
-            <li>Note any color preferences or brand guidelines</li>
-          </ul>
-        </div>
-        <div class="contact-info-block">
-          <h4>🔗 Follow Along</h4>
-          <div class="social-links">
-            <a href="#" class="social-link">Facebook</a>
-            <a href="#" class="social-link">Instagram</a>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section class="section bg-light">
-    <div class="container">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">What file formats do you accept for artwork?</button>
-          <div class="faq-answer">
-            <p>We prefer vector files (.AI, .EPS, .PDF, .SVG) for the best print quality. High-resolution PNG or JPG files (300 DPI or higher) are also accepted. If you don't have a print-ready file, we can work with your team to prepare one at no extra charge.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Is there a minimum order quantity?</button>
-          <div class="faq-answer">
-            <p>Minimums vary by product. Many items start as low as 1 piece, while others have minimums of 6 or 12. Contact us for specifics on the product you're interested in.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Can I see a proof before my order is printed?</button>
-          <div class="faq-answer">
-            <p>Yes! We send a digital proof for your approval before any order goes to print. No order is printed until you give the green light.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">Do you offer rush orders?</button>
-          <div class="faq-answer">
-            <p>Rush services are available for an additional fee and depend on current production capacity. Contact us as soon as possible with your deadline and we'll do our best to accommodate.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">What payment methods do you accept?</button>
-          <div class="faq-answer">
-            <p>We accept all major credit cards, checks, and electronic payments. A 50% deposit is required to begin production, with the balance due upon delivery or pickup.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ══════════════ CTA BAND ══════════════ -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Ready to Gear Up?</h2>
+    <p>From 12-piece team orders to 500-piece corporate runs — we make branded merchandise easy, fast, and affordable.</p>
+    <a href="quote.html" class="btn btn-accent">Start Your Quote →</a>
+  </div>
+</section>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="logo-text">Cheryl's Site</span>
-        <p>Custom gear for every team, school &amp; business.</p>
-      </div>
-      <div class="footer-nav">
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="business.html">Business</a></li>
-          <li><a href="schools.html">Schools</a></li>
-          <li><a href="teams.html">Teams</a></li>
-          <li><a href="store.html">Store</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contact</h4>
-        <p>Redgranite, WI</p>
-        <p><a href="contact.html">Send a Message</a></p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Cheryl's Site. All rights reserved.</p>
-    </div>
-  </footer>
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Gear Up Studio &mdash; Custom Gear for Teams, Schools &amp; Businesses &mdash; Redgranite, WI</p>
+  </div>
+</footer>
 
-  <script>
-/* =========================================================
-   Cheryl's Site — Custom JavaScript
-   File: js/custom.js
-   ========================================================= */
-
-'use strict';
-
-/* ── MOBILE NAV TOGGLE ───────────────────────────────────── */
-(function () {
-  const toggle = document.querySelector('.nav-toggle');
-  const nav    = document.querySelector('.main-nav');
-  if (!toggle || !nav) return;
-
-  toggle.addEventListener('click', function () {
-    const isOpen = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen);
-    toggle.innerHTML = isOpen ? '&#x2715;' : '&#9776;';
-  });
-
-  /* Close nav when a link is clicked (mobile) */
-  nav.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      nav.classList.remove('open');
-      toggle.innerHTML = '&#9776;';
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  /* Close nav on outside click */
-  document.addEventListener('click', function (e) {
-    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-      nav.classList.remove('open');
-      toggle.innerHTML = '&#9776;';
-      toggle.setAttribute('aria-expanded', 'false');
-    }
-  });
-})();
-
-/* ── STICKY HEADER SHADOW ────────────────────────────────── */
-(function () {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
-
-  window.addEventListener('scroll', function () {
-    if (window.scrollY > 10) {
-      header.style.boxShadow = '0 4px 20px rgba(0,0,0,.14)';
-    } else {
-      header.style.boxShadow = '0 2px 8px rgba(0,0,0,.08)';
-    }
-  }, { passive: true });
-})();
-
-/* ── PRODUCT FILTER (Store page) ─────────────────────────── */
-(function () {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const products   = document.querySelectorAll('.product-card[data-category]');
-  if (!filterBtns.length || !products.length) return;
-
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      /* Update active button */
-      filterBtns.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-
-      products.forEach(function (card) {
-        if (filter === 'all' || card.dataset.category === filter) {
-          card.classList.remove('hidden');
-          card.style.animation = 'fadeIn .3s ease forwards';
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
-  });
-})();
-
-/* ── CONTACT FORM HANDLER ────────────────────────────────── */
-(function () {
-  const form    = document.getElementById('contactForm');
-  const success = document.getElementById('formSuccess');
-  if (!form) return;
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    /* Basic client-side validation */
-    let valid = true;
-    const required = form.querySelectorAll('[required]');
-
-    required.forEach(function (field) {
-      field.style.borderColor = '';
-      if (!field.value.trim()) {
-        field.style.borderColor = '#e53e3e';
-        valid = false;
-      }
-    });
-
-    /* Email format check */
-    const emailField = form.querySelector('#email');
-    if (emailField && emailField.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
-      emailField.style.borderColor = '#e53e3e';
-      valid = false;
-    }
-
-    if (!valid) {
-      const firstError = form.querySelector('[style*="e53e3e"]');
-      if (firstError) firstError.focus();
-      return;
-    }
-
-    /* Simulate submission (replace with real endpoint in production) */
-    const submitBtn = form.querySelector('[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-
-    setTimeout(function () {
-      form.reset();
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-      if (success) {
-        success.style.display = 'block';
-        success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }, 1200);
-  });
-
-  /* Clear red border on input */
-  form.querySelectorAll('input, select, textarea').forEach(function (el) {
-    el.addEventListener('input', function () {
-      el.style.borderColor = '';
-    });
-  });
-})();
-
-/* ── FAQ ACCORDION ───────────────────────────────────────── */
-(function () {
-  const questions = document.querySelectorAll('.faq-question');
-  if (!questions.length) return;
-
-  questions.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const answer  = btn.nextElementSibling;
-      const isOpen  = btn.getAttribute('aria-expanded') === 'true';
-
-      /* Close all */
-      questions.forEach(function (q) {
-        q.setAttribute('aria-expanded', 'false');
-        if (q.nextElementSibling) q.nextElementSibling.classList.remove('open');
-      });
-
-      /* Open clicked (if it was closed) */
-      if (!isOpen) {
-        btn.setAttribute('aria-expanded', 'true');
-        answer.classList.add('open');
-      }
-    });
-  });
-})();
-
-/* ── SCROLL REVEAL (lightweight) ────────────────────────── */
-(function () {
-  if (!window.IntersectionObserver) return;
-
-  const style = document.createElement('style');
-  style.textContent = `
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .55s ease, transform .55s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
-  `;
-  document.head.appendChild(style);
-
-  const targets = document.querySelectorAll(
-    '.product-card, .step-card, .feature-card, .testimonial-card, .category-card, .faq-item'
-  );
-
-  targets.forEach(function (el) { el.classList.add('reveal'); });
-
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  targets.forEach(function (el) { observer.observe(el); });
-})();
-
-/* ── ACTIVE NAV LINK (current page) ─────────────────────── */
-(function () {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.main-nav a').forEach(function (link) {
-    const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-})();
-
-/* ── SMOOTH SCROLL FOR ANCHOR LINKS ─────────────────────── */
-(function () {
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-})();
-
-</script>
 </body>
 </html>

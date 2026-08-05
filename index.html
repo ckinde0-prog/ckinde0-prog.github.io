@@ -44,7 +44,7 @@ p  { color: var(--color-mid); }
 .center-btn { text-align: center; margin-top: 40px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: .95rem; padding: 13px 28px; border-radius: 50px; cursor: pointer; border: 2px solid transparent; transition: background var(--transition), color var(--transition), transform var(--transition); white-space: nowrap; text-decoration: none; }
 .btn:hover { transform: translateY(-2px); }
-.btn-primary { background: var(--color-primary); color: var(--color-white); border-color: var(--color-primary); }
+.btn-primary { background: var(--color-primary); color: var(--color-white); border-color: var(--color-accent); }
 .btn-primary:hover { background: var(--color-primary-dk); }
 .btn-outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
 .btn-outline:hover { background: var(--color-primary); color: var(--color-white); }
@@ -68,10 +68,10 @@ p  { color: var(--color-mid); }
 .hamburger span { display: block; width: 25px; height: 3px; background: var(--color-dark); border-radius: 3px; transition: all 0.2s; }
 
 /* ── HERO ── */
-.hero { background: linear-gradient(135deg, var(--color-primary-dk) 0%, var(--color-primary) 55%, #2d9157 100%); min-height: 520px; display: flex; align-items: center; padding: 72px 24px; }
+.hero { background: linear-gradient(135deg, #c63000 0%, #e85d00 35%, #f5851a 65%, #f5c623 100%); min-height: 520px; display: flex; align-items: center; padding: 72px 24px; }
 .hero-inner { max-width: var(--max-width); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.hero-text h1 { color: var(--color-white); margin-bottom: 18px; }
-.hero-text p  { color: rgba(255,255,255,.88); font-size: 1.1rem; max-width: 480px; margin-bottom: 32px; }
+.hero-text h1 { color: #fff; margin-bottom: 18px; }
+.hero-text p  { color: rgba(255,255,255,.92); font-size:1.1rem; max-width:480px; margin-bottom:32px; }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero-visual { display: flex; flex-direction: column; gap: 14px; }
 .hero-badge-row { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -121,7 +121,7 @@ p  { color: var(--color-mid); }
 /* ── HOW IT WORKS ── */
 .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
 .step { text-align: center; }
-.step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--color-primary); color: #fff; font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+.step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent); color: var(--color-dark); font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
 .step h3 { margin-bottom: 8px; }
 .step p { font-size: .93rem; }
 
@@ -152,8 +152,7 @@ footer a:hover { text-decoration: underline; }
 <!-- ═══════ HEADER ═══════ -->
 <header class="site-header">
   <div class="nav-wrapper">
-    <a href="index.html" class="site-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" style="height:64px;width:auto;display:block">
+    <a href="index.html" class="site-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" style="height:64px;width:auto;display:block">
         <defs>
           <linearGradient id="gusGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%"   stop-color="#f5c623"/>
@@ -167,8 +166,7 @@ footer a:hover { text-decoration: underline; }
         <text x="32" y="72" font-family="Arial Black,Arial" font-size="68" font-weight="900" font-style="italic" fill="url(#gusGrad)">GUS</text>
         <text x="33" y="87" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="3.5" fill="#1c1c1c">GEAR UP STUDIO</text>
         <text x="33" y="98" font-family="Arial,sans-serif" font-size="7" letter-spacing="1.2" fill="#888">BRAND &#x25CF; PROMOTE &#x25CF; GROW</text>
-      </svg>
-    </a>
+      </svg></a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
