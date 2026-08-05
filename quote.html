@@ -51,7 +51,7 @@ p { color: var(--color-mid); }
 
 /* HEADER */
 .site-header { position: sticky; top: 0; z-index: 100; background: var(--color-white); border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-sm); }
-.nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+.nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 96px; gap: 24px; }
 .site-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .logo-img { height: 64px; width: auto; display: block; }
 .logo-text { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--color-primary); letter-spacing: -.5px; }
@@ -123,7 +123,7 @@ p { color: var(--color-mid); }
 @media(max-width:900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
 @media(max-width:768px) {
   .nav-toggle { display: block; }
-  .main-nav { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--color-white); border-bottom: 1px solid var(--color-border); padding: 16px 24px 20px; box-shadow: var(--shadow-md); }
+  .main-nav { display: none; position: absolute; top: 96px; left: 0; right: 0; background: var(--color-white); border-bottom: 1px solid var(--color-border); padding: 16px 24px 20px; box-shadow: var(--shadow-md); }
   .main-nav.open { display: block; }
   .main-nav ul { flex-direction: column; gap: 2px; }
   .main-nav a { display: block; padding: 10px 14px; }
@@ -291,13 +291,19 @@ p { color: var(--color-mid); }
   font-size: .82rem;
   margin-top: 14px;
 }
-  </style>
+  
+/* ── emoji icon replacements ── */
+.feature-icon { font-size: 2.6rem; display: block; margin-bottom: 12px; line-height: 1; }
+.product-img-placeholder { background: var(--color-light); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; min-height: 140px; }
+.product-img-placeholder span { font-size: 3.5rem; line-height: 1; margin-bottom: 8px; }
+.product-img-placeholder p { font-size: .8rem; color: var(--color-muted); text-align: center; }
+</style>
 </head>
 <body>
 
 <header class="site-header">
     <div class="container nav-wrapper">
-      <a href="index.html" class="site-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" style="height:64px;width:auto;display:block">
+      <a href="index.html" class="site-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" style="height:96px;width:auto;display:block">
   <defs>
     <linearGradient id="gusGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%"   stop-color="#f5c623"/>
@@ -316,10 +322,10 @@ p { color: var(--color-mid); }
       <nav class="main-nav" id="mainNav">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="business.html">Business</a></li>
-          <li><a href="schools.html">Schools</a></li>
-          <li><a href="teams.html">Teams</a></li>
           <li><a href="themes.html">Products</a></li>
+          <li><a href="teams.html">Teams</a></li>
+          <li><a href="schools.html">Schools</a></li>
+          <li><a href="business.html">Business</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
