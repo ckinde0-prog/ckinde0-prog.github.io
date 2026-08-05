@@ -59,7 +59,7 @@ p { color: var(--color-mid); }
 .site-header { position: sticky; top: 0; z-index: 100; background: var(--color-white); border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-sm); }
 .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
 .site-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.logo-img { width: 40px; height: 40px; }
+.logo-img { height: 64px; width: auto; }
 .logo-text { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--color-primary); letter-spacing: -.5px; }
 .main-nav ul { display: flex; gap: 4px; align-items: center; }
 .main-nav a { font-family: var(--font-display); font-weight: 600; font-size: .88rem; padding: 8px 14px; border-radius: var(--radius-sm); color: var(--color-mid); transition: background var(--transition), color var(--transition); }
@@ -139,8 +139,8 @@ p { color: var(--color-mid); }
   <header class="site-header">
     <div class="container nav-wrapper">
       <a href="index.html" class="site-logo">
-        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 80'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='0%25'><stop offset='0%25' stop-color='%23f5c623'/><stop offset='55%25' stop-color='%23e85d00'/><stop offset='100%25' stop-color='%231a1a1a'/></linearGradient></defs><line x1='2' y1='22' x2='20' y2='22' stroke='%23f5a623' stroke-width='4' stroke-linecap='round'/><line x1='5' y1='36' x2='20' y2='36' stroke='%23f5a623' stroke-width='3.2' stroke-linecap='round'/><line x1='8' y1='50' x2='20' y2='50' stroke='%23f5a623' stroke-width='2.5' stroke-linecap='round'/><text x='22' y='64' font-family='Arial Black,Arial' font-size='52' font-weight='900' font-style='italic' fill='url(%23g)'>GUS</text></svg>" alt="Gear Up Studio" class="logo-img" />
-        <span class="logo-text">Gear Up Studio</span>
+        <img src="logo.svg" alt="Gear Up Studio" class="logo-img" />
+        
       </a>
       <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
       <nav class="main-nav" id="mainNav">
@@ -248,7 +248,7 @@ p { color: var(--color-mid); }
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="logo-text">Gear Up Studio</span>
+        
         <p>Custom gear for every team, school &amp; business.</p>
       </div>
       <div class="footer-nav">
