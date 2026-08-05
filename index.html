@@ -4,157 +4,190 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gear Up Studio | Custom Gear for Teams, Schools &amp; Business</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --color-primary:    #e05f00;
-  --color-primary-dk: #c63000;
-  --color-accent:     #f5a623;
-  --color-accent-dk:  #d9901b;
-  --color-dark:       #1c1c1c;
-  --color-mid:        #555;
-  --color-muted:      #888;
-  --color-light:      #fff8f0;
-  --color-white:      #ffffff;
-  --color-border:     #e8ddd0;
-  --font-display: 'Montserrat', sans-serif;
-  --font-body:    'Open Sans', sans-serif;
-  --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
-  --shadow-md: 0 6px 24px rgba(0,0,0,.12);
-  --transition: 0.22s ease;
-  --max-width: 1200px;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:      #e05f00;
+  --orange-dk:   #c63000;
+  --orange-lt:   #f5851a;
+  --gold:        #f5a623;
+  --gold-dk:     #d9901b;
+  --teal:        #0097a7;
+  --teal-dk:     #00838f;
+  --purple:      #7b1fa2;
+  --purple-lt:   #9c27b0;
+  --blue:        #1565c0;
+  --blue-lt:     #1976d2;
+  --dark:        #1c1c1c;
+  --mid:         #555;
+  --muted:       #888;
+  --light:       #fff8f0;
+  --white:       #ffffff;
+  --border:      #e8ddd0;
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --shadow-sm:   0 2px 8px rgba(0,0,0,.08);
+  --shadow-md:   0 6px 24px rgba(0,0,0,.13);
+  --shadow-lg:   0 12px 40px rgba(0,0,0,.17);
+  --transition:  .22s ease;
+  --max-width:   1200px;
 }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-body); color: var(--color-dark); background: var(--color-white); line-height: 1.65; font-size: 16px; }
-img { max-width: 100%; height: auto; display: block; }
-a { color: inherit; text-decoration: none; }
-ul { list-style: none; }
-h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; color: var(--color-dark); }
-h1 { font-size: clamp(2rem,5vw,3.4rem); font-weight: 700; }
-h2 { font-size: clamp(1.6rem,3.5vw,2.4rem); font-weight: 700; }
-h3 { font-size: 1.2rem; font-weight: 600; }
-p  { color: var(--color-mid); }
-.container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
-.section { padding: 72px 0; }
-.bg-light { background: var(--color-light); }
-.section-title { text-align: center; margin-bottom: 12px; }
-.section-subtitle { text-align: center; max-width: 640px; margin: 0 auto 48px; color: var(--color-muted); }
-.center-btn { text-align: center; margin-top: 40px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: .95rem; padding: 13px 28px; border-radius: 50px; cursor: pointer; border: 2px solid transparent; transition: background var(--transition), color var(--transition), transform var(--transition); white-space: nowrap; text-decoration: none; }
-.btn:hover { transform: translateY(-2px); }
-.btn-primary { background: var(--color-primary); color: var(--color-white); border-color: var(--color-accent); }
-.btn-primary:hover { background: var(--color-primary-dk); }
-.btn-outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
-.btn-outline:hover { background: var(--color-primary); color: var(--color-white); }
-.btn-white { background: var(--color-white); color: var(--color-primary); border-color: var(--color-white); }
-.btn-white:hover { background: var(--color-accent); color: var(--color-white); border-color: var(--color-accent); }
-.btn-accent { background: var(--color-accent); color: var(--color-dark); border-color: var(--color-accent); }
-.btn-accent:hover { background: var(--color-accent-dk); border-color: var(--color-accent-dk); }
-.btn-sm { font-size: .82rem; padding: 8px 18px; }
-.btn-lg { font-size: 1.05rem; padding: 16px 36px; }
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans',sans-serif;color:var(--dark);background:var(--white);line-height:1.65;font-size:16px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;line-height:1.2;color:var(--dark)}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900}
+h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{color:var(--mid)}
+.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.section{padding:72px 0}
+.bg-light{background:var(--light)}
+.bg-dark{background:var(--dark)}
+.section-label{font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.section-title{text-align:center;margin-bottom:12px}
+.section-subtitle{text-align:center;max-width:620px;margin:0 auto 48px;color:var(--muted);font-size:1.05rem}
+.center-btn{text-align:center;margin-top:40px}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.95rem;padding:13px 28px;border-radius:50px;cursor:pointer;border:2px solid transparent;transition:background var(--transition),color var(--transition),transform var(--transition),box-shadow var(--transition);white-space:nowrap;text-decoration:none}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
+.btn-orange:hover{background:var(--orange-dk)}
+.btn-gold{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+.btn-gold:hover{background:var(--gold-dk);color:var(--dark)}
+.btn-white{background:#fff;color:var(--orange);border-color:#fff}
+.btn-white:hover{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+.btn-outline-white{background:transparent;color:#fff;border-color:rgba(255,255,255,.8)}
+.btn-outline-white:hover{background:rgba(255,255,255,.18)}
+.btn-outline-orange{background:transparent;color:var(--orange);border-color:var(--orange)}
+.btn-outline-orange:hover{background:var(--orange);color:#fff}
+.btn-lg{font-size:1.05rem;padding:16px 34px}
+.btn-sm{font-size:.82rem;padding:8px 18px}
 
 /* ── HEADER ── */
-.site-header { position: sticky; top: 0; z-index: 100; background: var(--color-white); border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-sm); }
-.nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 96px; gap: 24px; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
-.site-logo { display: flex; align-items: center; flex-shrink: 0; }
-.nav-links { display: flex; align-items: center; gap: 6px; }
-.nav-links li a { font-family: var(--font-display); font-weight: 600; font-size: .9rem; padding: 7px 14px; border-radius: var(--radius-sm); color: var(--color-dark); transition: background var(--transition), color var(--transition); }
-.nav-links li a:hover { background: var(--color-light); color: var(--color-primary); }
-.nav-links li a.nav-cta { background: var(--color-primary); color: var(--color-white) !important; padding: 8px 18px; border-radius: 50px; }
-.nav-links li a.nav-cta:hover { background: var(--color-primary-dk); }
-.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 25px; height: 3px; background: var(--color-dark); border-radius: 3px; transition: all 0.2s; }
+.site-header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);box-shadow:var(--shadow-sm)}
+.nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:96px;max-width:var(--max-width);margin:0 auto;padding:0 24px;gap:24px}
+.site-logo{display:flex;align-items:center;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links li a{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.88rem;padding:8px 14px;border-radius:var(--radius-sm);color:var(--dark);transition:background var(--transition),color var(--transition)}
+.nav-links li a:hover{background:var(--light);color:var(--orange)}
+.nav-links li a.nav-cta{background:var(--orange);color:#fff;padding:9px 20px;border-radius:50px}
+.nav-links li a.nav-cta:hover{background:var(--orange-dk)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:25px;height:3px;background:var(--dark);border-radius:3px;transition:all .2s}
 
 /* ── HERO ── */
-.hero { background: linear-gradient(135deg, #c63000 0%, #e85d00 35%, #f5851a 65%, #f5c623 100%); min-height: 520px; display: flex; align-items: center; padding: 72px 24px; }
-.hero-inner { max-width: var(--max-width); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.hero-text h1 { color: #fff; margin-bottom: 18px; }
-.hero-text p  { color: rgba(255,255,255,.92); font-size:1.1rem; max-width:480px; margin-bottom:32px; }
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.hero-visual { display: flex; flex-direction: column; gap: 14px; }
-.hero-badge-row { display: flex; gap: 12px; flex-wrap: wrap; }
-.hero-badge { background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.25); border-radius: var(--radius-md); padding: 18px 22px; color: #fff; text-align: center; flex: 1 1 130px; }
-.hero-badge .hb-icon { font-size: 2rem; margin-bottom: 6px; }
-.hero-badge .hb-label { font-family: var(--font-display); font-weight: 700; font-size: .9rem; }
-.hero-badge .hb-sub { font-size: .78rem; color: rgba(255,255,255,.7); margin-top: 2px; }
+.hero{background:linear-gradient(135deg,var(--orange-dk) 0%,#e85d00 30%,var(--orange-lt) 65%,var(--gold) 100%);padding:80px 24px 72px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.hero-eyebrow{display:inline-block;background:rgba(255,255,255,.2);color:#fff;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 18px;border-radius:50px;margin-bottom:20px;border:1px solid rgba(255,255,255,.3)}
+.hero h1{color:#fff;margin-bottom:18px;text-shadow:0 2px 12px rgba(0,0,0,.15)}
+.hero .hero-sub{color:rgba(255,255,255,.92);font-size:1.15rem;max-width:560px;margin:0 auto 36px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
+.hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero-badge{background:rgba(255,255,255,.18);color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.82rem;padding:7px 16px;border-radius:50px;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:background var(--transition),transform var(--transition);text-decoration:none}
+.hero-badge:hover{background:rgba(255,255,255,.35);transform:translateY(-2px)}
+
+/* ── STATS BAND ── */
+.stats-band{background:var(--dark);padding:36px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}
+.stat-item{padding:8px 16px;border-right:1px solid rgba(255,255,255,.1)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Montserrat',sans-serif;font-size:2.2rem;font-weight:900;color:var(--gold);display:block;line-height:1}
+.stat-label{font-size:.85rem;color:rgba(255,255,255,.65);margin-top:6px}
 
 /* ── AUDIENCE CARDS ── */
-.audience-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-.aud-card { border: 2px solid var(--color-border); border-radius: var(--radius-md); padding: 36px 28px; text-align: center; transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition); }
-.aud-card:hover { border-color: var(--color-primary); box-shadow: var(--shadow-md); transform: translateY(-4px); }
-.aud-icon { font-size: 2.8rem; margin-bottom: 14px; }
-.aud-card h3 { margin-bottom: 10px; }
-.aud-card p  { font-size: .93rem; margin-bottom: 20px; }
-.aud-card a  { color: var(--color-primary); font-family: var(--font-display); font-weight: 600; font-size: .9rem; text-decoration: none; transition: color var(--transition); }
-.aud-card a:hover { color: var(--color-primary-dk); text-decoration: underline; }
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.audience-card{background:#fff;border-radius:var(--radius-md);border:2px solid var(--border);padding:36px 28px;text-align:center;cursor:pointer;transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);text-decoration:none;display:block;position:relative;overflow:hidden}
+.audience-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--card-color,var(--orange));transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.audience-card:hover::before{transform:scaleX(1)}
+.audience-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--card-color,var(--orange))}
+.audience-card.teams{--card-color:var(--blue)}
+.audience-card.schools{--card-color:var(--purple)}
+.audience-card.business{--card-color:var(--teal)}
+.audience-icon{font-size:3rem;margin-bottom:18px;display:block}
+.audience-card h3{margin-bottom:10px;font-size:1.25rem}
+.audience-card p{font-size:.93rem;color:var(--muted);margin-bottom:20px}
+.audience-tag{display:inline-block;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:50px;background:var(--light);color:var(--orange);margin:3px;border:1px solid var(--border)}
+.audience-arrow{display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;color:var(--card-color,var(--orange));margin-top:18px;transition:gap var(--transition)}
+.audience-card:hover .audience-arrow{gap:12px}
 
-/* ── PRODUCT CARDS ── */
-.products-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
-.product-card { background: var(--color-white); border: 2px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition); }
-.product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-.card-visual { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 4rem; background: var(--color-light); border-bottom: 1px solid var(--color-border); }
-.card-body { padding: 22px; }
-.card-badge { display: inline-block; background: var(--color-accent); color: var(--color-dark); font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; font-family: var(--font-display); }
-.card-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 7px; }
-.card-desc { font-size: .88rem; color: var(--color-muted); margin-bottom: 16px; line-height: 1.5; }
-.card-swatches { display: flex; gap: 7px; margin-bottom: 18px; align-items: center; }
-.swatch { width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(0,0,0,.12); display: inline-block; }
-.swatch-more { font-size: .75rem; color: var(--color-muted); }
-.card-action { display: block; width: 100%; text-align: center; }
+/* ── CATEGORY TABS ── */
+.tab-bar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.tab-btn{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.88rem;padding:10px 22px;border-radius:50px;border:2px solid var(--border);background:#fff;color:var(--mid);cursor:pointer;transition:all var(--transition)}
+.tab-btn:hover{border-color:var(--orange);color:var(--orange)}
+.tab-btn.active{background:var(--orange);color:#fff;border-color:var(--orange)}
+.tab-panel{display:none}
+.tab-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── MORE PRODUCTS TEASER ── */
-.more-products { background: var(--color-light); border: 2px dashed var(--color-border); border-radius: var(--radius-md); padding: 28px; text-align: center; margin-top: 28px; }
-.more-products p { font-size: .95rem; margin-bottom: 14px; }
-
-/* ── THEMED COLLECTIONS ── */
-.themed-band { background: linear-gradient(135deg, #0d2137 0%, #1a3a5c 60%, #1e4976 100%); padding: 64px 24px; }
-.themed-band h2 { color: #fff; text-align: center; margin-bottom: 10px; }
-.themed-band .section-subtitle { color: rgba(255,255,255,.75); }
-.themes-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
-.theme-pill { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.2); border-radius: 50px; padding: 10px 22px; color: #fff; font-family: var(--font-display); font-weight: 600; font-size: .9rem; transition: background var(--transition); }
-.theme-pill:hover { background: rgba(255,255,255,.25); }
-.theme-pill-icon { font-size: 1.2rem; }
-.themed-band .center-btn { margin-top: 0; }
+/* ── PRODUCT MINI CARDS ── */
+.mini-card{background:#fff;border-radius:var(--radius-md);border:2px solid var(--border);overflow:hidden;transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition)}
+.mini-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--orange)}
+.mini-card-color{height:90px;transition:background var(--transition);display:flex;align-items:center;justify-content:center;font-size:2.2rem}
+.mini-card-body{padding:16px}
+.mini-card-body h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:6px}
+.mini-card-body p{font-size:.82rem;color:var(--muted);margin-bottom:12px}
+.swatches{display:flex;gap:5px;margin-bottom:12px}
+.swatch{width:18px;height:18px;border-radius:50%;cursor:pointer;border:2px solid rgba(0,0,0,.1);transition:transform var(--transition),box-shadow var(--transition)}
+.swatch:hover,.swatch.active{transform:scale(1.3);box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(0,0,0,.25)}
+.mini-card-btn{display:block;text-align:center;background:var(--light);color:var(--orange);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;padding:8px;border-radius:var(--radius-sm);transition:background var(--transition),color var(--transition);text-decoration:none}
+.mini-card-btn:hover{background:var(--orange);color:#fff}
 
 /* ── HOW IT WORKS ── */
-.steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
-.step { text-align: center; }
-.step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent); color: var(--color-dark); font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
-.step h3 { margin-bottom: 8px; }
-.step p { font-size: .93rem; }
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:36px;left:16%;right:16%;height:2px;background:linear-gradient(90deg,var(--gold),var(--orange));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--orange));color:#fff;font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 16px rgba(224,95,0,.35);transition:transform var(--transition),box-shadow var(--transition)}
+.step:hover .step-num{transform:scale(1.1);box-shadow:0 8px 24px rgba(224,95,0,.45)}
+.step h3{margin-bottom:8px;font-size:1.1rem}
+.step p{font-size:.92rem;color:var(--muted);max-width:220px;margin:0 auto}
+
+/* ── CTA BAND ── */
+.cta-band{background:linear-gradient(135deg,var(--orange-dk) 0%,var(--orange) 50%,var(--gold) 100%);padding:72px 24px;text-align:center}
+.cta-band h2{color:#fff;margin-bottom:12px}
+.cta-band p{color:rgba(255,255,255,.88);max-width:540px;margin:0 auto 32px}
 
 /* ── FOOTER ── */
-footer { background: var(--color-light); border-top: 1px solid var(--color-border); text-align: center; padding: 28px 24px; font-size: .9rem; color: var(--color-muted); }
-footer a { color: var(--color-primary); font-weight: 600; }
-footer a:hover { text-decoration: underline; }
+footer{background:var(--dark);padding:36px 24px;text-align:center}
+footer p{color:rgba(255,255,255,.5);font-size:.9rem}
 
-/* ── MOBILE ── */
-@media (max-width: 900px) {
-  .hero-inner       { grid-template-columns: 1fr; gap: 36px; }
-  .hero-visual      { display: none; }
-  .audience-grid    { grid-template-columns: 1fr; }
-  .products-grid    { grid-template-columns: 1fr; }
-  .steps-grid       { grid-template-columns: 1fr; }
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .audience-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr;gap:28px}
+  .steps-grid::before{display:none}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-item:nth-child(2){border-right:none}
+  .stat-item:nth-child(3){border-top:1px solid rgba(255,255,255,.1)}
 }
-@media (max-width: 768px) {
-  .hamburger { display: flex; }
-  .nav-links { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 96px; left: 0; right: 0; background: var(--color-white); border-bottom: 1px solid var(--color-border); padding: 16px 24px; box-shadow: var(--shadow-md); z-index: 99; }
-  .nav-links.open { display: flex; }
-  .nav-links li { width: 100%; }
-  .nav-links li a { display: block; width: 100%; padding: 10px 0; font-size: 1rem; }
+@media(max-width:768px){
+  .nav-links{display:none;flex-direction:column;align-items:flex-start;position:absolute;top:96px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:16px 24px;box-shadow:var(--shadow-md);z-index:99}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .stat-item:last-child{border-bottom:none}
 }
   </style>
 </head>
 <body>
 
-<!-- ═══════ HEADER ═══════ -->
+<!-- ══════════════ HEADER ══════════════ -->
 <header class="site-header">
-  <div class="nav-wrapper">
-    <a href="index.html" class="site-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" style="height:96px;width:auto;display:block">
+  <nav class="nav-wrapper">
+    <a class="site-logo" href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" style="height:96px;width:auto;display:block">
         <defs>
-          <linearGradient id="gusGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id="gG" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%"   stop-color="#f5c623"/>
             <stop offset="50%"  stop-color="#e85d00"/>
             <stop offset="100%" stop-color="#1a1a1a"/>
@@ -163,13 +196,11 @@ footer a:hover { text-decoration: underline; }
         <line x1="2"  y1="22" x2="28" y2="22" stroke="#f5a623" stroke-width="6"   stroke-linecap="round"/>
         <line x1="7"  y1="38" x2="28" y2="38" stroke="#f5a623" stroke-width="4.5" stroke-linecap="round"/>
         <line x1="13" y1="54" x2="28" y2="54" stroke="#f5a623" stroke-width="3"   stroke-linecap="round"/>
-        <text x="32" y="72" font-family="Arial Black,Arial" font-size="68" font-weight="900" font-style="italic" fill="url(#gusGrad)">GUS</text>
+        <text x="32" y="72" font-family="Arial Black,Arial" font-size="68" font-weight="900" font-style="italic" fill="url(#gG)">GUS</text>
         <text x="33" y="87" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="3.5" fill="#1c1c1c">GEAR UP STUDIO</text>
         <text x="33" y="98" font-family="Arial,sans-serif" font-size="7" letter-spacing="1.2" fill="#888">BRAND &#x25CF; PROMOTE &#x25CF; GROW</text>
-      </svg></a>
-    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+      </svg>
+    </a>
     <ul class="nav-links" id="mainNav">
       <li><a href="themes.html">Products</a></li>
       <li><a href="teams.html">Teams</a></li>
@@ -178,213 +209,458 @@ footer a:hover { text-decoration: underline; }
       <li><a href="contact.html">Contact</a></li>
       <li><a href="quote.html" class="nav-cta">Request a Quote</a></li>
     </ul>
-  </div>
+    <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mainNav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 </header>
 
-<!-- ═══════ HERO ═══════ -->
+<!-- ══════════════ HERO ══════════════ -->
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <h1>Custom Gear for Every Team, School &amp; Business</h1>
-      <p>Premium screen printing, embroidery, and promotional products — designed around your brand, delivered with pride.</p>
-      <div class="hero-btns">
-        <a href="themes.html" class="btn btn-white btn-lg">Browse All Products</a>
-        <a href="quote.html"  class="btn btn-accent btn-lg">Request a Quote</a>
-      </div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">&#127381; Gear Up Studio — Redgranite, WI</span>
+    <h1>Custom Gear That<br>Gets You Noticed</h1>
+    <p class="hero-sub">Apparel, headwear, drinkware &amp; more — branded for your team, school, or business. Fast quotes, bulk pricing, zero hassle.</p>
+    <div class="hero-btns">
+      <a href="themes.html" class="btn btn-white btn-lg">Browse All Products</a>
+      <a href="quote.html"  class="btn btn-outline-white btn-lg">Request a Quote</a>
     </div>
-    <div class="hero-visual">
-      <div class="hero-badge-row">
-        <div class="hero-badge">
-          <div class="hb-icon">&#128248;</div>
-          <div class="hb-label">Apparel</div>
-          <div class="hb-sub">T-Shirts &amp; Polos</div>
-        </div>
-        <div class="hero-badge">
-          <div class="hb-icon">&#127913;</div>
-          <div class="hb-label">Headwear</div>
-          <div class="hb-sub">Caps &amp; Beanies</div>
-        </div>
-        <div class="hero-badge">
-          <div class="hb-icon">&#9749;</div>
-          <div class="hb-label">Drinkware</div>
-          <div class="hb-sub">Tumblers &amp; Mugs</div>
-        </div>
-      </div>
-      <div class="hero-badge-row">
-        <div class="hero-badge">
-          <div class="hb-icon">&#127890;</div>
-          <div class="hb-label">Bags</div>
-          <div class="hb-sub">Totes &amp; Packs</div>
-        </div>
-        <div class="hero-badge">
-          <div class="hb-icon">&#128188;</div>
-          <div class="hb-label">Corporate</div>
-          <div class="hb-sub">Gift Packages</div>
-        </div>
-        <div class="hero-badge">
-          <div class="hb-icon">&#127873;</div>
-          <div class="hb-label">Themed</div>
-          <div class="hb-sub">Holiday &amp; Events</div>
-        </div>
-      </div>
+    <div class="hero-badges">
+      <a href="themes.html#apparel"    class="hero-badge">👕 Apparel</a>
+      <a href="themes.html#headwear"   class="hero-badge">🧢 Headwear</a>
+      <a href="themes.html#drinkware"  class="hero-badge">🥤 Drinkware</a>
+      <a href="themes.html#bags"       class="hero-badge">👜 Bags &amp; Totes</a>
+      <a href="themes.html#corporate"  class="hero-badge">💼 Corporate</a>
+      <a href="themes.html#themed"     class="hero-badge">🎉 Themed Collections</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════ WHO WE SERVE ═══════ -->
-<section class="section">
+<!-- ══════════════ STATS BAND ══════════════ -->
+<section class="stats-band">
   <div class="container">
-    <h2 class="section-title">Who We Gear Up</h2>
-    <p class="section-subtitle">From youth sports to corporate campuses, we make custom gear easy and affordable for everyone.</p>
-    <div class="audience-grid">
-      <div class="aud-card">
-        <div class="aud-icon">&#127936;</div>
-        <h3>Teams &amp; Sports</h3>
-        <p>Uniforms, warm-ups, and spirit gear for school teams, recreational leagues, and travel clubs. No order too small or too big.</p>
-        <a href="teams.html">Gear up your team &rarr;</a>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-num" data-target="500">0</span>
+        <div class="stat-label">Happy Customers</div>
       </div>
-      <div class="aud-card">
-        <div class="aud-icon">&#127979;</div>
-        <h3>Schools &amp; Youth</h3>
-        <p>Spirit wear, staff apparel, fundraiser packages, and student recognition gear — we support your whole campus.</p>
-        <a href="schools.html">Outfit your school &rarr;</a>
+      <div class="stat-item">
+        <span class="stat-num" data-target="50">0</span>
+        <div class="stat-label">Products Available</div>
       </div>
-      <div class="aud-card">
-        <div class="aud-icon">&#128188;</div>
-        <h3>Businesses</h3>
-        <p>Employee uniforms, branded promotional items, trade show giveaways, and executive gift sets. Build your brand every day.</p>
-        <a href="business.html">Promote your business &rarr;</a>
+      <div class="stat-item">
+        <span class="stat-num" data-target="48">0</span>
+        <div class="stat-label">Hour Quote Turnaround</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="12">0</span>
+        <div class="stat-label">Minimum Order Qty</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ FEATURED PRODUCTS ═══════ -->
+<!-- ══════════════ WHO WE GEAR UP ══════════════ -->
 <section class="section bg-light">
   <div class="container">
-    <h2 class="section-title">Featured Products</h2>
-    <p class="section-subtitle">Our most popular custom products — built to impress, priced to fit your budget.</p>
-    <div class="products-grid">
+    <div class="section-label" style="text-align:center">Who We Gear Up</div>
+    <h2 class="section-title">Built for Every Team</h2>
+    <p class="section-subtitle">From youth sports to corporate offices — we create branded gear that fits your world.</p>
+    <div class="audience-grid">
 
-      <!-- Custom T-Shirt -->
-      <div class="product-card">
-        <div class="card-visual">&#128248;</div>
-        <div class="card-body">
-          <span class="card-badge">Bestseller</span>
-          <div class="card-title">Custom T-Shirt</div>
-          <div class="card-desc">Premium 100% cotton tees with vibrant full-color screen printing. Youth and adult sizing available.</div>
-          <div class="card-swatches">
-            <span class="swatch" style="background:#ff5722" title="Orange"></span>
-            <span class="swatch" style="background:#1565c0" title="Blue"></span>
-            <span class="swatch" style="background:#2e7d32" title="Green"></span>
-            <span class="swatch" style="background:#000"    title="Black"></span>
-            <span class="swatch-more">+12 more</span>
-          </div>
-          <a href="quote.html" class="btn btn-primary card-action">Get a Quote</a>
+      <a href="teams.html" class="audience-card teams">
+        <span class="audience-icon">🏆</span>
+        <h3>Teams &amp; Sports</h3>
+        <p>Jerseys, warm-ups, spirit wear and fan gear. We outfit youth leagues, rec teams, and competitive clubs.</p>
+        <div>
+          <span class="audience-tag" style="border-color:#1565c0;color:#1565c0">Jerseys</span>
+          <span class="audience-tag" style="border-color:#1565c0;color:#1565c0">Spirit Wear</span>
+          <span class="audience-tag" style="border-color:#1565c0;color:#1565c0">Fan Gear</span>
         </div>
-      </div>
+        <div class="audience-arrow" style="color:var(--blue)">Gear Up Your Team &#8594;</div>
+      </a>
 
-      <!-- Embroidered Polo -->
-      <div class="product-card">
-        <div class="card-visual">&#128083;</div>
-        <div class="card-body">
-          <span class="card-badge">Popular</span>
-          <div class="card-title">Embroidered Polo</div>
-          <div class="card-desc">Professional polos with high-definition embroidery. Perfect for uniforms, staff gear, and corporate wear.</div>
-          <div class="card-swatches">
-            <span class="swatch" style="background:#37474f" title="Charcoal"></span>
-            <span class="swatch" style="background:#1a237e" title="Navy"></span>
-            <span class="swatch" style="background:#fff;border-color:#ccc" title="White"></span>
-            <span class="swatch-more">+8 more</span>
-          </div>
-          <a href="quote.html" class="btn btn-primary card-action">Get a Quote</a>
+      <a href="schools.html" class="audience-card schools">
+        <span class="audience-icon">🎓</span>
+        <h3>Schools &amp; Youth</h3>
+        <p>School spirit wear, fundraiser tees, field trip shirts, and staff apparel — in your school's colors.</p>
+        <div>
+          <span class="audience-tag" style="border-color:#7b1fa2;color:#7b1fa2">Spirit Wear</span>
+          <span class="audience-tag" style="border-color:#7b1fa2;color:#7b1fa2">Staff Polos</span>
+          <span class="audience-tag" style="border-color:#7b1fa2;color:#7b1fa2">Field Trip</span>
         </div>
-      </div>
+        <div class="audience-arrow" style="color:var(--purple)">Gear Up Your School &#8594;</div>
+      </a>
 
-      <!-- Custom Drinkware -->
-      <div class="product-card">
-        <div class="card-visual">&#9749;</div>
-        <div class="card-body">
-          <span class="card-badge">Great Gift</span>
-          <div class="card-title">Custom Drinkware</div>
-          <div class="card-desc">Tumblers, mugs, and water bottles with laser engraving or full-color wrap printing. Always on-brand.</div>
-          <div class="card-swatches">
-            <span class="swatch" style="background:#f5c623" title="Gold"></span>
-            <span class="swatch" style="background:#e53935" title="Red"></span>
-            <span class="swatch" style="background:#7b1fa2" title="Purple"></span>
-            <span class="swatch-more">+8 more</span>
-          </div>
-          <a href="quote.html" class="btn btn-primary card-action">Get a Quote</a>
+      <a href="business.html" class="audience-card business">
+        <span class="audience-icon">💼</span>
+        <h3>Businesses &amp; Corporate</h3>
+        <p>Branded uniforms, employee gifts, trade show bundles, and corporate swag that makes an impression.</p>
+        <div>
+          <span class="audience-tag" style="border-color:#0097a7;color:#0097a7">Uniforms</span>
+          <span class="audience-tag" style="border-color:#0097a7;color:#0097a7">Gift Sets</span>
+          <span class="audience-tag" style="border-color:#0097a7;color:#0097a7">Trade Show</span>
         </div>
-      </div>
+        <div class="audience-arrow" style="color:var(--teal)">Gear Up Your Business &#8594;</div>
+      </a>
 
-    </div>
-
-    <div class="more-products">
-      <p>&#8230; and more — <strong>hoodies, hats, bags, and corporate giveaway packages!</strong></p>
-      <a href="themes.html" class="btn btn-outline">See All Products</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════ THEMED COLLECTIONS ═══════ -->
-<section class="themed-band">
-  <div class="container">
-    <h2>Themed Collections</h2>
-    <p class="section-subtitle">Seasonal &amp; occasion-based gear packages — ready to customize for your next big event.</p>
-    <div class="themes-row">
-      <a href="themes.html#themed" class="theme-pill"><span class="theme-pill-icon">&#127876;</span> Holidays &amp; Seasons</a>
-      <a href="themes.html#themed" class="theme-pill"><span class="theme-pill-icon">&#127867;</span> Milestone Events</a>
-      <a href="themes.html#themed" class="theme-pill"><span class="theme-pill-icon">&#127873;</span> Appreciation Gifts</a>
-      <a href="themes.html#themed" class="theme-pill"><span class="theme-pill-icon">&#127942;</span> Championship Gear</a>
-      <a href="themes.html#themed" class="theme-pill"><span class="theme-pill-icon">&#128197;</span> Spirit Week</a>
-    </div>
-    <div class="center-btn">
-      <a href="themes.html#themed" class="btn btn-white">Browse Themed Collections</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ HOW IT WORKS ═══════ -->
+<!-- ══════════════ BROWSE BY CATEGORY ══════════════ -->
 <section class="section">
   <div class="container">
+    <div class="section-label" style="text-align:center">Browse Products</div>
+    <h2 class="section-title">Find Your Perfect Gear</h2>
+    <p class="section-subtitle">Click a category to explore — then click any color swatch to preview color options.</p>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="showTab('apparel',this)">👕 Apparel</button>
+      <button class="tab-btn" onclick="showTab('headwear',this)">🧢 Headwear</button>
+      <button class="tab-btn" onclick="showTab('drinkware',this)">🥤 Drinkware</button>
+      <button class="tab-btn" onclick="showTab('bags',this)">👜 Bags &amp; Totes</button>
+    </div>
+
+    <!-- APPAREL -->
+    <div class="tab-panel active" id="tab-apparel">
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-tee" style="background:#1565c0">👕</div>
+        <div class="mini-card-body">
+          <h4>Custom T-Shirt</h4>
+          <p>100% cotton crew neck, screen printed or heat transfer.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#1565c0" onclick="setColor('clr-tee','#1565c0',this)" title="Navy"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-tee','#1c1c1c',this)" title="Black"></div>
+            <div class="swatch" style="background:#e53935" onclick="setColor('clr-tee','#e53935',this)" title="Red"></div>
+            <div class="swatch" style="background:#1a6b3c" onclick="setColor('clr-tee','#1a6b3c',this)" title="Forest"></div>
+            <div class="swatch" style="background:#e05f00" onclick="setColor('clr-tee','#e05f00',this)" title="Orange"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-polo" style="background:#1a6b3c">👔</div>
+        <div class="mini-card-body">
+          <h4>Embroidered Polo</h4>
+          <p>Professional look with your custom embroidered logo.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#1a6b3c" onclick="setColor('clr-polo','#1a6b3c',this)" title="Forest"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-polo','#1565c0',this)" title="Navy"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-polo','#1c1c1c',this)" title="Black"></div>
+            <div class="swatch" style="background:#888" onclick="setColor('clr-polo','#888',this)" title="Gray"></div>
+            <div class="swatch" style="background:#fff;border-color:#ccc" onclick="setColor('clr-polo','#f0f0f0',this)" title="White"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-hoodie" style="background:#1c1c1c">🧥</div>
+        <div class="mini-card-body">
+          <h4>Custom Hoodie</h4>
+          <p>Pullover or zip-up, fleece-lined for all-day comfort.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#1c1c1c" onclick="setColor('clr-hoodie','#1c1c1c',this)" title="Black"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-hoodie','#1565c0',this)" title="Navy"></div>
+            <div class="swatch" style="background:#888" onclick="setColor('clr-hoodie','#888',this)" title="Gray"></div>
+            <div class="swatch" style="background:#7b1fa2" onclick="setColor('clr-hoodie','#7b1fa2',this)" title="Purple"></div>
+            <div class="swatch" style="background:#8b2500" onclick="setColor('clr-hoodie','#8b2500',this)" title="Maroon"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-perf" style="background:#e53935">⚡</div>
+        <div class="mini-card-body">
+          <h4>Performance Tee</h4>
+          <p>Moisture-wicking athletic tee perfect for game day.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#e53935" onclick="setColor('clr-perf','#e53935',this)" title="Red"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-perf','#1c1c1c',this)" title="Black"></div>
+            <div class="swatch" style="background:#fff;border-color:#ccc" onclick="setColor('clr-perf','#f0f0f0',this)" title="White"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-perf','#1565c0',this)" title="Royal Blue"></div>
+            <div class="swatch" style="background:#e05f00" onclick="setColor('clr-perf','#e05f00',this)" title="Orange"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADWEAR -->
+    <div class="tab-panel" id="tab-headwear">
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-cap" style="background:#1c1c1c">🧢</div>
+        <div class="mini-card-body">
+          <h4>Structured Baseball Cap</h4>
+          <p>6-panel structured cap with embroidered logo on front.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#1c1c1c" onclick="setColor('clr-cap','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-cap','#1565c0',this)"></div>
+            <div class="swatch" style="background:#e53935" onclick="setColor('clr-cap','#e53935',this)"></div>
+            <div class="swatch" style="background:#888" onclick="setColor('clr-cap','#888',this)"></div>
+            <div class="swatch" style="background:#1a6b3c" onclick="setColor('clr-cap','#1a6b3c',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-dad" style="background:#c8b89a">🤠</div>
+        <div class="mini-card-body">
+          <h4>Dad Hat</h4>
+          <p>Relaxed unstructured fit, low-profile with soft crown.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#c8b89a" onclick="setColor('clr-dad','#c8b89a',this)"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-dad','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-dad','#1565c0',this)"></div>
+            <div class="swatch" style="background:#8b2500" onclick="setColor('clr-dad','#8b2500',this)"></div>
+            <div class="swatch" style="background:#888" onclick="setColor('clr-dad','#888',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-beanie" style="background:#7b1fa2">🎿</div>
+        <div class="mini-card-body">
+          <h4>Custom Beanie</h4>
+          <p>Knit fold-over cuff beanie with embroidered or woven patch.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#7b1fa2" onclick="setColor('clr-beanie','#7b1fa2',this)"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-beanie','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#888" onclick="setColor('clr-beanie','#888',this)"></div>
+            <div class="swatch" style="background:#8b2500" onclick="setColor('clr-beanie','#8b2500',this)"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-beanie','#1565c0',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-trucker" style="background:#e05f00">🚛</div>
+        <div class="mini-card-body">
+          <h4>Trucker Cap</h4>
+          <p>Mesh back, snapback closure, embroidered front panel.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#e05f00" onclick="setColor('clr-trucker','#e05f00',this)"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-trucker','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-trucker','#1565c0',this)"></div>
+            <div class="swatch" style="background:#888" onclick="setColor('clr-trucker','#888',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRINKWARE -->
+    <div class="tab-panel" id="tab-drinkware">
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-tumbler" style="background:#1c1c1c">☕</div>
+        <div class="mini-card-body">
+          <h4>20 oz Insulated Tumbler</h4>
+          <p>Double-wall vacuum insulated, keeps drinks hot or cold 12+ hrs.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#1c1c1c" onclick="setColor('clr-tumbler','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#fff;border-color:#ccc" onclick="setColor('clr-tumbler','#f0f0f0',this)"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-tumbler','#1565c0',this)"></div>
+            <div class="swatch" style="background:#e53935" onclick="setColor('clr-tumbler','#e53935',this)"></div>
+            <div class="swatch" style="background:#e91e8c" onclick="setColor('clr-tumbler','#e91e8c',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-mug" style="background:#f0f0f0">🍵</div>
+        <div class="mini-card-body">
+          <h4>Custom Ceramic Mug</h4>
+          <p>11 oz classic mug with full-color custom print, dishwasher safe.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#f0f0f0;border-color:#ccc" onclick="setColor('clr-mug','#f0f0f0',this)"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-mug','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-mug','#1565c0',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-bottle" style="background:#0097a7">💧</div>
+        <div class="mini-card-body">
+          <h4>Custom Water Bottle</h4>
+          <p>BPA-free 24 oz with your logo, perfect for active lifestyles.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#0097a7" onclick="setColor('clr-bottle','#0097a7',this)"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-bottle','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#1a6b3c" onclick="setColor('clr-bottle','#1a6b3c',this)"></div>
+            <div class="swatch" style="background:#e53935" onclick="setColor('clr-bottle','#e53935',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-travel" style="background:#888">🛫</div>
+        <div class="mini-card-body">
+          <h4>Travel Coffee Mug</h4>
+          <p>16 oz with secure lid, insulated for your commute or sideline.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#888" onclick="setColor('clr-travel','#888',this)"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-travel','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-travel','#1565c0',this)"></div>
+            <div class="swatch" style="background:#e53935" onclick="setColor('clr-travel','#e53935',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAGS -->
+    <div class="tab-panel" id="tab-bags">
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-tote" style="background:#c8b89a">🛍️</div>
+        <div class="mini-card-body">
+          <h4>Custom Tote Bag</h4>
+          <p>100% canvas cotton tote with screen printed design, heavy duty.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#c8b89a" onclick="setColor('clr-tote','#c8b89a',this)"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-tote','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-tote','#1565c0',this)"></div>
+            <div class="swatch" style="background:#e53935" onclick="setColor('clr-tote','#e53935',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-draw" style="background:#e05f00">🎒</div>
+        <div class="mini-card-body">
+          <h4>Drawstring Backpack</h4>
+          <p>Lightweight cinch bag, great for games, events &amp; giveaways.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#e05f00" onclick="setColor('clr-draw','#e05f00',this)"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-draw','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-draw','#1565c0',this)"></div>
+            <div class="swatch" style="background:#888" onclick="setColor('clr-draw','#888',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-pack" style="background:#1565c0">🎒</div>
+        <div class="mini-card-body">
+          <h4>Backpack</h4>
+          <p>18L capacity with padded straps and logo embroidery or print.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#1565c0" onclick="setColor('clr-pack','#1565c0',this)"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-pack','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#888" onclick="setColor('clr-pack','#888',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-color" id="clr-grocery" style="background:#1a6b3c">♻️</div>
+        <div class="mini-card-body">
+          <h4>Reusable Grocery Tote</h4>
+          <p>Heavy-duty canvas grocery tote with your brand — eco-friendly promo.</p>
+          <div class="swatches">
+            <div class="swatch active" style="background:#1a6b3c" onclick="setColor('clr-grocery','#1a6b3c',this)"></div>
+            <div class="swatch" style="background:#c8b89a" onclick="setColor('clr-grocery','#c8b89a',this)"></div>
+            <div class="swatch" style="background:#1c1c1c" onclick="setColor('clr-grocery','#1c1c1c',this)"></div>
+            <div class="swatch" style="background:#1565c0" onclick="setColor('clr-grocery','#1565c0',this)"></div>
+          </div>
+          <a href="quote.html" class="mini-card-btn">Get a Quote &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-btn">
+      <a href="themes.html" class="btn btn-orange">View Full Product Catalog &#8594;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ HOW IT WORKS ══════════════ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Simple Process</div>
     <h2 class="section-title">How It Works</h2>
-    <p class="section-subtitle">Getting custom gear is simple. Here's what to expect from start to finish.</p>
+    <p class="section-subtitle">From idea to finished gear — we make it easy every step of the way.</p>
     <div class="steps-grid">
       <div class="step">
         <div class="step-num">1</div>
-        <h3>Choose Your Product</h3>
-        <p>Browse our product catalog and pick the items that fit your team, event, or brand. Mix and match as needed.</p>
+        <h3>Request a Quote</h3>
+        <p>Tell us what you need — product type, quantity, colors, and any design ideas. Takes 2 minutes.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3>Submit Your Design</h3>
-        <p>Request a quote and share your logo, colors, and ideas. We'll handle the artwork and send a proof for your approval.</p>
+        <h3>Review &amp; Approve</h3>
+        <p>We send a digital proof within 48 hours. You approve the design, we handle everything else.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>We Print &amp; Deliver</h3>
-        <p>Once you approve, we get to work. Your finished gear is quality-checked and delivered right to your door.</p>
+        <h3>Gear Up!</h3>
+        <p>Your custom gear arrives ready to wear, give away, or stock your team. Fast and stress-free.</p>
       </div>
     </div>
-    <div class="center-btn">
-      <a href="quote.html" class="btn btn-primary btn-lg">Request a Quote Today</a>
+    <div class="center-btn" style="margin-top:48px">
+      <a href="quote.html" class="btn btn-orange btn-lg">Start Your Quote Today &#8594;</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════ FOOTER ═══════ -->
+<!-- ══════════════ CTA BAND ══════════════ -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Ready to Gear Up?</h2>
+    <p>From 12-piece team orders to 500-piece corporate runs — we make branded merchandise fast, easy, and affordable.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="quote.html"   class="btn btn-white btn-lg">Request a Quote</a>
+      <a href="contact.html" class="btn btn-outline-white btn-lg">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
-  <p>&copy; 2026 Gear Up Studio &mdash; <a href="contact.html">Contact Us</a></p>
+  <div class="container">
+    <p>&copy; 2026 Gear Up Studio &mdash; Custom Gear for Teams, Schools &amp; Businesses &mdash; Redgranite, WI</p>
+  </div>
 </footer>
 
 <script>
-  const btn = document.getElementById('hamburgerBtn');
-  const nav = document.getElementById('mainNav');
-  btn.addEventListener('click', () => nav.classList.toggle('open'));
-  document.addEventListener('click', e => {
-    if (!btn.contains(e.target) && !nav.contains(e.target)) nav.classList.remove('open');
+// ── Category tabs ──────────────────────────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── Color swatches ─────────────────────────────────────────────────────────
+function setColor(cardId, color, swatch) {
+  document.getElementById(cardId).style.background = color;
+  swatch.closest('.swatches').querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+  swatch.classList.add('active');
+}
+
+// ── Animated stat counters ─────────────────────────────────────────────────
+function animateCounter(el) {
+  const target = +el.dataset.target;
+  const suffix = target >= 500 ? '+' : (target === 48 ? ' hrs' : (target === 12 ? ' pcs min' : '+'));
+  let current = 0;
+  const step = Math.ceil(target / 40);
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = current + suffix;
+    if (current >= target) clearInterval(timer);
+  }, 35);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target);
+      observer.unobserve(e.target);
+    }
   });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-num').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
