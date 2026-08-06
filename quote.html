@@ -479,7 +479,12 @@ function saveToExcel(d) {
   ws['!cols'] = [{wch:14},{wch:14},{wch:14},{wch:28},{wch:16},{wch:30},{wch:22},{wch:14},{wch:22},{wch:20},{wch:14},{wch:18},{wch:40},{wch:50}];
   var wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, 'Quote Request');
-  XLSX.writeFile(wb, 'GearUpStudio_Quote_' + new Date().toISOString().slice(0,10) + '.xlsx');
+  var now = new Date();
+  var dateStr = now.toISOString().slice(0,10);
+  var hh = String(now.getHours()).padStart(2,'0');
+  var mm = String(now.getMinutes()).padStart(2,'0');
+  var ss = String(now.getSeconds()).padStart(2,'0');
+  XLSX.writeFile(wb, 'GearUpStudio_Quote_' + dateStr + '_' + hh + mm + ss + '.xlsx');
 }
 
 /* ── Build email-to-self link ── */
