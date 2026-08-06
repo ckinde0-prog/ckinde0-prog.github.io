@@ -17,439 +17,154 @@
       --light:     #fdf5e6;
       --card:      #ffffff;
       --text:      #1a1a1a;
-      --text-lt:   #555555;
       --radius:    8px;
-      --shadow:    0 2px 14px rgba(0,0,0,0.10);
       --font-head: 'Montserrat', sans-serif;
       --font-body: 'Open Sans', sans-serif;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); background: var(--light); color: var(--text); line-height: 1.6; }
 
-    body {
-      font-family: var(--font-body);
-      background: var(--light);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* ── NAV ─────────────────────────────── */
-    nav {
-      background: #111;
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.30);
-      transition: box-shadow 0.25s;
-    }
+    /* ── NAV ── */
+    nav { background: #111; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 8px rgba(0,0,0,0.30); transition: box-shadow 0.25s; }
     nav.scrolled { box-shadow: 0 4px 18px rgba(0,0,0,0.40); }
-
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { display: flex; align-items: center; gap: 0.55rem; text-decoration: none; flex-shrink: 0; }
     .nav-logo svg { width: 42px; height: 42px; }
-    .nav-logo-text {
-      font-family: var(--font-head);
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.1;
-    }
+    .nav-logo-text { font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; color: #fff; line-height: 1.1; }
     .nav-logo-text span { color: var(--gold-lt); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: #ccc;
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      padding: 0.4rem 0.65rem;
-      border-radius: 4px;
-      transition: color 0.2s, background 0.2s;
-      white-space: nowrap;
-    }
+    .nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.4rem 0.65rem; border-radius: 4px; transition: color 0.2s, background 0.2s; white-space: nowrap; }
     .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
     .nav-links a.active { color: #fff; }
-    .nav-links a.btn-rfq {
-      background: var(--orange);
-      color: #fff;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-weight: 700;
-    }
+    .nav-links a.btn-rfq { background: var(--orange); color: #fff; padding: 0.4rem 1rem; border-radius: 20px; font-weight: 700; }
     .nav-links a.btn-rfq:hover { background: #c45200; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
 
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: 0.3s;
-    }
+    /* ── HERO ── */
+    .hero { background: linear-gradient(135deg, #3d0a00 0%, #7d1500 55%, #a02000 100%); color: #fff; padding: 3.5rem 1.5rem 3rem; text-align: center; }
+    .hero h1 { font-family: var(--font-head); font-size: clamp(1.75rem, 4.5vw, 2.8rem); font-weight: 800; margin-bottom: 0.5rem; }
+    .hero p { font-size: 1rem; opacity: 0.88; max-width: 540px; margin: 0 auto; }
 
-    /* ── HERO ────────────────────────────── */
-    .hero {
-      background: linear-gradient(135deg, #3d0a00 0%, #7d1500 55%, #a02000 100%);
-      color: #fff;
-      padding: 3.5rem 1.5rem 3rem;
-      text-align: center;
-    }
-    .hero h1 {
-      font-family: var(--font-head);
-      font-size: clamp(1.75rem, 4.5vw, 2.8rem);
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-    .hero p {
-      font-size: 1rem;
-      opacity: 0.88;
-      max-width: 540px;
-      margin: 0 auto;
-    }
+    /* ── FORM WRAPPER ── */
+    .form-wrap { max-width: 800px; margin: -2rem auto 4rem; padding: 0 1rem; }
+    .form-card { background: var(--card); border-radius: 14px; box-shadow: 0 6px 28px rgba(0,0,0,0.13); padding: 2.25rem 2.5rem; }
 
-    /* ── FORM WRAPPER ────────────────────── */
-    .form-wrap {
-      max-width: 800px;
-      margin: -2rem auto 4rem;
-      padding: 0 1rem;
-    }
-    .form-card {
-      background: var(--card);
-      border-radius: 14px;
-      box-shadow: 0 6px 28px rgba(0,0,0,0.13);
-      padding: 2.25rem 2.5rem;
-    }
-
-    /* ── FORM GRID ───────────────────────── */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem 1.5rem;
-    }
+    /* ── FORM GRID ── */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.5rem; }
     .form-grid .full { grid-column: 1 / -1; }
-
-    .section-label {
-      grid-column: 1 / -1;
-      font-family: var(--font-head);
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      padding-top: 0.5rem;
-    }
-    .form-divider {
-      grid-column: 1 / -1;
-      border: none;
-      border-top: 1.5px solid var(--border);
-      margin: 0.25rem 0;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-    .form-group label {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--dark-red);
-      text-transform: uppercase;
-      letter-spacing: 0.045em;
-    }
+    .section-label { grid-column: 1 / -1; font-family: var(--font-head); font-size: 0.78rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.09em; padding-top: 0.5rem; }
+    .form-divider { grid-column: 1 / -1; border: none; border-top: 1.5px solid var(--border); margin: 0.25rem 0; }
+    .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+    .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--dark-red); text-transform: uppercase; letter-spacing: 0.045em; }
     .req { color: var(--orange); margin-left: 2px; }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 0.58rem 0.8rem;
-      font-size: 0.95rem;
-      font-family: var(--font-body);
-      color: var(--text);
-      background: #fff;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(224,95,0,0.13);
-    }
-    .form-group input.invalid,
-    .form-group select.invalid,
-    .form-group textarea.invalid {
-      border-color: #c0392b;
-      box-shadow: 0 0 0 3px rgba(192,57,43,0.11);
-    }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 0.58rem 0.8rem; font-size: 0.95rem; font-family: var(--font-body); color: var(--text); background: #fff; transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(224,95,0,0.13); }
+    .form-group input.invalid, .form-group select.invalid, .form-group textarea.invalid { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192,57,43,0.11); }
     .form-group textarea { resize: vertical; min-height: 84px; }
 
-    /* ── SIZE TABLE ──────────────────────── */
-    .size-title {
-      font-family: var(--font-head);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--dark-red);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.6rem;
-    }
-    .size-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.875rem;
-    }
-    .size-table th {
-      background: var(--dark-red);
-      color: #fff;
-      padding: 0.48rem 0.6rem;
-      text-align: center;
-      font-family: var(--font-head);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-    .size-table th:first-child { border-radius: 6px 0 0 0; }
-    .size-table th:last-child  { border-radius: 0 6px 0 0; }
-    .size-table td {
-      padding: 0.42rem 0.6rem;
-      text-align: center;
-      border-bottom: 1px solid #f0e0c8;
-      color: var(--text);
-    }
+    /* ── SIZE TABLE ── */
+    .size-title { font-family: var(--font-head); font-size: 0.82rem; font-weight: 700; color: var(--dark-red); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+    .size-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .size-table th { background: var(--dark-red); color: #fff; padding: 0.48rem 0.6rem; text-align: center; font-family: var(--font-head); font-size: 0.78rem; font-weight: 700; }
+    .size-table th:first-child { border-radius: 6px 0 0 0; } .size-table th:last-child { border-radius: 0 6px 0 0; }
+    .size-table td { padding: 0.42rem 0.6rem; text-align: center; border-bottom: 1px solid #f0e0c8; }
     .size-table tr:nth-child(even) td { background: #fdf0e0; }
     .size-table label { font-weight: 600; cursor: pointer; }
-    .size-table input[type="checkbox"] {
-      width: 16px; height: 16px;
-      cursor: pointer;
-      accent-color: var(--orange);
-    }
-    .size-table input[type="number"] {
-      width: 68px;
-      padding: 0.28rem 0.4rem;
-      border: 1.5px solid var(--border);
-      border-radius: 5px;
-      text-align: center;
-      font-size: 0.88rem;
-      font-family: var(--font-body);
-      background: #fff;
-    }
-    .size-table input[type="number"]:disabled {
-      background: #f5f5f5;
-      color: #bbb;
-      border-color: #e0d0b8;
-    }
+    .size-table input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--orange); }
+    .size-table input[type="number"] { width: 68px; padding: 0.28rem 0.4rem; border: 1.5px solid var(--border); border-radius: 5px; text-align: center; font-size: 0.88rem; background: #fff; }
+    .size-table input[type="number"]:disabled { background: #f5f5f5; color: #bbb; border-color: #e0d0b8; }
 
-    /* ── SUBMIT ──────────────────────────── */
-    .btn-submit {
-      display: block;
-      width: 100%;
-      margin-top: 1.75rem;
-      padding: 0.9rem 1.5rem;
-      background: var(--orange);
-      color: #fff;
-      font-family: var(--font-head);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-    }
+    /* ── SUBMIT ── */
+    .btn-submit { display: block; width: 100%; margin-top: 1.75rem; padding: 0.9rem 1.5rem; background: var(--orange); color: #fff; font-family: var(--font-head); font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.2s, transform 0.15s; }
     .btn-submit:hover { background: #c45200; transform: translateY(-1px); }
-    .btn-submit:active { transform: translateY(0); }
 
-    /* ── ERROR BANNER ────────────────────── */
-    .error-banner {
-      display: none;
-      background: #fdecea;
-      border: 1.5px solid #e74c3c;
-      color: #c0392b;
-      border-radius: var(--radius);
-      padding: 0.75rem 1rem;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-align: center;
-    }
+    /* ── ERROR BANNER ── */
+    .error-banner { display: none; background: #fdecea; border: 1.5px solid #e74c3c; color: #c0392b; border-radius: var(--radius); padding: 0.75rem 1rem; margin-top: 1rem; font-size: 0.9rem; font-weight: 600; text-align: center; }
     .error-banner.show { display: block; }
 
-    /* ── CONFIRM BANNER ──────────────────── */
-    .confirm-banner {
-      display: none;
-      background: linear-gradient(135deg, #145e28 0%, #1e8c40 100%);
-      color: #fff;
-      border-radius: 12px;
-      padding: 2rem 2rem 1.75rem;
-      margin-top: 1.75rem;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(30,140,64,0.22);
-      animation: fadeUp 0.4s ease both;
-    }
+    /* ── CONFIRM BANNER ── */
+    .confirm-banner { display: none; background: linear-gradient(135deg, #145e28 0%, #1e8c40 100%); color: #fff; border-radius: 12px; padding: 1.75rem 2rem 1.5rem; margin-top: 1.75rem; text-align: center; box-shadow: 0 4px 20px rgba(30,140,64,0.22); animation: fadeUp 0.4s ease both; }
     .confirm-banner.show { display: block; }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .confirm-icon { font-size: 2.8rem; margin-bottom: 0.5rem; }
-    .confirm-banner h3 {
-      font-family: var(--font-head);
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 0.4rem;
-    }
-    .confirm-banner p { font-size: 0.95rem; opacity: 0.93; line-height: 1.55; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    .confirm-icon { font-size: 2.5rem; margin-bottom: 0.4rem; }
+    .confirm-banner h3 { font-family: var(--font-head); font-size: 1.3rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .confirm-banner p { font-size: 0.93rem; opacity: 0.93; line-height: 1.5; }
     .confirm-name { font-weight: 700; color: #a8f5bc; }
 
-    /* ── ACTION BUTTONS ──────────────────── */
-    .action-buttons {
-      display: none;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: center;
-      margin-top: 1.25rem;
-    }
+    /* ── QUOTE SUMMARY CARD ── */
+    .quote-summary { display: none; margin-top: 1.5rem; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .quote-summary.show { display: block; }
+    .qs-header { background: var(--dark-red); color: #fff; padding: 0.8rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem; }
+    .qs-header h4 { font-family: var(--font-head); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+    .qs-header .qs-submitted { font-size: 0.8rem; opacity: 0.85; }
+    .qs-body { padding: 1.25rem 1.5rem; background: #fff; }
+    .qs-section { margin-bottom: 1rem; }
+    .qs-section:last-child { margin-bottom: 0; }
+    .qs-section-title { font-family: var(--font-head); font-size: 0.73rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border); }
+    .qs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; }
+    .qs-grid .qs-full { grid-column: 1 / -1; }
+    .qs-field { display: flex; flex-direction: column; gap: 0.1rem; padding: 0.25rem 0; }
+    .qs-label { font-size: 0.72rem; font-weight: 700; color: var(--dark-red); text-transform: uppercase; letter-spacing: 0.045em; }
+    .qs-value { font-size: 0.92rem; color: var(--text); font-weight: 500; }
+    .qs-size-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.25rem; }
+    .qs-size-table th { background: var(--dark-red); color: #fff; padding: 0.35rem 0.75rem; text-align: center; font-size: 0.78rem; font-weight: 700; }
+    .qs-size-table td { padding: 0.3rem 0.75rem; text-align: center; border-bottom: 1px solid var(--border); }
+    .qs-size-table tr:nth-child(even) td { background: #fdf0e0; }
+
+    /* ── ACTION BUTTONS ── */
+    .action-buttons { display: none; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 1.25rem; }
     .action-buttons.show { display: flex; }
+    .btn-action { flex: 1 1 150px; min-width: 130px; max-width: 210px; display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; padding: 0.72rem 1rem; border: 2px solid var(--dark-red); border-radius: var(--radius); background: #fff; color: var(--dark-red); font-family: var(--font-head); font-size: 0.875rem; font-weight: 700; cursor: pointer; text-decoration: none; letter-spacing: 0.03em; transition: background 0.2s, color 0.2s, transform 0.15s; }
+    .btn-action:hover { background: var(--dark-red); color: #fff; transform: translateY(-1px); }
 
-    .btn-action {
-      flex: 1 1 150px;
-      min-width: 130px;
-      max-width: 210px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      padding: 0.72rem 1rem;
-      border: 2px solid var(--dark-red);
-      border-radius: var(--radius);
-      background: #fff;
-      color: var(--dark-red);
-      font-family: var(--font-head);
-      font-size: 0.875rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      transition: background 0.2s, color 0.2s, transform 0.15s;
-    }
-    .btn-action:hover {
-      background: var(--dark-red);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-    .btn-action:active { transform: translateY(0); }
-
-    /* ── FOOTER ──────────────────────────── */
-    footer {
-      background: #111;
-      color: #999;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.85rem;
-    }
+    /* ── FOOTER ── */
+    footer { background: #111; color: #999; text-align: center; padding: 2rem 1rem; font-size: 0.85rem; }
     footer a { color: var(--gold-lt); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* ── RESPONSIVE: TABLET ──────────────── */
+    /* ── RESPONSIVE: TABLET ── */
     @media (max-width: 768px) {
       .form-card { padding: 1.75rem 1.5rem; }
       .btn-action { flex: 1 1 calc(50% - 0.5rem); max-width: 100%; }
     }
 
-    /* ── RESPONSIVE: MOBILE ──────────────── */
+    /* ── RESPONSIVE: MOBILE ── */
     @media (max-width: 600px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 64px;
-        left: 0; right: 0;
-        background: #111;
-        padding: 0.75rem 0 1rem;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-      }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: #111; padding: 0.75rem 0 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.35); }
       .nav-links.open { display: flex; }
       .nav-links li { width: 100%; }
-      .nav-links a {
-        display: block;
-        padding: 0.7rem 1.5rem;
-        border-radius: 0;
-        font-size: 0.95rem;
-      }
-      .nav-links a.btn-rfq {
-        margin: 0.6rem 1.5rem 0;
-        border-radius: 20px;
-        text-align: center;
-      }
+      .nav-links a { display: block; padding: 0.7rem 1.5rem; border-radius: 0; font-size: 0.95rem; }
+      .nav-links a.btn-rfq { margin: 0.6rem 1.5rem 0; border-radius: 20px; text-align: center; }
       nav { position: relative; }
       .nav-toggle { display: flex; }
-
-      .form-wrap  { margin-top: -1.25rem; padding: 0 0.75rem; }
-      .form-card  { padding: 1.25rem 1rem; }
-      .form-grid  { grid-template-columns: 1fr; gap: 0.85rem; }
-      .form-grid .full { grid-column: 1; }
-      .section-label { grid-column: 1; }
-      .form-divider  { grid-column: 1; }
-
+      .form-wrap { margin-top: -1.25rem; padding: 0 0.75rem; }
+      .form-card { padding: 1.25rem 1rem; }
+      .form-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+      .form-grid .full, .section-label, .form-divider { grid-column: 1; }
       .btn-action { flex: 1 1 100%; max-width: 100%; }
+      .qs-grid { grid-template-columns: 1fr; }
+      .qs-grid .qs-full { grid-column: 1; }
     }
 
-    /* ── PRINT ───────────────────────────── */
+    /* ── PRINT ── */
     @media print {
-      nav,
-      .btn-submit,
-      .action-buttons,
-      .error-banner,
-      footer { display: none !important; }
+      nav, .btn-submit, .action-buttons, .error-banner, footer, #rfqForm { display: none !important; }
       body { background: #fff; }
-      .hero {
-        background: #7d1500 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-        padding: 1.5rem;
-      }
+      .hero { background: #7d1500 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 1.25rem 1.5rem; }
       .form-wrap { margin: 0; max-width: 100%; padding: 0; }
-      .form-card { box-shadow: none; border: 1px solid #ccc; border-radius: 0; padding: 1.5rem; }
-      .confirm-banner { background: #1a5c2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .form-card { box-shadow: none; border: 1px solid #ccc; border-radius: 0; padding: 1rem 1.5rem 1.5rem; }
+      .confirm-banner { display: block !important; background: #1a5c2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; margin-top: 1rem; animation: none; }
+      .quote-summary { display: block !important; }
+      .qs-header { background: #7d1500 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .qs-size-table th { background: #7d1500 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .size-table tr:nth-child(even) td, .qs-size-table tr:nth-child(even) td { background: #fdf0e0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════ NAV ═══════ -->
+<!-- ═══ NAV ═══ -->
 <nav id="mainNav">
   <div class="nav-inner">
     <a class="nav-logo" href="index.html" aria-label="Gear Up Studio home">
@@ -457,18 +172,13 @@
         <path d="M22 2L4 9v13c0 11 7.9 20.1 18 22.3C32.1 42.1 40 33 40 22V9L22 2z" fill="#7d1500"/>
         <path d="M22 6.5L7.5 12.5v9.5c0 9.2 6.6 17.2 14.5 19.2C29.9 39.2 36.5 31.2 36.5 22v-9.5L22 6.5z" fill="#a02000"/>
         <circle cx="22" cy="22" r="9" fill="#7d1500"/>
-        <text x="22" y="26" text-anchor="middle"
-          font-family="Montserrat,Arial,sans-serif"
-          font-weight="800" font-size="9.5"
-          fill="#d4a843" letter-spacing="0.8">GUS</text>
+        <text x="22" y="26" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="800" font-size="9.5" fill="#d4a843" letter-spacing="0.8">GUS</text>
       </svg>
       <div class="nav-logo-text">Gear Up <span>Studio</span></div>
     </a>
-
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html#products">Products</a></li>
       <li><a href="index.html#teams">Teams</a></li>
@@ -480,55 +190,43 @@
   </div>
 </nav>
 
-<!-- ═══════ HERO ═══════ -->
+<!-- ═══ HERO ═══ -->
 <div class="hero">
   <h1>Request a Quote</h1>
   <p>Complete all fields below and our team will respond within 1–2 business days with your custom price.</p>
 </div>
 
-<!-- ═══════ FORM ═══════ -->
+<!-- ═══ FORM ═══ -->
 <section class="form-wrap">
   <div class="form-card">
 
     <form id="rfqForm" novalidate>
       <div class="form-grid">
 
-        <!-- ── Contact Information ── -->
         <div class="section-label">Contact Information</div>
 
         <div class="form-group">
           <label for="firstName">First Name <span class="req">*</span></label>
-          <input type="text" id="firstName" name="firstName"
-            placeholder="Jane" required autocomplete="given-name">
+          <input type="text" id="firstName" name="firstName" placeholder="Jane" required autocomplete="given-name">
         </div>
-
         <div class="form-group">
           <label for="lastName">Last Name <span class="req">*</span></label>
-          <input type="text" id="lastName" name="lastName"
-            placeholder="Smith" required autocomplete="family-name">
+          <input type="text" id="lastName" name="lastName" placeholder="Smith" required autocomplete="family-name">
         </div>
-
         <div class="form-group">
           <label for="email">Email Address <span class="req">*</span></label>
-          <input type="email" id="email" name="email"
-            placeholder="jane@example.com" required autocomplete="email">
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required autocomplete="email">
         </div>
-
         <div class="form-group">
           <label for="phone">Phone Number <span class="req">*</span></label>
-          <input type="tel" id="phone" name="phone"
-            placeholder="(555) 000-0000" required autocomplete="tel">
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required autocomplete="tel">
         </div>
-
         <div class="form-group full">
           <label for="orgName">Organization / School / Team Name <span class="req">*</span></label>
-          <input type="text" id="orgName" name="orgName"
-            placeholder="e.g. Riverside High School Athletics" required>
+          <input type="text" id="orgName" name="orgName" placeholder="e.g. Riverside High School Athletics" required>
         </div>
 
         <hr class="form-divider">
-
-        <!-- ── Order Details ── -->
         <div class="section-label">Order Details</div>
 
         <div class="form-group">
@@ -545,13 +243,10 @@
             <option>Other</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="quantity">Estimated Total Quantity <span class="req">*</span></label>
-          <input type="number" id="quantity" name="quantity"
-            placeholder="e.g. 48" min="1" required>
+          <input type="number" id="quantity" name="quantity" placeholder="e.g. 48" min="1" required>
         </div>
-
         <div class="form-group">
           <label for="decorationType">Decoration Type <span class="req">*</span></label>
           <select id="decorationType" name="decorationType" required>
@@ -563,165 +258,155 @@
             <option>Not Sure — Need Guidance</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="colors">Color Preferences <span class="req">*</span></label>
-          <input type="text" id="colors" name="colors"
-            placeholder="e.g. Navy Blue &amp; Gold" required>
+          <input type="text" id="colors" name="colors" placeholder="e.g. Navy Blue &amp; Gold" required>
         </div>
-
         <div class="form-group">
           <label for="deliveryDate">Needed By Date <span class="req">*</span></label>
           <input type="date" id="deliveryDate" name="deliveryDate" required>
         </div>
-
         <div class="form-group">
           <label for="budget">Budget Range <span class="req">*</span></label>
-          <input type="text" id="budget" name="budget"
-            placeholder="e.g. $500 – $1,000" required>
+          <input type="text" id="budget" name="budget" placeholder="e.g. $500 – $1,000" required>
         </div>
 
         <hr class="form-divider">
-
-        <!-- ── Size Breakdown ── -->
         <div class="section-label">Size Breakdown</div>
         <div class="full">
           <p class="size-title">Check each size needed and enter the quantity</p>
           <table class="size-table">
             <thead>
-              <tr>
-                <th>Include?</th>
-                <th>Size</th>
-                <th>Quantity</th>
-              </tr>
+              <tr><th>Include?</th><th>Size</th><th>Quantity</th></tr>
             </thead>
             <tbody>
-              <tr>
-                <td><input type="checkbox" id="chkOSFA" name="chkOSFA"></td>
-                <td><label for="chkOSFA">OSFA (One Size)</label></td>
-                <td><input type="number" id="qtyOSFA" name="qtyOSFA" min="0" placeholder="0" disabled></td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" id="chkS" name="chkS"></td>
-                <td><label for="chkS">S — Small</label></td>
-                <td><input type="number" id="qtyS" name="qtyS" min="0" placeholder="0" disabled></td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" id="chkM" name="chkM"></td>
-                <td><label for="chkM">M — Medium</label></td>
-                <td><input type="number" id="qtyM" name="qtyM" min="0" placeholder="0" disabled></td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" id="chkL" name="chkL"></td>
-                <td><label for="chkL">L — Large</label></td>
-                <td><input type="number" id="qtyL" name="qtyL" min="0" placeholder="0" disabled></td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" id="chkXL" name="chkXL"></td>
-                <td><label for="chkXL">XL — Extra Large</label></td>
-                <td><input type="number" id="qtyXL" name="qtyXL" min="0" placeholder="0" disabled></td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" id="chkXXL" name="chkXXL"></td>
-                <td><label for="chkXXL">XXL — 2X Large</label></td>
-                <td><input type="number" id="qtyXXL" name="qtyXXL" min="0" placeholder="0" disabled></td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" id="chk3XL" name="chk3XL"></td>
-                <td><label for="chk3XL">3XL — 3X Large</label></td>
-                <td><input type="number" id="qty3XL" name="qty3XL" min="0" placeholder="0" disabled></td>
-              </tr>
+              <tr><td><input type="checkbox" id="chkOSFA" name="chkOSFA"></td><td><label for="chkOSFA">OSFA (One Size)</label></td><td><input type="number" id="qtyOSFA" name="qtyOSFA" min="0" placeholder="0" disabled></td></tr>
+              <tr><td><input type="checkbox" id="chkS" name="chkS"></td><td><label for="chkS">S — Small</label></td><td><input type="number" id="qtyS" name="qtyS" min="0" placeholder="0" disabled></td></tr>
+              <tr><td><input type="checkbox" id="chkM" name="chkM"></td><td><label for="chkM">M — Medium</label></td><td><input type="number" id="qtyM" name="qtyM" min="0" placeholder="0" disabled></td></tr>
+              <tr><td><input type="checkbox" id="chkL" name="chkL"></td><td><label for="chkL">L — Large</label></td><td><input type="number" id="qtyL" name="qtyL" min="0" placeholder="0" disabled></td></tr>
+              <tr><td><input type="checkbox" id="chkXL" name="chkXL"></td><td><label for="chkXL">XL — Extra Large</label></td><td><input type="number" id="qtyXL" name="qtyXL" min="0" placeholder="0" disabled></td></tr>
+              <tr><td><input type="checkbox" id="chkXXL" name="chkXXL"></td><td><label for="chkXXL">XXL — 2X Large</label></td><td><input type="number" id="qtyXXL" name="qtyXXL" min="0" placeholder="0" disabled></td></tr>
+              <tr><td><input type="checkbox" id="chk3XL" name="chk3XL"></td><td><label for="chk3XL">3XL — 3X Large</label></td><td><input type="number" id="qty3XL" name="qty3XL" min="0" placeholder="0" disabled></td></tr>
             </tbody>
           </table>
         </div>
 
         <hr class="form-divider">
-
-        <!-- ── Additional Notes ── -->
         <div class="section-label">Additional Notes</div>
         <div class="form-group full">
           <label for="notes">Special Instructions, Artwork Details, or Other Notes</label>
-          <textarea id="notes" name="notes"
-            placeholder="Logo placement, number of print locations, artwork files available, special requests, etc."></textarea>
+          <textarea id="notes" name="notes" placeholder="Logo placement, number of print locations, artwork files available, special requests, etc."></textarea>
         </div>
 
       </div><!-- /form-grid -->
 
-      <!-- Error Banner -->
       <div class="error-banner" id="errorBanner" role="alert">
         ⚠️ Please complete all required fields marked with * before submitting.
       </div>
-
       <button type="submit" class="btn-submit">Submit Quote Request</button>
     </form>
 
-    <!-- Confirmation Banner (shown after valid submit) -->
+    <!-- ── Confirmation Banner (shown on valid submit) ── -->
     <div class="confirm-banner" id="confirmBanner" role="status" aria-live="polite">
       <div class="confirm-icon">✅</div>
       <h3>Quote Request Received!</h3>
-      <p>
-        Thank you, <span class="confirm-name" id="confirmName"></span>!<br>
-        Your quote details have been saved and a copy has been downloaded.<br>
-        Our team will be in touch within <strong>1–2 business days</strong>.
-      </p>
+      <p>Thank you, <span class="confirm-name" id="confirmName"></span>!<br>
+      Your quote details are saved below and a copy has been downloaded.<br>
+      Our team will be in touch within <strong>1–2 business days</strong>.</p>
     </div>
 
-    <!-- Action Buttons (shown after valid submit) -->
+    <!-- ── Quote Summary Card (shown on valid submit, fully printable) ── -->
+    <div class="quote-summary" id="quoteSummary">
+      <div class="qs-header">
+        <h4>&#128203; Gear Up Studio — Quote Summary</h4>
+        <span class="qs-submitted" id="qsDate"></span>
+      </div>
+      <div class="qs-body">
+
+        <div class="qs-section">
+          <div class="qs-section-title">Contact Information</div>
+          <div class="qs-grid">
+            <div class="qs-field"><span class="qs-label">First Name</span><span class="qs-value" id="qs-firstName"></span></div>
+            <div class="qs-field"><span class="qs-label">Last Name</span><span class="qs-value" id="qs-lastName"></span></div>
+            <div class="qs-field"><span class="qs-label">Email</span><span class="qs-value" id="qs-email"></span></div>
+            <div class="qs-field"><span class="qs-label">Phone</span><span class="qs-value" id="qs-phone"></span></div>
+            <div class="qs-field qs-full"><span class="qs-label">Organization / School / Team</span><span class="qs-value" id="qs-org"></span></div>
+          </div>
+        </div>
+
+        <div class="qs-section">
+          <div class="qs-section-title">Order Details</div>
+          <div class="qs-grid">
+            <div class="qs-field"><span class="qs-label">Product Type</span><span class="qs-value" id="qs-product"></span></div>
+            <div class="qs-field"><span class="qs-label">Est. Quantity</span><span class="qs-value" id="qs-qty"></span></div>
+            <div class="qs-field"><span class="qs-label">Decoration Type</span><span class="qs-value" id="qs-deco"></span></div>
+            <div class="qs-field"><span class="qs-label">Color Preferences</span><span class="qs-value" id="qs-colors"></span></div>
+            <div class="qs-field"><span class="qs-label">Needed By Date</span><span class="qs-value" id="qs-needDate"></span></div>
+            <div class="qs-field"><span class="qs-label">Budget Range</span><span class="qs-value" id="qs-budget"></span></div>
+          </div>
+        </div>
+
+        <div class="qs-section">
+          <div class="qs-section-title">Size Breakdown</div>
+          <table class="qs-size-table">
+            <thead><tr><th>Size</th><th>Quantity</th></tr></thead>
+            <tbody id="qsSizesBody"></tbody>
+          </table>
+        </div>
+
+        <div class="qs-section">
+          <div class="qs-section-title">Additional Notes</div>
+          <div class="qs-field"><span class="qs-value" id="qs-notes"></span></div>
+        </div>
+
+      </div>
+    </div><!-- /quote-summary -->
+
+    <!-- ── Action Buttons ── -->
     <div class="action-buttons" id="actionButtons">
-      <button class="btn-action" onclick="window.print()" title="Print this page">
-        🖨️ Print
-      </button>
-      <button class="btn-action" onclick="savePDF()" title="Save as PDF via print dialog">
-        💾 Save as PDF
-      </button>
-      <button class="btn-action" id="emailBtn" title="Email a copy to yourself">
-        📧 Email to Myself
-      </button>
+      <button class="btn-action" onclick="window.print()">🖨️ Print</button>
+      <button class="btn-action" onclick="window.print()">💾 Save as PDF</button>
+      <button class="btn-action" id="emailBtn">📧 Email to Myself</button>
     </div>
 
   </div><!-- /form-card -->
 </section>
 
-<!-- ═══════ FOOTER ═══════ -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
-  <p>&copy; 2026 Gear Up Studio &nbsp;|&nbsp;
-    <a href="mailto:info@gearupstudio.com">info@gearupstudio.com</a>
-  </p>
+  <p>&copy; 2026 Gear Up Studio &nbsp;|&nbsp; <a href="mailto:info@gearupstudio.com">info@gearupstudio.com</a></p>
 </footer>
 
 <script>
-/* ── Nav toggle ──────────────────────────────────────── */
-var navToggle = document.getElementById('navToggle');
-var navLinks  = document.getElementById('navLinks');
-navToggle.addEventListener('click', function () {
-  var open = navLinks.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', open);
+/* ── Nav ── */
+document.getElementById('navToggle').addEventListener('click', function() {
+  var open = document.getElementById('navLinks').classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
 });
-window.addEventListener('scroll', function () {
+window.addEventListener('scroll', function() {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 10);
 });
 
-/* ── Size checkbox → enable qty input ───────────────── */
-var sizes = ['OSFA','S','M','L','XL','XXL','3XL'];
-sizes.forEach(function (s) {
+/* ── Size checkbox → enable qty ── */
+['OSFA','S','M','L','XL','XXL','3XL'].forEach(function(s) {
   var chk = document.getElementById('chk' + s);
   var qty = document.getElementById('qty' + s);
   if (!chk || !qty) return;
-  chk.addEventListener('change', function () {
+  chk.addEventListener('change', function() {
     qty.disabled = !chk.checked;
     if (!chk.checked) qty.value = '';
   });
 });
 
-/* ── Collect all form data into an object ────────────── */
+/* ── Collect form data ── */
 function collectData() {
-  var sizeBreakdown = sizes.map(function (s) {
+  var sizeRows = ['OSFA','S','M','L','XL','XXL','3XL'].map(function(s) {
     var chk = document.getElementById('chk' + s);
     var qty = document.getElementById('qty' + s);
-    return (chk && chk.checked)
-      ? s + ': ' + (qty && qty.value ? qty.value : '0')
-      : null;
-  }).filter(Boolean).join(' | ') || 'None selected';
+    return (chk && chk.checked) ? { size: s, qty: qty && qty.value ? qty.value : '0' } : null;
+  }).filter(Boolean);
+
+  var sizeStr = sizeRows.map(function(r){ return r.size + ': ' + r.qty; }).join(' | ') || 'None selected';
 
   return {
     'Date Submitted': new Date().toLocaleDateString('en-US', {year:'numeric',month:'2-digit',day:'2-digit'}),
@@ -736,107 +421,137 @@ function collectData() {
     'Colors':         document.getElementById('colors').value.trim(),
     'Needed By':      document.getElementById('deliveryDate').value,
     'Budget':         document.getElementById('budget').value.trim(),
-    'Sizes':          sizeBreakdown,
-    'Notes':          document.getElementById('notes').value.trim()
+    'Sizes':          sizeStr,
+    'Notes':          document.getElementById('notes').value.trim(),
+    _sizeRows:        sizeRows
   };
 }
 
-/* ── Save to Excel via SheetJS ───────────────────────── */
-function saveToExcel(data) {
-  if (typeof XLSX === 'undefined') { console.warn('SheetJS not loaded'); return; }
-  var ws = XLSX.utils.json_to_sheet([data]);
-  ws['!cols'] = [
-    {wch:14},{wch:14},{wch:14},{wch:28},{wch:16},{wch:30},
-    {wch:22},{wch:14},{wch:22},{wch:20},{wch:14},{wch:18},{wch:40},{wch:50}
-  ];
-  var wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Quote Request');
-  var today = new Date().toISOString().slice(0, 10);
-  XLSX.writeFile(wb, 'GearUpStudio_Quote_' + today + '.xlsx');
+/* ── Populate Summary Card ── */
+function populateSummary(d) {
+  document.getElementById('qsDate').textContent       = 'Submitted: ' + d['Date Submitted'];
+  document.getElementById('qs-firstName').textContent = d['First Name'];
+  document.getElementById('qs-lastName').textContent  = d['Last Name'];
+  document.getElementById('qs-email').textContent     = d['Email'];
+  document.getElementById('qs-phone').textContent     = d['Phone'];
+  document.getElementById('qs-org').textContent       = d['Organization'];
+  document.getElementById('qs-product').textContent   = d['Product Type'];
+  document.getElementById('qs-qty').textContent       = d['Qty Requested'];
+  document.getElementById('qs-deco').textContent      = d['Decoration'];
+  document.getElementById('qs-colors').textContent    = d['Colors'];
+  document.getElementById('qs-needDate').textContent  = d['Needed By'];
+  document.getElementById('qs-budget').textContent    = d['Budget'];
+  document.getElementById('qs-notes').textContent     = d['Notes'] || '—';
+
+  var tbody = document.getElementById('qsSizesBody');
+  tbody.innerHTML = '';
+  if (d._sizeRows.length) {
+    d._sizeRows.forEach(function(r) {
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + r.size + '</td><td>' + r.qty + '</td>';
+      tbody.appendChild(tr);
+    });
+  } else {
+    tbody.innerHTML = '<tr><td colspan="2" style="color:#888;font-style:italic;padding:0.5rem">No sizes selected</td></tr>';
+  }
 }
 
-/* ── Build mailto link for "Email to Myself" ─────────── */
-function buildEmailLink(data) {
-  var subject = encodeURIComponent(
-    'Gear Up Studio – My Quote Request (' + data['Date Submitted'] + ')'
-  );
+/* ── Save to Excel (background) ── */
+function saveToExcel(d) {
+  if (typeof XLSX === 'undefined') return;
+  var row = {
+    'Date Submitted': d['Date Submitted'],
+    'First Name':     d['First Name'],
+    'Last Name':      d['Last Name'],
+    'Email':          d['Email'],
+    'Phone':          d['Phone'],
+    'Organization':   d['Organization'],
+    'Product Type':   d['Product Type'],
+    'Qty Requested':  d['Qty Requested'],
+    'Decoration':     d['Decoration'],
+    'Colors':         d['Colors'],
+    'Needed By':      d['Needed By'],
+    'Budget':         d['Budget'],
+    'Sizes':          d['Sizes'],
+    'Notes':          d['Notes']
+  };
+  var ws = XLSX.utils.json_to_sheet([row]);
+  ws['!cols'] = [{wch:14},{wch:14},{wch:14},{wch:28},{wch:16},{wch:30},{wch:22},{wch:14},{wch:22},{wch:20},{wch:14},{wch:18},{wch:40},{wch:50}];
+  var wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Quote Request');
+  XLSX.writeFile(wb, 'GearUpStudio_Quote_' + new Date().toISOString().slice(0,10) + '.xlsx');
+}
+
+/* ── Build email-to-self link ── */
+function buildEmailLink(d) {
+  var subject = encodeURIComponent('Gear Up Studio – My Quote Request (' + d['Date Submitted'] + ')');
   var body = encodeURIComponent([
     'GEAR UP STUDIO — QUOTE REQUEST COPY',
     '=====================================',
     '',
-    'Date Submitted : ' + data['Date Submitted'],
-    'Name           : ' + data['First Name'] + ' ' + data['Last Name'],
-    'Email          : ' + data['Email'],
-    'Phone          : ' + data['Phone'],
-    'Organization   : ' + data['Organization'],
+    'Date:          ' + d['Date Submitted'],
+    'Name:          ' + d['First Name'] + ' ' + d['Last Name'],
+    'Email:         ' + d['Email'],
+    'Phone:         ' + d['Phone'],
+    'Organization:  ' + d['Organization'],
     '',
-    'Product Type   : ' + data['Product Type'],
-    'Quantity       : ' + data['Qty Requested'],
-    'Decoration     : ' + data['Decoration'],
-    'Colors         : ' + data['Colors'],
-    'Needed By      : ' + data['Needed By'],
-    'Budget         : ' + data['Budget'],
-    'Sizes          : ' + data['Sizes'],
+    'Product Type:  ' + d['Product Type'],
+    'Quantity:      ' + d['Qty Requested'],
+    'Decoration:    ' + d['Decoration'],
+    'Colors:        ' + d['Colors'],
+    'Needed By:     ' + d['Needed By'],
+    'Budget:        ' + d['Budget'],
+    'Sizes:         ' + d['Sizes'],
     '',
     'Notes:',
-    data['Notes'] || 'None',
+    d['Notes'] || 'None',
     '',
     '-------------------------------------',
-    'Questions? Contact us:',
-    'info@gearupstudio.com',
-    'gearupstudio.com'
+    'Questions? info@gearupstudio.com'
   ].join('\n'));
-
-  document.getElementById('emailBtn').onclick = function () {
+  document.getElementById('emailBtn').onclick = function() {
     window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
   };
 }
 
-/* ── Save as PDF (print dialog) ──────────────────────── */
-function savePDF() { window.print(); }
-
-/* ── Form submit handler ─────────────────────────────── */
-document.getElementById('rfqForm').addEventListener('submit', function (e) {
+/* ── Form Submit ── */
+document.getElementById('rfqForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  /* Validate all required fields */
-  var fields   = document.querySelectorAll('#rfqForm [required]');
+  /* Validate required fields */
   var allValid = true;
-  fields.forEach(function (f) {
+  document.querySelectorAll('#rfqForm [required]').forEach(function(f) {
     f.classList.remove('invalid');
-    if (!f.value.trim()) {
-      f.classList.add('invalid');
-      allValid = false;
-    }
+    if (!f.value.trim()) { f.classList.add('invalid'); allValid = false; }
   });
-
   var errorBanner = document.getElementById('errorBanner');
   if (!allValid) {
     errorBanner.classList.add('show');
-    var firstBad = document.querySelector('#rfqForm .invalid');
-    if (firstBad) firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.querySelector('#rfqForm .invalid').scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
   errorBanner.classList.remove('show');
 
-  /* All fields valid — collect data */
   var data = collectData();
 
-  /* 1. Auto-save Excel file in background */
+  /* 1 — Auto-save Excel in background */
   saveToExcel(data);
 
-  /* 2. Build email link */
+  /* 2 — Populate Summary Card */
+  populateSummary(data);
+
+  /* 3 — Build email link */
   buildEmailLink(data);
 
-  /* 3. Show confirmation banner */
-  document.getElementById('confirmName').textContent =
-    data['First Name'] + ' ' + data['Last Name'];
+  /* 4 — Show confirmation + summary + buttons */
+  document.getElementById('confirmName').textContent = data['First Name'] + ' ' + data['Last Name'];
   document.getElementById('confirmBanner').classList.add('show');
+  document.getElementById('quoteSummary').classList.add('show');
   document.getElementById('actionButtons').classList.add('show');
 
-  /* 4. Hide form, scroll to confirmation */
+  /* 5 — Hide form, scroll to top of results */
   document.getElementById('rfqForm').style.display = 'none';
-  document.getElementById('confirmBanner').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  document.getElementById('confirmBanner').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 </script>
 </body>
