@@ -6,7 +6,6 @@
   <title>Request a Quote | Gear Up Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <style>
     :root {
       --orange:    #e05f00;
@@ -456,36 +455,7 @@ function populateSummary(d) {
   }
 }
 
-/* ── Save to Excel (background) ── */
-function saveToExcel(d) {
-  if (typeof XLSX === 'undefined') return;
-  var row = {
-    'Date Submitted': d['Date Submitted'],
-    'First Name':     d['First Name'],
-    'Last Name':      d['Last Name'],
-    'Email':          d['Email'],
-    'Phone':          d['Phone'],
-    'Organization':   d['Organization'],
-    'Product Type':   d['Product Type'],
-    'Qty Requested':  d['Qty Requested'],
-    'Decoration':     d['Decoration'],
-    'Colors':         d['Colors'],
-    'Needed By':      d['Needed By'],
-    'Budget':         d['Budget'],
-    'Sizes':          d['Sizes'],
-    'Notes':          d['Notes']
-  };
-  var ws = XLSX.utils.json_to_sheet([row]);
-  ws['!cols'] = [{wch:14},{wch:14},{wch:14},{wch:28},{wch:16},{wch:30},{wch:22},{wch:14},{wch:22},{wch:20},{wch:14},{wch:18},{wch:40},{wch:50}];
-  var wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Quote Request');
-  var now = new Date();
-  var dateStr = now.toISOString().slice(0,10);
-  var hh = String(now.getHours()).padStart(2,'0');
-  var mm = String(now.getMinutes()).padStart(2,'0');
-  var ss = String(now.getSeconds()).padStart(2,'0');
-  XLSX.writeFile(wb, 'GearUpStudio_Quote_' + dateStr + '_' + hh + mm + ss + '.xlsx');
-}
+
 
 /* ── Build email-to-self link ── */
 function buildEmailLink(d) {
@@ -539,24 +509,23 @@ document.getElementById('rfqForm').addEventListener('submit', function(e) {
 
   var data = collectData();
 
-  /* 1 — Auto-save Excel in background */
-  saveToExcel(data);
-
-  /* 2 — Populate Summary Card */
+  /* 1 — Populate Summary Card */
   populateSummary(data);
 
-  /* 3 — Build email link */
+  /* 2 — Build email link */
   buildEmailLink(data);
 
-  /* 4 — Show confirmation + summary + buttons */
+  /* 3 — Show confirmation + summary + buttons */
   document.getElementById('confirmName').textContent = data['First Name'] + ' ' + data['Last Name'];
   document.getElementById('confirmBanner').classList.add('show');
   document.getElementById('quoteSummary').classList.add('show');
   document.getElementById('actionButtons').classList.add('show');
 
-  /* 5 — Hide form, scroll to top of results */
+  /* 4 — Hide form, scroll to confirmation */
   document.getElementById('rfqForm').style.display = 'none';
   document.getElementById('confirmBanner').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+
 });
 </script>
 </body>
