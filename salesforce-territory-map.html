@@ -1,534 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Salesforce Territory Map - United States</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://d3js.org/topojson.v3.min.js"></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 40px;
-            max-width: 1400px;
-            width: 100%;
-        }
-        h1 { text-align:center; color:#333; margin-bottom:10px; font-size:2.2em; }
-        .subtitle { text-align:center; color:#666; margin-bottom:30px; font-size:1.05em; }
-        .map-section { display:flex; gap:24px; margin-bottom:24px; flex-wrap:wrap; }
-        .map-container {
-            flex:1;
-            min-width:680px;
-            background:#f5f5f5;
-            border-radius:8px;
-            padding:20px;
-            border: 2px solid #e0e0e0;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
-        .legend {
-            flex:0 0 340px;
-            background:#f9f9f9;
-            padding:16px;
-            border-radius:8px;
-            border-left:4px solid #667eea;
-            max-height:700px;
-            overflow-y:auto;
-        }
-        .legend h3 { color:#333; margin-bottom:12px; font-size:1.15em; }
-        .legend-item {
-            display:flex; align-items:center; gap:12px;
-            margin-bottom:12px; padding:12px; background:white; border-radius:6px;
-            transition: all .2s; cursor:pointer; border-left:4px solid transparent;
-        }
-        .legend-item.active { background:#e8f4f8; border-left-color:#667eea; }
-        .legend-color { width:20px; height:20px; border-radius:4px; flex-shrink:0; }
-        .legend-text h4 { font-size:1em; color:#333; margin-bottom:3px; }
-        .legend-text p { color:#666; font-size:0.85em; margin:0; }
-        .rep-input { margin-top:8px; display:flex; gap:8px; align-items:center; }
-        .rep-input input[type="text"] { flex:1; padding:6px 8px; border-radius:6px; border:1px solid #ddd; }
-        .rep-input button { padding:6px 8px; border-radius:6px; background:#667eea; color:white; border:none; cursor:pointer; }
-        svg { max-width:100%; height:auto; }
-        .state { cursor:pointer; transition: opacity .2s, filter .2s; stroke:white; stroke-width:1.2; }
-        .state:hover { opacity:0.92; filter: drop-shadow(0 0 8px rgba(0,0,0,0.15)); }
-        .state.active { opacity:1; stroke-width:2.4; filter: drop-shadow(0 0 12px rgba(0,0,0,0.2)); }
-        .state-label { font-size:10px; font-weight:bold; text-anchor:middle; pointer-events:none; user-select:none; fill:#222; }
-        .unassigned { fill:#ddd !important; opacity:0.6; }
-        .info-panel { background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:white; padding:14px; border-radius:8px; display:none; margin-top:10px; }
-        .info-panel.active { display:block; }
-        .reset-btn { background:white; color:#667eea; border:none; padding:8px 14px; border-radius:6px; font-weight:bold; cursor:pointer; margin-top:12px; }
-        .controls { display:flex; gap:8px; margin-top:8px; flex-wrap:wrap; }
-        @media (max-width:1024px) { .map-section { flex-direction:column; } .map-container { min-width:auto; } .legend { flex:none; } }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Salesforce Territory Map</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/topojson.v3.min.js"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Segoe UI,Arial,sans-serif;background:#f0f4f8;padding:18px;display:flex;justify-content:center}
+    .wrap{width:100%;max-width:1200px;background:white;border-radius:10px;padding:22px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+    h1{font-size:20px;color:#333;margin-bottom:6px}
+    .subtitle{color:#666;margin-bottom:18px}
+    .layout{display:flex;gap:18px}
+    .map-box{flex:1;min-width:640px;background:#eaf5fb;border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:center}
+    svg{width:100%;height:auto}
+    .legend{width:320px;flex-shrink:0;background:#fff;border-radius:8px;padding:12px;border:1px solid #e6eef4;overflow:auto}
+    .legend h3{margin-bottom:10px;color:#333}
+    .legend-item{display:flex;gap:12px;align-items:flex-start;padding:10px;border-radius:8px;border:1px solid #f0f4f7;margin-bottom:10px}
+    .legend-color{width:18px;height:18px;border-radius:4px;flex-shrink:0;margin-top:4px}
+    .legend-name{font-weight:600;margin:0 0 4px 0}
+    .legend-region{font-size:12px;color:#666;margin:0}
+    .rep-input{display:flex;gap:8px;margin-top:8px}
+    .rep-input input{flex:1;padding:6px;border-radius:6px;border:1px solid #ddd}
+    .rep-input button{padding:6px 8px;border-radius:6px;border:0;background:#2f80ed;color:white;cursor:pointer}
+    .info-panel{display:none;margin-top:8px;background:linear-gradient(135deg,#2f80ed,#6a5cef);color:white;padding:10px;border-radius:6px}
+    .info-panel.active{display:block}
+    .state{stroke:#fff;stroke-width:1;cursor:pointer;transition:opacity .15s}
+    .state:hover{opacity:0.88}
+    .state-label{font-size:10px;fill:#222;font-weight:600;text-anchor:middle;pointer-events:none}
+    .controls{display:flex;gap:8px;margin-top:6px}
+    .btn{background:#fff;border:1px solid #e6eef4;padding:8px 10px;border-radius:6px;cursor:pointer}
+    @media(max-width:900px){.layout{flex-direction:column}.map-box{min-width:unset}}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🗺️ Salesforce Territory Map</h1>
-        <p class="subtitle">United States Sales Territories — click a territory or a state to view / edit</p>
+  <div class="wrap">
+    <h1>Salesforce Territory Map</h1>
+    <div class="subtitle">Territory One, Two, Three — Territory Three shows separate states but one color. Double-click state label to edit.</div>
 
-        <div class="map-section">
-            <div class="map-container">
-                <svg id="map" width="900" height="550" aria-label="US map"></svg>
+    <div class="layout">
+      <div class="map-box">
+        <svg id="map" viewBox="0 0 960 600" aria-label="US map"></svg>
+      </div>
+
+      <aside class="legend">
+        <h3>Territories</h3>
+
+        <div class="legend-item" data-territory="territory1">
+          <div class="legend-color" style="background:#FF6B6B"></div>
+          <div style="flex:1">
+            <h4 class="legend-name" contenteditable="true" data-territory="territory1">Territory One</h4>
+            <p class="legend-region">Colorado, WI</p>
+            <div class="rep-input" data-territory-input="territory1">
+              <input type="text" placeholder="Salesperson name..." data-rep-input="territory1">
+              <button data-rep-save="territory1">Save</button>
             </div>
-
-            <div class="legend" id="legendPanel">
-                <h3>Territories (click to select)</h3>
-
-                <div class="legend-item" data-territory="territory1">
-                    <div class="legend-color" style="background: #FF6B6B;"></div>
-                    <div class="legend-text">
-                        <h4 contenteditable="true" class="legend-name" data-territory="territory1">Territory One</h4>
-                        <p class="legend-region">Colorado, WI</p>
-
-                        <!-- Sales rep input -->
-                        <div class="rep-input" data-territory-input="territory1">
-                            <input type="text" placeholder="Salesperson name..." data-rep-input="territory1" />
-                            <button data-rep-save="territory1">Save</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="legend-item" data-territory="territory2">
-                    <div class="legend-color" style="background: #4ECDC4;"></div>
-                    <div class="legend-text">
-                        <h4 contenteditable="true" class="legend-name" data-territory="territory2">Territory Two</h4>
-                        <p class="legend-region">Oshkosh, WI</p>
-
-                        <div class="rep-input" data-territory-input="territory2">
-                            <input type="text" placeholder="Salesperson name..." data-rep-input="territory2" />
-                            <button data-rep-save="territory2">Save</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="legend-item" data-territory="territory3">
-                    <div class="legend-color" style="background: #FFE66D;"></div>
-                    <div class="legend-text">
-                        <h4 contenteditable="true" class="legend-name" data-territory="territory3">Territory Three</h4>
-                        <p class="legend-region">Upper East Coast (individual states)</p>
-
-                        <div class="rep-input" data-territory-input="territory3">
-                            <input type="text" placeholder="Salesperson name..." data-rep-input="territory3" />
-                            <button data-rep-save="territory3">Save</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="controls">
-                    <button id="exportLabelsBtn" class="reset-btn">Export labels</button>
-                    <label style="display:inline-block; cursor:pointer;">
-                        <input id="importFile" type="file" accept="application/json" style="display:none" />
-                        <span class="reset-btn">Import labels</span>
-                    </label>
-                </div>
-
-                <div class="info-panel" id="infoPanel" aria-live="polite">
-                    <h2 id="infoTitle"></h2>
-                    <p id="infoDescription"></p>
-                    <div style="margin-top:8px"><strong>Region:</strong> <span id="infoRegion"></span></div>
-                    <div style="margin-top:4px"><strong>Territory ID:</strong> <span id="infoId"></span></div>
-                    <div style="margin-top:4px"><strong>Salesperson:</strong> <span id="infoRep" style="font-weight:bold"></span></div>
-                    <div style="margin-top:4px"><strong>States Covered:</strong> <span id="infoCovered"></span></div>
-                    <div id="statesList" style="margin-top:8px"></div>
-                    <div style="margin-top:12px">
-                        <input id="infoRepEdit" type="text" placeholder="Edit salesperson..." style="padding:6px;border-radius:6px;border:1px solid rgba(255,255,255,0.3);width:70%" />
-                        <button id="infoRepSave" class="reset-btn" style="margin-left:8px">Save</button>
-                    </div>
-                    <button class="reset-btn" onclick="resetSelection()">Close</button>
-                </div>
-            </div>
+          </div>
         </div>
+
+        <div class="legend-item" data-territory="territory2">
+          <div class="legend-color" style="background:#4ECDC4"></div>
+          <div style="flex:1">
+            <h4 class="legend-name" contenteditable="true" data-territory="territory2">Territory Two</h4>
+            <p class="legend-region">Oshkosh, WI</p>
+            <div class="rep-input" data-territory-input="territory2">
+              <input type="text" placeholder="Salesperson name..." data-rep-input="territory2">
+              <button data-rep-save="territory2">Save</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="legend-item" data-territory="territory3">
+          <div class="legend-color" style="background:#FFE66D"></div>
+          <div style="flex:1">
+            <h4 class="legend-name" contenteditable="true" data-territory="territory3">Territory Three</h4>
+            <p class="legend-region">Upper East Coast (individual states)</p>
+            <div class="rep-input" data-territory-input="territory3">
+              <input type="text" placeholder="Salesperson name..." data-rep-input="territory3">
+              <button data-rep-save="territory3">Save</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="exportBtn" class="btn">Export data</button>
+          <label class="btn" style="cursor:pointer">
+            <input id="importFile" type="file" accept="application/json" style="display:none">
+            Import
+          </label>
+        </div>
+
+        <div id="info" class="info-panel" aria-live="polite">
+          <div id="infoTitle" style="font-weight:700"></div>
+          <div id="infoDesc" style="font-size:13px;margin-top:6px"></div>
+        </div>
+      </aside>
     </div>
+  </div>
 
-    <script>
-    // Territory Data
-    const territories = {
-        territory1: {
-            name: 'Territory One',
-            description: 'Colorado and Wisconsin sales territory',
-            region: 'Colorado, WI',
-            states: ['CO', 'WI'],
-            color: '#FF6B6B'
-        },
-        territory2: {
-            name: 'Territory Two',
-            description: 'Oshkosh, Wisconsin sales territory - Specialty focus area',
-            region: 'Oshkosh, WI',
-            states: ['WI'],
-            color: '#4ECDC4',
-            isSubTerritory: true
-        },
-        territory3: {
-            name: 'Territory Three',
-            description: 'Upper East Coast sales territory',
-            region: 'Upper East Coast',
-            // treat these as separate states visually but same color
-            states: ['ME','NH','VT','MA','RI','CT','NY','NJ','PA'],
-            color: '#FFE66D'
+  <script>
+  // Territories config
+  const territories = {
+    territory1: { name: 'Territory One', color: '#FF6B6B', states: ['CO','WI'], description:'Colorado and Wisconsin' },
+    territory2: { name: 'Territory Two', color: '#4ECDC4', states: ['WI'], description:'Oshkosh, WI' },
+    territory3: { name: 'Territory Three', color: '#FFE66D', states: ['ME','NH','VT','MA','RI','CT','NY','NJ','PA'], description:'Upper East Coast' }
+  };
+
+  // FIPS -> USPS
+  const idToState = {1:'AL',2:'AK',4:'AZ',5:'AR',6:'CA',8:'CO',9:'CT',10:'DE',11:'DC',12:'FL',13:'GA',15:'HI',16:'ID',17:'IL',18:'IN',19:'IA',20:'KS',21:'KY',22:'LA',23:'ME',24:'MD',25:'MA',26:'MI',27:'MN',28:'MS',29:'MO',30:'MT',31:'NE',32:'NV',33:'NH',34:'NJ',35:'NM',36:'NY',37:'NC',38:'ND',39:'OH',40:'OK',41:'OR',42:'PA',44:'RI',45:'SC',46:'SD',47:'TN',48:'TX',49:'UT',50:'VT',51:'VA',53:'WA',54:'WV',55:'WI',56:'WY'};
+
+  // LocalStorage keys
+  const REPS_KEY = 'sf_map_reps_v1';
+  const LEGEND_KEY = 'sf_map_legend_v1';
+  const LABELS_KEY = 'sf_map_labels_v1'; // optional per-state labels
+
+  function loadReps(){ try{ return JSON.parse(localStorage.getItem(REPS_KEY) || '{}'); }catch(e){return{}} }
+  function saveReps(obj){ localStorage.setItem(REPS_KEY, JSON.stringify(obj)); }
+  function loadLegend(){ try{ return JSON.parse(localStorage.getItem(LEGEND_KEY) || '{}'); }catch(e){return{}} }
+  function saveLegend(obj){ localStorage.setItem(LEGEND_KEY, JSON.stringify(obj)); }
+
+  // Build state->territory map (allow multiple but we use first)
+  const stateToTerritory = {};
+  Object.entries(territories).forEach(([tid, t]) => t.states.forEach(s => {
+    if(!stateToTerritory[s]) stateToTerritory[s] = [];
+    stateToTerritory[s].push(tid);
+  }));
+
+  // Initialize
+  async function init() {
+    const svg = d3.select('#map');
+    const us = await d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
+    const statesGeo = topojson.feature(us, us.objects.states);
+    const path = d3.geoPath();
+    // Fit viewBox nicely
+    const projection = d3.geoAlbersUsa().fitSize([960,600], statesGeo);
+    path.projection(projection);
+
+    // background
+    svg.append('rect').attr('width',960).attr('height',600).attr('fill','#eaf5fb');
+
+    const states = statesGeo.features;
+    svg.selectAll('.state').data(states).enter()
+      .append('path')
+      .attr('class','state')
+      .attr('d', path)
+      .attr('data-fips', d => d.id)
+      .attr('data-state', d => idToState[d.id] || '')
+      .attr('fill', d => {
+        const abbr = idToState[d.id];
+        if(abbr && stateToTerritory[abbr]) {
+          const tid = stateToTerritory[abbr][0];
+          return territories[tid].color;
         }
-    };
+        return '#ddd';
+      })
+      .on('click', (event,d) => {
+        const name = (d.properties && d.properties.name) || d.id;
+        const abbr = idToState[d.id];
+        if(abbr && stateToTerritory[abbr]) {
+          showTerritory(stateToTerritory[abbr][0]);
+        } else {
+          showUnassigned(name);
+        }
+      })
+      .on('mouseover', function(){ d3.select(this).style('opacity',0.9)})
+      .on('mouseout', function(){ d3.select(this).style('opacity',1)});
 
-    // FIPS id -> state abbreviation
-    const idToState = {
-      1:'AL', 2:'AK', 4:'AZ', 5:'AR', 6:'CA', 8:'CO', 9:'CT', 10:'DE',
-      11:'DC', 12:'FL', 13:'GA', 15:'HI', 16:'ID', 17:'IL', 18:'IN', 19:'IA',
-      20:'KS', 21:'KY', 22:'LA', 23:'ME', 24:'MD', 25:'MA', 26:'MI', 27:'MN',
-      28:'MS', 29:'MO', 30:'MT', 31:'NE', 32:'NV', 33:'NH', 34:'NJ', 35:'NM',
-      36:'NY', 37:'NC', 38:'ND', 39:'OH', 40:'OK', 41:'OR', 42:'PA', 44:'RI',
-      45:'SC', 46:'SD', 47:'TN', 48:'TX', 49:'UT', 50:'VT', 51:'VA', 53:'WA',
-      54:'WV', 55:'WI', 56:'WY'
-    };
+    // borders
+    svg.append('path')
+      .attr('fill','none')
+      .attr('stroke','#fff')
+      .attr('stroke-width',1)
+      .attr('d', path(topojson.mesh(us, us.objects.states, (a,b)=>(a!==b))));
 
-    // Persistence keys
-    const LABELS_KEY = 'sf_map_labels_v1';
-    const LEGEND_KEY = 'sf_map_legend_v1';
-    const REPS_KEY = 'sf_map_reps_v1';
+    // labels (will show rep if present, otherwise territory name)
+    renderLabels(svg, states, path);
 
-    function loadLabels() {
-        try { return JSON.parse(localStorage.getItem(LABELS_KEY) || '{}'); }
-        catch(e) { return {}; }
+    // wire legend inputs & persistence
+    wireLegend();
+    wireExportImport();
+  }
+
+  function renderLabels(svg, states, path) {
+    const reps = loadReps();
+    const labels = (function(){ try{return JSON.parse(localStorage.getItem(LABELS_KEY)||'{}')}catch(e){return{}} })();
+
+    svg.selectAll('.state-label').remove();
+    svg.selectAll('.state-label')
+      .data(states)
+      .enter()
+      .append('text')
+      .attr('class','state-label')
+      .attr('data-state', d => idToState[d.id] || '')
+      .attr('x', d => { const c = path.centroid(d); return isFinite(c[0]) ? c[0] : 0 })
+      .attr('y', d => { const c = path.centroid(d); return isFinite(c[1]) ? c[1]+4 : 0 })
+      .text(d => {
+        const abbr = idToState[d.id];
+        if(!abbr) return '';
+        if(labels[abbr]) return labels[abbr];
+        if(stateToTerritory[abbr]) {
+          const tid = stateToTerritory[abbr][0];
+          if(reps[tid]) return reps[tid];
+          return territories[tid].name;
+        }
+        return abbr;
+      })
+      .style('font-size','10px')
+      .on('dblclick', function(event,d){
+        event.stopPropagation();
+        const abbr = idToState[d.id];
+        if(!abbr) return;
+        openStateEditor(this, abbr);
+      });
+  }
+
+  function openStateEditor(el, stateAbbr) {
+    const labels = (function(){ try{return JSON.parse(localStorage.getItem(LABELS_KEY)||'{}')}catch(e){return{}} })();
+    const val = labels[stateAbbr] || el.textContent || stateAbbr;
+    const input = document.createElement('input');
+    input.value = val;
+    Object.assign(input.style, {position:'absolute',zIndex:9999,minWidth:'140px',padding:'6px',borderRadius:'6px',border:'1px solid #ccc'});
+    document.body.appendChild(input);
+    const rect = el.getBoundingClientRect();
+    input.style.left = (rect.left + window.scrollX - 30) + 'px';
+    input.style.top = (rect.top + window.scrollY - 10) + 'px';
+    input.focus(); input.select();
+    function commit(){
+      const v = input.value.trim();
+      try {
+        const L = JSON.parse(localStorage.getItem(LABELS_KEY)||'{}');
+        if(v) L[stateAbbr] = v; else delete L[stateAbbr];
+        localStorage.setItem(LABELS_KEY, JSON.stringify(L));
+      } catch(e){}
+      input.remove();
+      // re-render labels quickly by refreshing map
+      location.reload();
     }
-    function saveLabels(obj) { localStorage.setItem(LABELS_KEY, JSON.stringify(obj)); }
+    input.addEventListener('blur', commit);
+    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter') commit(); if(e.key==='Escape') input.remove();});
+  }
 
-    function loadLegendNames() {
-        try { return JSON.parse(localStorage.getItem(LEGEND_KEY) || '{}'); }
-        catch(e) { return {}; }
-    }
-    function saveLegendNames(obj) { localStorage.setItem(LEGEND_KEY, JSON.stringify(obj)); }
-
-    function loadReps() {
-        try { return JSON.parse(localStorage.getItem(REPS_KEY) || '{}'); }
-        catch(e) { return {}; }
-    }
-    function saveReps(obj) { localStorage.setItem(REPS_KEY, JSON.stringify(obj)); }
-
-    // Build a map state -> territory(s)
-    const stateToTerritory = {};
-    Object.entries(territories).forEach(([id, t]) => {
-        t.states.forEach(s => {
-            if(!stateToTerritory[s]) stateToTerritory[s] = [];
-            stateToTerritory[s].push(id);
-        });
+  function wireLegend(){
+    // populate existing reps
+    const reps = loadReps();
+    document.querySelectorAll('[data-rep-input]').forEach(el => {
+      const tid = el.getAttribute('data-territory-input');
+      const inp = el.querySelector(`[data-rep-input="${tid}"]`);
+      const btn = el.querySelector(`[data-rep-save="${tid}"]`);
+      if(inp) inp.value = reps[tid] || '';
+      btn.addEventListener('click', ()=>{
+        const val = inp.value.trim();
+        const newReps = loadReps();
+        if(val) newReps[tid] = val; else delete newReps[tid];
+        saveReps(newReps);
+        // update labels on map
+        location.reload();
+      });
     });
 
-    // Initialize Map with D3
-    async function initializeMap() {
-        const svg = d3.select('#map');
-        const us = await d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
-
-        const statesGeo = topojson.feature(us, us.objects.states);
-        const projection = d3.geoAlbersUsa().fitSize([880, 530], statesGeo);
-        const path = d3.geoPath().projection(projection);
-
-        svg.append('rect').attr('width', 900).attr('height', 550).attr('fill', '#E8F4F8');
-
-        const states = statesGeo.features;
-
-        // Fill each state based on mapping (first territory wins)
-        svg.selectAll('.state').remove();
-        const statePaths = svg.selectAll('.state')
-            .data(states)
-            .enter()
-            .append('path')
-            .attr('class', 'state')
-            .attr('d', path)
-            .attr('data-fips', d => d.id)
-            .attr('data-state', d => idToState[d.id] || '')
-            .attr('data-name', d => (d.properties && d.properties.name) || ('FIPS ' + d.id))
-            .each(function(d) {
-                const abbr = idToState[d.id];
-                if(!abbr) console.warn('Unknown FIPS id', d.id);
-            })
-            .attr('fill', function(d) {
-                const abbr = idToState[d.id];
-                if (abbr && stateToTerritory[abbr]) {
-                    const territoryId = stateToTerritory[abbr][0];
-                    return territories[territoryId].color;
-                }
-                return '#ddd';
-            })
-            .on('click', function(event, d) {
-                const abbr = idToState[d.id];
-                if(abbr && stateToTerritory[abbr]) {
-                    selectTerritory(stateToTerritory[abbr][0]);
-                } else {
-                    const name = (d.properties && d.properties.name) || ('FIPS ' + d.id);
-                    showUnassigned(name);
-                }
-            })
-            .on('mouseover', function() { d3.select(this).style('opacity', 0.85); })
-            .on('mouseout', function() { d3.select(this).style('opacity', 1.0); });
-
-        // Add state borders
-        svg.append('path')
-            .attr('fill', 'none')
-            .attr('stroke', 'white')
-            .attr('stroke-width', 1.2)
-            .attr('d', path(topojson.mesh(us, us.objects.states, (a,b) => a !== b)));
-
-        // Render labels with local overrides or territory name
-        const labels = loadLabels();
-        const reps = loadReps();
-
-        svg.selectAll('.state-label').remove();
-        svg.selectAll('.state-label')
-            .data(states)
-            .enter()
-            .append('text')
-            .attr('class', 'state-label')
-            .attr('data-state', d => idToState[d.id] || '')
-            .attr('x', d => {
-                const centroid = path.centroid(d);
-                return isFinite(centroid[0]) ? centroid[0] : 0;
-            })
-            .attr('y', d => {
-                const centroid = path.centroid(d);
-                return isFinite(centroid[1]) ? centroid[1] + 4 : 0;
-            })
-            .text(d => {
-                const abbr = idToState[d.id];
-                if(!abbr) return '';
-                // prefer explicit label, then territory.name, then rep name, then abbr
-                if(labels[abbr]) return labels[abbr];
-                if(stateToTerritory[abbr]) {
-                    const tid = stateToTerritory[abbr][0];
-                    // show rep if available, else territory name
-                    if(reps[tid]) return reps[tid];
-                    return territories[tid].name;
-                }
-                return abbr;
-            })
-            .style('font-size', '10px')
-            .style('pointer-events', 'auto')
-            .on('dblclick', function(event, d) {
-                event.stopPropagation();
-                const abbr = idToState[d.id];
-                if(!abbr) return;
-                openEditorForState(this, abbr);
-            });
-
-        // Wire up legend click handlers
-        document.querySelectorAll('.legend-item').forEach(item => {
-            item.addEventListener('click', () => {
-                selectTerritory(item.dataset.territory);
-            });
-        });
-
-        // Load and populate rep inputs
-        renderRepInputs();
-
-        // Make legend names editable and persist them
-        const legendInputEls = document.querySelectorAll('.legend-name');
-        const legendNames = loadLegendNames();
-        legendInputEls.forEach(el => {
-            const tid = el.dataset.territory;
-            if(legendNames[tid]) el.textContent = legendNames[tid];
-            el.addEventListener('input', () => {
-                legendNames[tid] = el.textContent.trim();
-                saveLegendNames(legendNames);
-                if(territories[tid]) territories[tid].name = el.textContent.trim();
-
-                // refresh state labels so they pick up new names
-                svg.selectAll('.state-label').text(d => {
-                    const abbr = idToState[d.id];
-                    if(!abbr) return '';
-                    const labelsLocal = loadLabels();
-                    if(labelsLocal[abbr]) return labelsLocal[abbr];
-                    if(stateToTerritory[abbr]) {
-                        const tid2 = stateToTerritory[abbr][0];
-                        const repsLocal = loadReps();
-                        if(repsLocal[tid2]) return repsLocal[tid2];
-                        return territories[tid2].name;
-                    }
-                    return abbr;
-                });
-            });
-        });
-
-        // Export / Import functions (labels & reps)
-        document.getElementById('exportLabelsBtn').addEventListener('click', () => {
-            const exportObj = { labels: loadLabels(), reps: loadReps(), legend: loadLegendNames() };
-            const blob = new Blob([JSON.stringify(exportObj, null, 2)], {type:'application/json'});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url; a.download = 'sf-map-export.json'; a.click();
-            URL.revokeObjectURL(url);
-        });
-        document.getElementById('importFile').addEventListener('change', (e) => {
-            const f = e.target.files[0];
-            if(!f) return;
-            const r = new FileReader();
-            r.onload = function(evt) {
-                try {
-                    const obj = JSON.parse(evt.target.result);
-                    if(obj.labels) localStorage.setItem(LABELS_KEY, JSON.stringify(obj.labels));
-                    if(obj.reps) localStorage.setItem(REPS_KEY, JSON.stringify(obj.reps));
-                    if(obj.legend) localStorage.setItem(LEGEND_KEY, JSON.stringify(obj.legend));
-                    location.reload();
-                } catch(err) {
-                    alert('Invalid JSON file.');
-                }
-            };
-            r.readAsText(f);
-        });
-    }
-
-    // Create / populate sales rep inputs under each legend item
-    function renderRepInputs() {
-        const reps = loadReps();
-        document.querySelectorAll('[data-rep-input]').forEach(inputEl => {
-            const tid = inputEl.getAttribute('data-territory-input');
-            const inp = inputEl.querySelector(`[data-rep-input="${tid}"]`);
-            const btn = inputEl.querySelector(`[data-rep-save="${tid}"]`);
-            if(inp) inp.value = reps[tid] || '';
-            btn.addEventListener('click', () => {
-                const val = inp.value.trim();
-                const newReps = loadReps();
-                if(val) newReps[tid] = val;
-                else delete newReps[tid];
-                saveReps(newReps);
-                // refresh map labels to show rep names
-                refreshStateLabels();
-                // also update info panel if open for this territory
-                const activeTid = document.querySelector('.legend-item.active')?.dataset.territory;
-                if(activeTid === tid) {
-                    document.getElementById('infoRep').textContent = newReps[tid] || '(not set)';
-                    document.getElementById('infoRepEdit').value = newReps[tid] || '';
-                }
-            });
-        });
-
-        // Wire up infoPanel rep save
-        document.getElementById('infoRepSave').addEventListener('click', () => {
-            const editVal = document.getElementById('infoRepEdit').value.trim();
-            const activeTid = document.getElementById('infoId').textContent.toLowerCase();
-            if(!activeTid) return;
+    // legend name persistence
+    const legendStore = loadLegend();
+    document.querySelectorAll('.legend-name').forEach(el => {
+      const tid = el.dataset.territory;
+      if(legendStore[tid]) el.textContent = legendStore[tid];
+      el.addEventListener('input', ()=>{
+        legendStore[tid] = el.textContent.trim();
+        saveLegend(legendStore);
+        // update territories object for immediate reflection
+        if(territories[tid]) territories[tid].name = el.textContent.trim();
+        // update labels on map
+        document.querySelectorAll('.state-label').forEach(t => {
+          const s = t.getAttribute('data-state');
+          const mapping = stateToTerritory[s];
+          if(mapping) {
+            const tid2 = mapping[0];
             const repsLocal = loadReps();
-            if(editVal) repsLocal[activeTid] = editVal; else delete repsLocal[activeTid];
-            saveReps(repsLocal);
-            refreshStateLabels();
-            document.getElementById('infoRep').textContent = repsLocal[activeTid] || '(not set)';
-            // sync the legend input value
-            const inp = document.querySelector(`[data-rep-input="${activeTid}"] [data-rep-input="${activeTid}"]`);
-            if(inp) inp.value = repsLocal[activeTid] || '';
+            t.textContent = (repsLocal[tid2] || territories[tid2].name);
+          }
         });
-    }
-
-    // Update all state labels (used after reps/labels change)
-    function refreshStateLabels() {
-        const svg = d3.select('#map');
-        const labels = loadLabels();
-        const reps = loadReps();
-        svg.selectAll('.state-label').text(d => {
-            const abbr = idToState[d.id];
-            if(!abbr) return '';
-            if(labels[abbr]) return labels[abbr];
-            if(stateToTerritory[abbr]) {
-                const tid = stateToTerritory[abbr][0];
-                if(reps[tid]) return reps[tid];
-                return territories[tid].name;
-            }
-            return abbr;
-        });
-    }
-
-    // Editor overlay to edit a state's label
-    function openEditorForState(textEl, stateAbbr) {
-        const existingLabels = loadLabels();
-        const val = existingLabels[stateAbbr] || textEl.textContent || stateAbbr;
-
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.value = val;
-        input.style.position = 'absolute';
-        input.style.zIndex = 9999;
-        input.style.minWidth = '140px';
-        input.style.padding = '6px';
-        input.style.borderRadius = '6px';
-        input.style.border = '1px solid #ccc';
-        document.body.appendChild(input);
-        const rect = textEl.getBoundingClientRect();
-        input.style.left = (rect.left + window.scrollX - 30) + 'px';
-        input.style.top = (rect.top + window.scrollY - 10) + 'px';
-        input.focus();
-        input.select();
-
-        function commit() {
-            const v = input.value.trim();
-            const labelsLocal = loadLabels();
-            if(v) labelsLocal[stateAbbr] = v;
-            else delete labelsLocal[stateAbbr];
-            saveLabels(labelsLocal);
-            input.remove();
-            refreshStateLabels();
-        }
-        input.addEventListener('blur', commit);
-        input.addEventListener('keydown', (e) => {
-            if(e.key === 'Enter') commit();
-            if(e.key === 'Escape') input.remove();
-        });
-    }
-
-    // When a territory selected, show info and rep
-    function selectTerritory(territoryId) {
-        document.querySelectorAll('.legend-item').forEach(i => i.classList.toggle('active', i.dataset.territory === territoryId));
-        d3.selectAll('.state').classed('active', function(d) {
-            const abbr = idToState[d.id];
-            return abbr && stateToTerritory[abbr] && stateToTerritory[abbr].includes(territoryId);
-        });
-        const territory = territories[territoryId];
-        if(!territory) return;
-        const reps = loadReps();
-        document.getElementById('infoTitle').textContent = territory.name;
-        document.getElementById('infoDescription').textContent = territory.description;
-        document.getElementById('infoRegion').textContent = territory.region;
-        document.getElementById('infoId').textContent = territoryId;
-        document.getElementById('infoCovered').textContent = territory.states.length;
-        document.getElementById('statesList').textContent = 'States: ' + territory.states.join(', ');
-        document.getElementById('infoRep').textContent = reps[territoryId] || '(not set)';
-        document.getElementById('infoRepEdit').value = reps[territoryId] || '';
-        document.getElementById('infoPanel').classList.add('active');
-    }
-
-    function showUnassigned(name) {
-        document.getElementById('infoTitle').textContent = 'Unassigned: ' + name;
-        document.getElementById('infoDescription').textContent = 'This state is not assigned to a territory.';
-        document.getElementById('infoRegion').textContent = '';
-        document.getElementById('infoId').textContent = '';
-        document.getElementById('infoCovered').textContent = '0';
-        document.getElementById('statesList').textContent = '';
-        document.getElementById('infoRep').textContent = '';
-        document.getElementById('infoRepEdit').value = '';
-        document.getElementById('infoPanel').classList.add('active');
-    }
-
-    function resetSelection() {
-        d3.selectAll('.state').classed('active', false);
-        document.querySelectorAll('.legend-item').forEach(i => i.classList.remove('active'));
-        document.getElementById('infoPanel').classList.remove('active');
-    }
-
-    // Start
-    initializeMap().catch(err => {
-        console.error('Map initialization failed:', err);
-        const svg = document.getElementById('map');
-        if(svg) {
-            svg.innerHTML = '<text x="20" y="50" fill="#333">Failed to load map. Check console for errors.</text>';
-        }
+      });
     });
-    </script>
+
+    // legend click to show territory info
+    document.querySelectorAll('.legend-item').forEach(item=>{
+      item.addEventListener('click', ()=>{
+        const tid = item.dataset.territory;
+        showTerritory(tid);
+      });
+    });
+  }
+
+  function showTerritory(tid){
+    const info = document.getElementById('info');
+    const t = territories[tid];
+    const reps = loadReps();
+    document.getElementById('infoTitle').textContent = t.name;
+    document.getElementById('infoDesc').textContent = `${t.description} — States: ${t.states.join(', ')}`;
+    info.classList.add('active');
+    // highlight states visually
+    d3.selectAll('.state').classed('active', function(d){
+      const abbr = idToState[d.id];
+      return abbr && stateToTerritory[abbr] && stateToTerritory[abbr].includes(tid);
+    });
+  }
+  function showUnassigned(name){
+    const info = document.getElementById('info');
+    document.getElementById('infoTitle').textContent = 'Unassigned: ' + name;
+    document.getElementById('infoDesc').textContent = 'This state is not assigned to a territory.';
+    info.classList.add('active');
+  }
+
+  function wireExportImport(){
+    document.getElementById('exportBtn').addEventListener('click', ()=>{
+      const obj = { reps: loadReps(), legend: loadLegend(), labels:(function(){try{return JSON.parse(localStorage.getItem(LABELS_KEY)||'{}')}catch(e){return{}}})() };
+      const blob = new Blob([JSON.stringify(obj,null,2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'sf-map-export.json'; a.click(); URL.revokeObjectURL(url);
+    });
+    document.getElementById('importFile').addEventListener('change', (e)=>{
+      const f = e.target.files[0]; if(!f) return;
+      const r = new FileReader();
+      r.onload = function(evt){
+        try{
+          const obj = JSON.parse(evt.target.result);
+          if(obj.reps) localStorage.setItem(REPS_KEY, JSON.stringify(obj.reps));
+          if(obj.legend) localStorage.setItem(LEGEND_KEY, JSON.stringify(obj.legend));
+          if(obj.labels) localStorage.setItem(LABELS_KEY, JSON.stringify(obj.labels));
+          location.reload();
+        }catch(err){ alert('Invalid JSON'); }
+      };
+      r.readAsText(f);
+    });
+  }
+
+  // Start
+  init().catch(err=>{
+    console.error('init failed', err);
+    alert('Map failed to load. If you opened via file://, run a local server (see instructions).');
+  });
+  </script>
 </body>
 </html>
