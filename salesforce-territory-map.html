@@ -12,17 +12,15 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items            padding: 20px;
+: center;
         }
-
         .container {
             background: white;
             border-radius: 12px;
@@ -31,7 +29,6 @@
             max-width: 1400px;
             width: 100%;
         }
-
         h1 {
             text-align: center;
             color: #333;
@@ -45,14 +42,12 @@
             margin-bottom: 40px;
             font-size: 1.1em;
         }
-
         .map-section {
             display: flex;
             gap: 40px;
             margin-bottom: 40px;
             flex-wrap: wrap;
         }
-
         .map-container {
             flex: 1;
             min-width: 700px;
@@ -64,7 +59,6 @@
             justify-content: center;
             align-items: center;
         }
-
         .legend {
             flex: 0 0 280px;
             background: #f9f9f9;
@@ -74,13 +68,11 @@
             max-height: 600px;
             overflow-y: auto;
         }
-
         .legend h3 {
             color: #333;
             margin-bottom: 20px;
             font-size: 1.3em;
         }
-
         .legend-item {
             display: flex;
             align-items: center;
@@ -116,24 +108,20 @@
             font-size: 1em;
             margin-bottom: 3px;
         }
-
         .legend-text p {
             color: #666;
             font-size: 0.85em;
         }
-
         svg {
             max-width: 100%;
             height: auto;
         }
-
         .state {
             cursor: pointer;
             transition: opacity 0.3s ease, filter 0.3s ease;
             stroke: white;
             stroke-width: 1.5;
         }
-
         .state:hover {
             opacity: 0.85;
             filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
@@ -144,7 +132,6 @@
             stroke-width: 2.5;
             filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.3));
         }
-
         .state-label {
             font-size: 10px;
             font-weight: bold;
@@ -153,12 +140,10 @@
             user-select: none;
             fill: #333;
         }
-
         .unassigned {
             fill: #ddd !important;
             opacity: 0.6;
         }
-
         .info-panel {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -167,12 +152,10 @@
             margin-top: 20px;
             display: none;
         }
-
         .info-panel.active {
             display: block;
             animation: slideIn 0.3s ease;
         }
-
         @keyframes slideIn {
             from {
                 opacity: 0;
@@ -183,44 +166,37 @@
                 transform: translateY(0);
             }
         }
-
         .info-panel h2 {
             font-size: 1.8em;
             margin-bottom: 15px;
             border-bottom: 2px solid rgba(255, 255, 255, 0.3);
             padding-bottom: 10px;
         }
-
         .info-panel p {
             font-size: 1.1em;
             line-height: 1.6;
             margin-bottom: 10px;
         }
-
         .stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-top: 20px;
         }
-
         .stat-item {
             background: rgba(255, 255, 255, 0.2);
             padding: 15px;
             border-radius: 6px;
         }
-
         .stat-label {
             font-size: 0.9em;
             opacity: 0.9;
         }
-
         .stat-value {
             font-size: 1.4em;
             font-weight: bold;
             margin-top: 5px;
         }
-
         .states-list {
             margin-top: 15px;
             padding: 15px;
@@ -229,7 +205,6 @@
             font-size: 0.95em;
             line-height: 1.8;
         }
-
         .reset-btn {
             background: white;
             color: #667eea;
@@ -246,21 +221,17 @@
             background: #f5f5f5;
             transform: scale(1.05);
         }
-
         @media (max-width: 1024px) {
             .map-section {
                 flex-direction: column;
             }
-
             .map-container {
                 min-width: auto;
             }
-
             .legend {
                 flex: none;
             }
         }
-
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.8em;
@@ -269,7 +240,6 @@
             .container {
                 padding: 20px;
             }
-
             .stats {
                 grid-template-columns: 1fr;
             }
@@ -404,20 +374,16 @@
             const us = await d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
             // Create projection
             const projection = d3.geoAlbersUsa()
-                .fitSize([880, 530], topojson.feature(us, us.objects.states));
-            
+                .fitSize([880, 530], topojson.feature(us, us.objects.states
             const path = d3.geoPath().projection(projection);
-            
             // Add background
             svg.append('rect')
                 .attr('width', 900)
                 .attr('height', 550)
                 .attr('fill', '#E8F4F8');
-            
             // Add states
-            const states = topojson.feature(us, us.objects.states).features;
-            
-            svg.selectAll('.state')
+            co            svg.selectAll('.state')
+nst states = topojson.feature(us, us.objects.states).features;
                 .data(states)
                 .enter()
                 .append('path')
@@ -454,15 +420,13 @@
                         d3.select(this).style('opacity', '0.6');
                     }
                 });
-            
-            // Add state borders/mesh
+                        // Add state borders/mesh
             svg.append('path')
                 .attr('fill', 'none')
                 .attr('stroke', 'white')
                 .attr('stroke-width', 1.5)
                 .attr('d', path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
         }
-
         // Convert state name to abbreviation
         function getStateAbbreviation(name) {
             const stateMap = {
@@ -482,7 +446,6 @@
             };
             return stateMap[name] || name;
         }
-
         // Select Territory
         function selectTerritory(territoryId) {
             // Highlight states in territory
@@ -491,12 +454,10 @@
                     const state = d3.select(this).attr('data-state');
                     return stateToTerritory[state] && stateToTerritory[state].includes(territoryId);
                 });
-
             // Update legend
             document.querySelectorAll('.legend-item').forEach(item => {
                 item.classList.toggle('active', item.dataset.territory === territoryId);
             });
-
             // Show info panel
             const territory = territories[territoryId];
             document.getElementById('infoTitle').textContent = territory.name;
@@ -507,7 +468,6 @@
             document.getElementById('statesList').textContent = 'States: ' + territory.states.join(', ');
             document.getElementById('infoPanel').classList.add('active');
         }
-
         // Reset Selection
         function resetSelection() {
             d3.selectAll('.state').classed('active', false);
