@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gear Up Studio | Contact</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/topojson.v3.min.js"></script>
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -40,7 +42,7 @@ p  { color: var(--color-mid); }
 .bg-light { background: var(--color-light); }
 .section-title { text-align: center; margin-bottom: 12px; }
 .section-subtitle { text-align: center; max-width: 640px; margin: 0 auto 48px; color: var(--color-muted); }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: .95rem; padding: 13px 28px; border-radius: 50px; cursor: pointer; border: 2px solid transparent; transition: background var(--transition), color var(--transition), transform var(--transition); white-space: nowrap; text-decoration: none; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: .95rem; padding: 13px 28px; border-radius: 50px; border: 2px solid transparent; cursor: pointer; transition: all var(--transition); }
 .btn:hover { transform: translateY(-2px); }
 .btn-primary { background: var(--color-primary); color: var(--color-white); border-color: var(--color-primary); }
 .btn-primary:hover { background: var(--color-primary-dk); }
@@ -52,7 +54,7 @@ p  { color: var(--color-mid); }
 .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 96px; gap: 24px; }
 .site-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .nav-links { display: flex; align-items: center; gap: 4px; }
-.nav-links li a { font-family: var(--font-display); font-weight: 600; font-size: .9rem; padding: 7px 14px; border-radius: var(--radius-sm); color: var(--color-dark); transition: background var(--transition), color var(--transition); }
+.nav-links li a { font-family: var(--font-display); font-weight: 600; font-size: .9rem; padding: 7px 14px; border-radius: var(--radius-sm); color: var(--color-dark); transition: background var(--transition); }
 .nav-links li a:hover { background: var(--color-light); color: var(--color-primary); }
 .nav-links li a.nav-cta { background: var(--color-primary); color: var(--color-white) !important; padding: 8px 18px; border-radius: 50px; }
 .nav-links li a.nav-cta:hover { background: var(--color-primary-dk); }
@@ -73,7 +75,7 @@ p  { color: var(--color-mid); }
 .info-block p  { font-size: .95rem; color: var(--color-mid); }
 .divider { border: none; border-top: 1px solid var(--color-border); margin: 32px 0; }
 .social-row { display: flex; gap: 14px; flex-wrap: wrap; }
-.social-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: .88rem; padding: 10px 20px; border-radius: 50px; border: 2px solid var(--color-border); color: var(--color-dark); transition: background var(--transition), border-color var(--transition), color var(--transition); }
+.social-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: .88rem; padding: 10px 20px; border-radius: 50px; border: 2px solid var(--color-border); background: var(--color-white); transition: all var(--transition); cursor: pointer; }
 .social-btn:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
 
 /* ── FORM ── */
@@ -84,14 +86,40 @@ p  { color: var(--color-mid); }
 .form-group label { display: block; font-family: var(--font-display); font-weight: 600; font-size: .88rem; color: var(--color-dark); margin-bottom: 6px; }
 .form-group input,
 .form-group select,
-.form-group textarea { width: 100%; padding: 11px 14px; border: 2px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: .95rem; color: var(--color-dark); background: #fafafa; transition: border-color var(--transition); }
+.form-group textarea { width: 100%; padding: 11px 14px; border: 2px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: .95rem; color: var(--color-dark); transition: border-color var(--transition); }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus { outline: none; border-color: var(--color-primary); background: var(--color-white); }
 .form-group textarea { resize: vertical; min-height: 130px; }
 .form-note { font-size: .82rem; color: var(--color-muted); margin-bottom: 18px; }
-.submit-btn { width: 100%; padding: 14px; font-size: 1rem; border-radius: var(--radius-sm); background: var(--color-primary); color: var(--color-white); border: none; font-family: var(--font-display); font-weight: 700; cursor: pointer; transition: background var(--transition), transform var(--transition); }
+.submit-btn { width: 100%; padding: 14px; font-size: 1rem; border-radius: var(--radius-sm); background: var(--color-primary); color: var(--color-white); border: none; font-family: var(--font-display); font-weight: 600; cursor: pointer; transition: all var(--transition); }
 .submit-btn:hover { background: var(--color-primary-dk); transform: translateY(-2px); }
+
+/* ── TERRITORY MAP SECTION ── */
+.map-section-wrapper { background: var(--color-light); padding: 24px; border-radius: var(--radius-md); margin-top: 48px; }
+.map-section-wrapper h2 { margin-bottom: 16px; }
+.map-section-wrapper p { margin-bottom: 32px; color: var(--color-mid); }
+.map-container { background: var(--color-white); border-radius: var(--radius-md); padding: 20px; border: 2px solid var(--color-border); display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+.map-legend { display: flex; gap: 20px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: var(--color-white); border-radius: var(--radius-sm); border: 1px solid var(--color-border); cursor: pointer; transition: all var(--transition); }
+.legend-item:hover { background: var(--color-light); transform: translateY(-2px); }
+.legend-item.active { background: var(--color-primary); color: var(--color-white); border-color: var(--color-primary); }
+.legend-color { width: 16px; height: 16px; border-radius: 3px; flex-shrink: 0; }
+.legend-item p { font-size: .85rem; margin: 0; }
+
+svg { max-width: 100%; height: auto; }
+.state { cursor: pointer; transition: opacity 0.3s ease, filter 0.3s ease; stroke: white; stroke-width: 1.5; }
+.state:hover { opacity: 0.85; filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2)); }
+.state.active { opacity: 1; stroke-width: 2.5; filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.3)); }
+.state-label { font-size: 10px; font-weight: bold; text-anchor: middle; pointer-events: none; user-select: none; fill: #333; }
+
+.territory-info { background: var(--color-white); border: 2px solid var(--color-border); border-radius: var(--radius-md); padding: 24px; margin-top: 20px; display: none; }
+.territory-info.active { display: block; animation: slideIn 0.3s ease; }
+@keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.territory-info h3 { color: var(--color-primary); margin-bottom: 12px; }
+.territory-info p { margin-bottom: 8px; }
+.close-btn { background: var(--color-primary); color: var(--color-white); border: none; padding: 8px 16px; border-radius: var(--radius-sm); cursor: pointer; margin-top: 12px; font-weight: 600; transition: all var(--transition); }
+.close-btn:hover { background: var(--color-primary-dk); }
 
 /* ── CTA BAND ── */
 .cta-band { background: linear-gradient(135deg, #c63000 0%, #e85d00 45%, #f5a623 100%); padding: 64px 24px; text-align: center; }
@@ -103,11 +131,12 @@ footer { background: var(--color-light); border-top: 1px solid var(--color-borde
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .nav-links { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 96px; left: 0; right: 0; background: var(--color-white); border-bottom: 1px solid var(--color-border); padding: 16px 24px; box-shadow: var(--shadow-md); z-index: 99; }
+  .nav-links { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 96px; left: 0; right: 0; background: var(--color-white); border-bottom: 1px solid var(--color-border); padding: 12px 0; }
   .nav-links.open { display: flex; }
   .hamburger { display: flex; }
   .contact-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
+  .map-legend { flex-direction: column; }
 }
   </style>
 </head>
@@ -258,6 +287,40 @@ footer { background: var(--color-light); border-top: 1px solid var(--color-borde
       </div>
 
     </div>
+
+    <!-- ══════════════ TERRITORY MAP ══════════════ -->
+    <div class="map-section-wrapper">
+      <h2>Our Sales Territories</h2>
+      <p>Click on any state to see which territory handles that region. We're here to serve you whether you're in our core territories or anywhere across the nation.</p>
+      
+      <div class="map-container">
+        <svg id="map" width="900" height="550"></svg>
+      </div>
+
+      <div class="map-legend">
+        <div class="legend-item" data-territory="territory1">
+          <div class="legend-color" style="background: #FF6B6B;"></div>
+          <p><strong>Territory One</strong><br>Colorado, WI</p>
+        </div>
+        <div class="legend-item" data-territory="territory2">
+          <div class="legend-color" style="background: #4ECDC4;"></div>
+          <p><strong>Territory Two</strong><br>Oshkosh, WI</p>
+        </div>
+        <div class="legend-item" data-territory="territory3">
+          <div class="legend-color" style="background: #FFE66D;"></div>
+          <p><strong>Territory Three</strong><br>Upper East Coast</p>
+        </div>
+      </div>
+
+      <div class="territory-info" id="territoryInfo">
+        <h3 id="infoTitle"></h3>
+        <p id="infoDescription"></p>
+        <p><strong>Region:</strong> <span id="infoRegion"></span></p>
+        <p><strong>States Covered:</strong> <span id="statesList"></span></p>
+        <button class="close-btn" onclick="closeTerritory()">Close</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -276,6 +339,136 @@ footer { background: var(--color-light); border-top: 1px solid var(--color-borde
     <p>&copy; 2026 Gear Up Studio &mdash; Custom Gear for Teams, Schools &amp; Businesses &mdash; Redgranite, WI</p>
   </div>
 </footer>
+
+<script>
+    // Territory Data
+    const territories = {
+        territory1: {
+            name: 'Territory One',
+            description: 'Colorado and Wisconsin sales territory',
+            region: 'Colorado, WI',
+            states: ['CO', 'WI'],
+            color: '#FF6B6B'
+        },
+        territory2: {
+            name: 'Territory Two',
+            description: 'Oshkosh, Wisconsin sales territory - Specialty focus area',
+            region: 'Oshkosh, WI',
+            states: ['WI'],
+            color: '#4ECDC4',
+            isSubTerritory: true
+        },
+        territory3: {
+            name: 'Territory Three',
+            description: 'Upper East Coast sales territory',
+            region: 'Upper East Coast',
+            states: ['ME', 'NH', 'VT', 'MA', 'RI', 'CT', 'NY', 'NJ', 'PA'],
+            color: '#FFE66D'
+        }
+    };
+
+    // FIPS mapping
+    const idToState = {
+      1:'AL', 2:'AK', 4:'AZ', 5:'AR', 6:'CA', 8:'CO', 9:'CT', 10:'DE',
+      11:'DC', 12:'FL', 13:'GA', 15:'HI', 16:'ID', 17:'IL', 18:'IN', 19:'IA',
+      20:'KS', 21:'KY', 22:'LA', 23:'ME', 24:'MD', 25:'MA', 26:'MI', 27:'MN',
+      28:'MS', 29:'MO', 30:'MT', 31:'NE', 32:'NV', 33:'NH', 34:'NJ', 35:'NM',
+      36:'NY', 37:'NC', 38:'ND', 39:'OH', 40:'OK', 41:'OR', 42:'PA', 44:'RI',
+      45:'SC', 46:'SD', 47:'TN', 48:'TX', 49:'UT', 50:'VT', 51:'VA', 53:'WA',
+      54:'WV', 55:'WI', 56:'WY'
+    };
+
+    // State to territory mapping
+    const stateToTerritory = {};
+    Object.entries(territories).forEach(([id, territory]) => {
+        territory.states.forEach(state => {
+            if (!stateToTerritory[state]) {
+                stateToTerritory[state] = [];
+            }
+            stateToTerritory[state].push(id);
+        });
+    });
+
+    async function initializeMap() {
+        const svg = d3.select('#map');
+        
+        const us = await d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
+        const projection = d3.geoAlbersUsa()
+            .fitSize([880, 530], topojson.feature(us, us.objects.states));
+        
+        const path = d3.geoPath().projection(projection);
+        
+        svg.append('rect')
+            .attr('width', 900)
+            .attr('height', 550)
+            .attr('fill', '#E8F4F8');
+        
+        const states = topojson.feature(us, us.objects.states).features;
+        
+        svg.selectAll('.state')
+            .data(states)
+            .enter()
+            .append('path')
+            .attr('class', 'state')
+            .attr('d', path)
+            .attr('fill', function(d) {
+                const stateAbbr = idToState[d.id];
+                if (stateAbbr && stateToTerritory[stateAbbr]) {
+                    const territoryId = stateToTerritory[stateAbbr][0];
+                    return territories[territoryId].color;
+                }
+                return '#ddd';
+            })
+            .attr('data-state', function(d) { return idToState[d.id] || ''; })
+            .on('click', function() {
+                const state = d3.select(this).attr('data-state');
+                if (stateToTerritory[state]) {
+                    selectTerritory(stateToTerritory[state][0]);
+                }
+            });
+        
+        svg.append('path')
+            .attr('fill', 'none')
+            .attr('stroke', 'white')
+            .attr('stroke-width', 1.5)
+            .attr('d', path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
+    }
+
+    function selectTerritory(territoryId) {
+        d3.selectAll('.state')
+            .classed('active', function(d) {
+                const state = d3.select(this).attr('data-state');
+                return stateToTerritory[state] && stateToTerritory[state].includes(territoryId);
+            });
+
+        document.querySelectorAll('.legend-item').forEach(item => {
+            item.classList.toggle('active', item.dataset.territory === territoryId);
+        });
+
+        const territory = territories[territoryId];
+        document.getElementById('infoTitle').textContent = territory.name;
+        document.getElementById('infoDescription').textContent = territory.description;
+        document.getElementById('infoRegion').textContent = territory.region;
+        document.getElementById('statesList').textContent = territory.states.join(', ');
+        document.getElementById('territoryInfo').classList.add('active');
+    }
+
+    function closeTerritory() {
+        d3.selectAll('.state').classed('active', false);
+        document.querySelectorAll('.legend-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        document.getElementById('territoryInfo').classList.remove('active');
+    }
+
+    document.querySelectorAll('.legend-item').forEach(item => {
+        item.addEventListener('click', () => {
+            selectTerritory(item.dataset.territory);
+        });
+    });
+
+    initializeMap();
+</script>
 
 </body>
 </html>
